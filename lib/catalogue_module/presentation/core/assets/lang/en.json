@@ -1,0 +1,61 @@
+{
+  "catalogue":{
+    "explore": "Explore",
+    "handpicked": "Handpicked",
+    "about_this_product": "About this product",
+    "size": "Size",
+    "quantity": "Quantity",
+    "price":"Price",
+    "deals_of_the_day": "Deals of the day",
+    "description": "Description",
+    "customer_favourites": "Customer favourites",
+    "enter_pincode": "Enter pincode",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "pincode": "Pincode",
+
+    "top_seller":"Top Sellers",
+    "categories":"Categories",
+    "seasonal_pulses":"Seasonal Pulses",
+    "soft_drinks":"Soft Drinks"
+
+  },
+  "search_bar":{
+    "search_curd":"Search \"curd\"",
+    "search_rice":"Search \"rice\"",
+    "search_chips":"Search \"chips\""
+
+
+  },
+  "notification":{
+    "notifications":"Notifications",
+    "mark_all_read":"Mark all as read"
+  },
+  "search_page":{
+    "all":"All ",
+    "low_high":"Price : Low to high",
+    "high_low":"Price : High to low",
+    "no_results_found":"No results found for",
+    "search":"Search",
+    "filter_products":"Filter products",
+    "sub_category":"Sub category",
+    "sort_by":"Sort by",
+    "brand":"Brand",
+    "reset_filter":"Reset Filter",
+    "apply_filter":"Apply Filter"
+  },
+  "product_card":{
+    "new":"New"
+  },
+  "product_page":{
+    "about_this_product":"About this product",
+    "highlights":"Highlights",
+    "total_price":"Total price",
+    "add_to_cart":"Add to cart",
+    "out_of_stock":"OUT OF STOCK"
+  }
+
+
+
+
+}

@@ -1,0 +1,1 @@
+enum PaymentType { PAYMENT_GATEWAY, WALLET,COD }

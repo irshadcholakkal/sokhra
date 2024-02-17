@@ -1,0 +1,31 @@
+{
+    "cart": {
+      "updating_cart_failed": "Échec de la mise à jour du panier",
+      "removed_from_cart": "Article supprimé du panier",
+      "added_to_cart": "Article ajouté au panier",
+      "quantity_updated": "Quantité mise à jour",
+      "add_to_cart": "Ajouter au panier",
+      "cart": "Chariot",
+      "total": "Totale",
+      "checkout": "Vérifier",
+      "cart_is_empty": "Le panier est vide",
+      "shipping_details": "Shipping details",
+      "enter_valid_promocode": "Enter a valid promocode",
+      "price": "Price",
+      "gst": "GST",
+      "delivery_charge": "Delivery charge",
+      "promo_applied": "Promo applied",
+      "wallet": "Wallet",
+      "use_wallet_balance": "Use wallet balance",
+      "pay_now": "Pay now",
+      "payment_type": "Payment type",
+      "select_address": "Select Address",
+      "address_change_success": "Address changed successfully",
+      "wishlist": "Wishlist",
+      "wishlist_empty": "Wishlist is empty",
+  
+  
+      "shopping_cart":"Shopping cart",
+      "total_price":"Total price"
+    }
+  }

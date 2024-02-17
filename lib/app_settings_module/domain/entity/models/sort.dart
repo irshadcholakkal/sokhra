@@ -1,0 +1,1 @@
+enum SortType{Desc,Asc}

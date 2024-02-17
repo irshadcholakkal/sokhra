@@ -1,0 +1,57 @@
+{
+"catalogue":{
+    "explore": "Explore",
+    "handpicked": "Handpicked",
+    "about_this_product": "About this product",
+    "size": "Size",
+    "quantity": "Quantity",
+    "price":"Price",
+    "deals_of_the_day": "Deals of the day",
+    "description": "Description",
+    "customer_favourites": "Customer favourites",
+    "enter_pincode": "Enter pincode",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "pincode": "Pincode",
+
+    "top_seller":"أفضل البائعين",
+    "categories":"فئات",
+    "seasonal_pulses":"البقول الموسمية",
+    "soft_drinks":"المشروبات الغازية"
+
+  },
+  "search_bar":{
+    
+
+    "search_curd":"بحث \"التخثر\"",
+    "search_rice":"بحث عن \"الأرز\"",
+    "search_chips":"البحث عن \"الرقائق\""
+  },
+  "notification":{
+    "notifications":"إشعارات",
+    "mark_all_read":"اشر عليها بانها قرات"
+  },
+  "search_page":{
+    "all":"الجميع",
+    "low_high":"السعر من الارخص للاعلى",
+    "high_low":"السعر الاعلى الى الادنى",
+    "no_results_found":"لا يوجد نتائج ل",
+    "search":"يبحث",
+    "filter_products":"تصفية المنتجات",
+    "sub_category":"تصنيف فرعي",
+    "sort_by":"ترتيب حسب",
+    "brand":"ماركة",
+    "reset_filter":"تصفية إعادة تعيين",
+    "apply_filter":"تطبيق الفلتر"
+  },
+  "product_card":{
+    "new":"جديد"
+  },
+  "product_page":{
+    "about_this_product":"حول هذا المنتج",
+    "highlights":"يسلط الضوء",
+    "total_price":"السعر الكلي",
+    "add_to_cart":"أضف إلى السلة",
+    "out_of_stock":"إنتهى من المخزن"
+  }
+}

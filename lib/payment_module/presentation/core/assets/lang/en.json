@@ -1,0 +1,24 @@
+{
+  "payment": {
+    "wallet": "Wallet",
+    "payment_history": "Payment history",
+    "added_money": "Added \n money",
+    "order_purchase": "Order \n purchase",
+    "refund": "Refund",
+    "credit": "Credit",
+    "debit": "Debit",
+    "total_balance": "Total balance",
+    "add_money": "Add money",
+    "add_money_to_wallet": "Add money to wallet",
+    "delivery_charge": "Delivery charge",
+    "total": "Total",
+    "payment_received": "Payment received",
+    "download_invoice": "Download invoice",
+    "reorder": "Reorder",
+    "delivered": "Delivered",
+    "cancelled": "Cancelled",
+    "payment_success": "Payment success",
+    "payment_failed": "Payment failed",
+    "shop_more": "Shop more"
+  }
+}

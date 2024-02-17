@@ -1,0 +1,58 @@
+{
+    
+  "catalogue":{
+    "explore": "Explore",
+    "handpicked": "Handpicked",
+    "about_this_product": "About this product",
+    "size": "Size",
+    "quantity": "Quantity",
+    "price":"Price",
+    "deals_of_the_day": "Deals of the day",
+    "description": "Description",
+    "customer_favourites": "Customer favourites",
+    "enter_pincode": "Enter pincode",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "pincode": "Pincode",
+
+    "top_seller":"meilleures ventes",
+    "categories":"catégories",
+    "seasonal_pulses":"légumineuses saisonnières",
+    "soft_drinks":"Boissons non alcoolisées"
+
+  },
+  "search_bar":{
+    "search_curd":"Rechercher \"caillé\"",
+    "search_rice":"Rechercher \"riz\"",
+    "search_chips":"Rechercher des \"puces\""
+
+
+  },
+  "notification":{
+    "notifications":"Notifications",
+    "mark_all_read":"tout marquer comme lu"
+  },
+  "search_page":{
+    "all":"toute ",
+    "low_high":"Prix croissant",
+    "high_low":"Prix : Haut à bas",
+    "no_results_found":"Aucun résultat trouvé pour",
+    "search":"Recherche",
+    "filter_products":"Filtrer les produits",
+    "sub_category":"Sous catégorie",
+    "sort_by":"Trier par",
+    "brand":"Marque",
+    "reset_filter":"Réinitialiser le filtre",
+    "apply_filter":"Appliquer le filtre"
+  },
+  "product_card":{
+    "new":"Nouvelle"
+  },
+  "product_page":{
+    "about_this_product":"À propos de ce produit",
+    "highlights":"Points forts",
+    "total_price":"Prix ​​total",
+    "add_to_cart":"Ajouter au panier",
+    "out_of_stock":"EN RUPTURE DE STOCK"
+  }
+}

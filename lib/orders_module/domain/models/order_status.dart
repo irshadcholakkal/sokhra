@@ -1,0 +1,8 @@
+enum OrderStatus {
+  PENDING,
+  DISPATCHED,
+  DELIVERED,
+  DECLINED,
+  CANCELLED,
+  DISPATCH_HELD
+}

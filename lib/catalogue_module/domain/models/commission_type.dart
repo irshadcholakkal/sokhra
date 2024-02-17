@@ -1,0 +1,1 @@
+enum CommissionType { FIXED, PERCENTAGE }

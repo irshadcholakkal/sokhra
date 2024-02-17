@@ -1,0 +1,15 @@
+{
+  "orders": {
+    "my_orders": "My orders",
+    "delivery_charge": "Delivery charge",
+    "total": "Total",
+    "price": "Price",
+    "payment_received": "Payment received",
+    "download_invoice": "Download invoice",
+    "reorder": "Reorder",
+    "delivered": "Delivered",
+    "cancelled": "Cancelled",
+    "item": "Item",
+    "quantity": "Quantity"
+  }
+}
