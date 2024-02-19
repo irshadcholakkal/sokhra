@@ -39,7 +39,10 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: AppColorScheme.surfaceColorLight,
-      appBar: SimpleAppBar(title: 'My Account'),
+      appBar: SimpleAppBar(title: 
+      translation.of('user.my_account')
+      //'My Account'
+      ),
       body: Container(
         constraints: const BoxConstraints(maxWidth: 380),
         margin: EdgeInsets.all(20),
@@ -244,7 +247,8 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Current password',
+          translation.of('user.current_password'),
+          //'Current password',
           style: TextStyle(
             color: AppColorScheme.inActive.withOpacity(0.75),
             fontSize: 11,
@@ -341,7 +345,8 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'New password',
+          translation.of("user.new_password"),
+          //'New password',
           style: TextStyle(
             color: AppColorScheme.inActive.withOpacity(0.75),
             fontSize: 11,
@@ -439,7 +444,8 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Confirm password',
+          translation.of("user.confirm_password"),
+          //'Confirm password',
           style: TextStyle(
             color: AppColorScheme.inActive.withOpacity(0.75),
             fontSize: 11,
@@ -470,7 +476,8 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
           validator: FormBuilderValidators.compose([
             (value) {
               if (value != _newPassword.text) {
-                return 'Passwords do not match';
+                return translation.of('user.invalid_password');
+                //'Passwords do not match';
               }
               return null;
             },

@@ -1,0 +1,23 @@
+{
+    "orders": {
+      "my_orders": "Mes commandes",
+      "delivery_charge": "Frais de livraison",
+      "total": "Totale",
+      "price": "Prix",
+      "payment_received": "Paiement reçu",
+      "download_invoice": "Télécharger la facture",
+      "reorder": "Réorganiser",
+      "delivered": "Livré",
+      "cancelled": "Annulé",
+      "item": "Article",
+      "quantity": "Quantité",
+      "active_orders":"Commandes actives",
+      "no_active_orders":"Aucune commande active",
+      "order_history":"Historique des commandes",
+      "no_any_orders":"Aucune commande récente",
+      "active":"Active",
+      "dispatched":"Expédié",
+      "declined":"Diminué",
+      "dispatch_held":"Expédition retenue"
+    }
+  }

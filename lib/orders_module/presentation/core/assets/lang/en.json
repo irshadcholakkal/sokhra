@@ -10,6 +10,14 @@
     "delivered": "Delivered",
     "cancelled": "Cancelled",
     "item": "Item",
-    "quantity": "Quantity"
+    "quantity": "Quantity",
+    "active_orders":"Active Orders",
+    "no_active_orders":"No active orders",
+    "order_history":"Order history",
+    "no_any_orders":"No any recent orders",
+    "active":"Active",
+    "dispatched":"Dispatched",
+    "declined":"Declined",
+    "dispatch_held":"Dispatch held"
   }
 }

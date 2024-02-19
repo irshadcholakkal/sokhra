@@ -78,7 +78,8 @@ class _OrdersScreenState extends State<OrdersScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Active Orders',
+                      translation.of('orders.active_orders'),
+                     // 'Active Orders',
                       style: TextStyle(
                         color: Color(0xFF1D1B1E),
                         fontSize: 16,
@@ -98,10 +99,14 @@ class _OrdersScreenState extends State<OrdersScreen> {
                             },
                           )
                         : Center(
-                            child: Text('No active Orders'),
+                            child: Text(
+                              translation.of('orders.no_active_orders'),
+                             // 'no_active_orders'
+                              ),
                           ),
                     Text(
-                      'Order history',
+                      translation.of('orders.order_history'),
+                     // 'Order history',
                       style: TextStyle(
                         color: Color(0xFF1D1B1E),
                         fontSize: 16,
@@ -120,7 +125,10 @@ class _OrdersScreenState extends State<OrdersScreen> {
                             },
                           )
                         : Center(
-                            child: Text("No any Orders"),
+                            child: Text(
+                              translation.of('orders.no_any_orders'),
+                              //"No any Orders"
+                              ),
                           ),
                   ],
                 );
@@ -580,17 +588,23 @@ class _OrdersScreenState extends State<OrdersScreen> {
   String getStatus(OrderStatus status) {
     switch (status) {
       case OrderStatus.PENDING:
-        return "Active";
+        return translation.of('orders.active');
+        //"Active";
       case OrderStatus.DISPATCHED:
-        return "Dispatched";
+        return translation.of('orders.dispatched');
+        //"Dispatched";
       case OrderStatus.DELIVERED:
-        return "Delivered";
+        return translation.of('orders.delivered');
+        //"Delivered";
       case OrderStatus.DECLINED:
-        return "Declined";
+        return translation.of('orders.declined');
+        //"Declined";
       case OrderStatus.CANCELLED:
-        return "Cancelled";
+        return translation.of('orders.cancelled');
+        //"Cancelled";
       case OrderStatus.DISPATCH_HELD:
-        return "Dispatch held";
+        return translation.of('orders.dispatch_held');
+        //"Dispatch held";
       default:
         return "";
     }

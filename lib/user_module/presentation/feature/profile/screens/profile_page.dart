@@ -12,6 +12,7 @@ import 'package:lumiereorganics_app/user_module/presentation/feature/profile/scr
 
 import '../../../../../base_module/data/entity/graphql_service.dart';
 import '../../../../../base_module/domain/entity/color_scheme.dart';
+import '../../../../../base_module/domain/entity/translation.dart';
 import '../../../../../base_module/presentation/component/appbar/simple_app_bar.dart';
 import '../../../../../base_module/presentation/component/images/custom_image_view.dart';
 import '../../../../../base_module/presentation/core/values/app_assets.dart';
@@ -50,7 +51,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: AppColorScheme.surfaceColorLight,
-      appBar: SimpleAppBar(title: 'My Account',ontap: widget.onPress),
+      appBar: SimpleAppBar(title: translation.of('user.my_account')
+      //'My Account'
+      ,ontap: widget.onPress),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -106,20 +109,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
             ),
-            _listdata(context, Icon(Iconsax.user,color: AppColorScheme.onBlack,), 'Personal details', 
+            _listdata(context, Icon(Iconsax.user,color: AppColorScheme.onBlack,), 
+           translation.of('user.personal_details'),
+            //'Personal details', 
             personalDetails()
            //SignUpScreen ()
           // PasswordScreen()
           
             ),
-            _listdata(context, Icon(Iconsax.location,color: AppColorScheme.onBlack,), 'Addresses',
+            _listdata(context, Icon(Iconsax.location,color: AppColorScheme.onBlack,), 
+           translation.of('user.addresses'),
+            //'Addresses',
              ManageAddressBottomSheet()
            // EditAddressScreen()
           //  AddAddressScreen()
             
             ),
-            _listdata(context, Icon(Iconsax.lock,color: AppColorScheme.onBlack,), 'Password', UpdatePasswordScreen()),
-            _listdata(context, Icon(Icons.language,color: AppColorScheme.onBlack,), 'Language', LanguageSelection()),
+            _listdata(context, Icon(Iconsax.lock,color: AppColorScheme.onBlack,), 
+             translation.of('user.password'),
+            //'Password',
+             UpdatePasswordScreen()),
+            _listdata(context, Icon(Icons.language,color: AppColorScheme.onBlack,), 
+            translation.of('user.language'),
+            //'Language', 
+            LanguageSelection()),
              _signOut(context,),
           ],
         ),

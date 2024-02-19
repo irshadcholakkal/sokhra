@@ -41,7 +41,7 @@
       "sign_up": "Create new account",
       "not_found": "Not Found",
       "switchLanguage":"Change to عربى",
-      "language": "Language",
+      "language":"Langue",
       "switch_to": "Switch to",
       "not_signed_in": "You are not signed in",
       "password_changed": "Your password has been changed successfully",
@@ -82,7 +82,10 @@
       "edit_address_failed": "Failed to edit address",
       "pending": "Pending",
       "delivered": "Delivered",
-      "not_delivered": "Not Delivered"
+      "not_delivered": "Not Delivered",
+      "my_account":"Mon compte",
+    "personal_details":"Détails personnels",
+    "addresses":"Adresses"
     },
     "footer": {
       "contactUs": "Contact Us",

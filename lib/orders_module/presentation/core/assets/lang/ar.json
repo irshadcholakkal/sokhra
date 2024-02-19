@@ -1,0 +1,23 @@
+{
+    "orders": {
+      "my_orders": "طلباتي",
+      "delivery_charge": "رسوم التوصيل",
+      "total": "المجموع",
+      "price": "سعر",
+      "payment_received": "تم استلام الدفعة",
+      "download_invoice": "تحميل فاتورة",
+      "reorder": "إعادة الترتيب",
+      "delivered": "تم التوصيل",
+      "cancelled": "ألغيت",
+      "item": "غرض",
+      "quantity": "كمية",
+      "active_orders":"الطلبات النشطة",
+      "no_active_orders":"لا توجد أوامر نشطة",
+      "order_history":"تاريخ الطلب",
+      "no_any_orders":"لا يوجد أي أوامر الأخيرة",
+      "active":"نشيط",
+      "dispatched":"مُرسَل",
+      "declined":"انخفض",
+      "dispatch_held":"عقدت الإرسال"
+    }
+  }

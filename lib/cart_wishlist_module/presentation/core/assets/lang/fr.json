@@ -9,23 +9,23 @@
       "total": "Totale",
       "checkout": "Vérifier",
       "cart_is_empty": "Le panier est vide",
-      "shipping_details": "Shipping details",
-      "enter_valid_promocode": "Enter a valid promocode",
-      "price": "Price",
+      "shipping_details": "Les détails d'expédition",
+      "enter_valid_promocode": "Entrez un code promo valide",
+      "price": "Prix",
       "gst": "GST",
-      "delivery_charge": "Delivery charge",
-      "promo_applied": "Promo applied",
-      "wallet": "Wallet",
-      "use_wallet_balance": "Use wallet balance",
-      "pay_now": "Pay now",
-      "payment_type": "Payment type",
-      "select_address": "Select Address",
-      "address_change_success": "Address changed successfully",
-      "wishlist": "Wishlist",
-      "wishlist_empty": "Wishlist is empty",
+      "delivery_charge": "Frais de livraison",
+      "promo_applied": "Promo appliquée",
+      "wallet": "Portefeuille",
+      "use_wallet_balance": "Utiliser le solde du portefeuille",
+      "pay_now": "Payez maintenant",
+      "payment_type": "Type de paiement",
+      "select_address": "Sélectionnez l'adresse",
+      "address_change_success": "L'adresse a été modifiée avec succès",
+      "wishlist": "Liste de souhaits",
+      "wishlist_empty": "La liste de souhaits est vide",
   
   
-      "shopping_cart":"Shopping cart",
-      "total_price":"Total price"
+      "shopping_cart":"Panier",
+      "total_price":"Prix ​​total"
     }
   }

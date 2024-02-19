@@ -82,7 +82,16 @@
     "edit_address_failed": "Failed to edit address",
     "pending": "Pending",
     "delivered": "Delivered",
-    "not_delivered": "Not Delivered"
+    "not_delivered": "Not Delivered",
+
+    "my_account":"My Account",
+    "personal_details":"Personal details",
+    "addresses":"Addresses"
+
+
+
+
+
   },
   "footer": {
     "contactUs": "Contact Us",
@@ -92,4 +101,7 @@
     "my_account":"My Account"
 
   }
+
+
+
 }

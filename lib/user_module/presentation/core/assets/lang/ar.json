@@ -62,7 +62,12 @@
     "address": "Address",
     "pending": "المعلقه",
     "delivered": "تسليم",
-    "not_delivered": "لم يتم تسليمها"
+    "not_delivered": "لم يتم تسليمها",
+
+    "my_account":"حسابي",
+    "personal_details":"تفاصيل شخصية",
+    "addresses":"عناوين"
+
   },
   "footer": {
     "contactUs": "اتصل بنا",

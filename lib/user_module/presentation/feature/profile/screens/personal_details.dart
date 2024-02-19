@@ -60,7 +60,8 @@ class _personalDetailsState extends State<personalDetails> {
       child: Scaffold(
         resizeToAvoidBottomInset: true,
         backgroundColor: AppColorScheme.surfaceColorLight,
-        appBar: SimpleAppBar(title: 'My Account'),
+        appBar: SimpleAppBar(title: 
+translation.of('user.my_account')        ),
         // appBar: _args?.isFromDrawer ?? false
         //     ? AppBar(
         //         iconTheme:
