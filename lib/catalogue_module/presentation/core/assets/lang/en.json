@@ -17,7 +17,21 @@
     "top_seller":"Top Sellers",
     "categories":"Categories",
     "seasonal_pulses":"Seasonal Pulses",
-    "soft_drinks":"Soft Drinks"
+    "soft_drinks":"Soft Drinks",
+    "home":"Home",
+    "cart":"Cart",
+    "orders":"Orders",
+    "profile":"Profile",
+    "Logout":"Logout",
+
+
+    "address":"Address",
+    "my_orders":"My orders",
+    "are_you_sure_to_logout":"Are you sure to logout?",
+    "add":"Add"
+
+
+    
 
   },
   "search_bar":{

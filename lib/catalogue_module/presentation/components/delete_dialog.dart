@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../base_module/domain/entity/color_scheme.dart';
 import '../../../user_module/presentation/feature/sign_in/screens/intro_screen.dart';
-import '../../../base_module/presentation/feature/demo/screen/on_boarding_screen.dart';
+import '../../../user_module/presentation/feature/demo/screen/on_boarding_screen.dart';
 import '../../../user_module/presentation/feature/authentication/blocs/authentication/authentication_bloc.dart';
 
 class DeleteAccountDialog extends StatefulWidget {

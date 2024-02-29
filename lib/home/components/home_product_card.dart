@@ -120,7 +120,7 @@ class HomeProductCard extends StatelessWidget {
                                 Theme.of(context).textTheme.caption?.copyWith(
                                       fontWeight: FontWeight.w500,
                                       fontSize: 10,
-                                      fontFamily: 'Poppins',
+                                      fontFamily: AppConstants.defaultFont,
                                       color: Theme.of(context)
                                           .colorScheme
                                           .onBackground
@@ -140,7 +140,7 @@ class HomeProductCard extends StatelessWidget {
                             style:
                                 Theme.of(context).textTheme.caption?.copyWith(
                                       fontSize: 10.04,
-                                      fontFamily: 'Poppins',
+                                      fontFamily: AppConstants.defaultFont,
                                       fontWeight: FontWeight.w500,
                                       color: Theme.of(context)
                                           .colorScheme
@@ -193,7 +193,7 @@ class HomeProductCard extends StatelessWidget {
                               "MAD ${product.variants?.firstOrNull?.price?.toString().split('.').first ?? ""}",
                               style: Theme.of(context).textTheme.caption?.copyWith(
                                   fontWeight: FontWeight.w500,
-                                  fontFamily: 'Poppins',
+                                  fontFamily: AppConstants.defaultFont,
                                   fontSize: 12,
                                   color: AppColorScheme.primaryColor
                                   //Theme.of(context).colorScheme.onBackground,
@@ -211,7 +211,7 @@ class HomeProductCard extends StatelessWidget {
                                       .caption
                                       ?.copyWith(
                                           fontWeight: FontWeight.w500,
-                                          fontFamily: 'Poppins',
+                                          fontFamily: AppConstants.defaultFont,
                                           fontSize: 12,
                                           color: Color(0xFFD5BBFC)
                                           //Theme.of(context).colorScheme.onBackground,
@@ -263,7 +263,7 @@ class HomeProductCard extends StatelessWidget {
                                       product.variants?.first.minimumQuantity ??
                                           1,
                                           variantChoiceId: product.variants?.first.id??"",
-                                  text: "Add",
+                                  text: translation.of('catalogue.add')
                                 )
                                     else
                           OutOfStockButton(
@@ -296,7 +296,7 @@ class HomeProductCard extends StatelessWidget {
                   style: TextStyle(
                     color: AppColorScheme.onPrimaryLight,
                     fontSize: 10,
-                    fontFamily: 'Poppins',
+                    fontFamily: AppConstants.defaultFont,
                     fontWeight: FontWeight.w500,
                   ),
                 ),

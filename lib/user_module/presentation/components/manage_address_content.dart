@@ -1,7 +1,7 @@
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:lumiereorganics_app/user_module/presentation/feature/profile/screens/adresses_page.dart';
 
 import '../../../app_settings_module/presentation/feature/app_settings/blocs/app_data/app_data_bloc.dart';
 import '../../../base_module/domain/entity/app.dart';
@@ -9,7 +9,6 @@ import '../../../base_module/domain/entity/color_scheme.dart';
 import '../../../base_module/domain/entity/translation.dart';
 import '../../../base_module/presentation/component/alerts/flash_alert.dart';
 import '../../../base_module/presentation/component/indicator/loading_or_error_indicator.dart';
-import '../../../base_module/presentation/component/padding/app_padding.dart';
 import '../../../base_module/presentation/core/values/app_constants.dart';
 import '../../../catalogue_module/presentation/feature/details/blocs/loctaion_check_cubit/location_check_cubit.dart';
 import '../../../home/feature/home/screens/home_screen.dart';
@@ -17,9 +16,8 @@ import '../../data/entity/input_models/shipping_input.dart';
 import '../feature/choose_loction/screen/map_location_picker_screen.dart';
 import '../feature/choose_loction/widgets/address_list_card.dart';
 import '../feature/profile/blocs/profile/profile_bloc.dart';
-import 'package:dotted_border/dotted_border.dart';
-
 import '../feature/profile/screens/add_address_screen.dart';
+import '../feature/profile/screens/adresses_page.dart';
 
 class ManageAddressContent extends StatefulWidget {
   final bool isFromLocationScreen;
@@ -58,7 +56,7 @@ class _ManageAddressContentState extends State<ManageAddressContent> {
             } else if (state is ProfileEditAddressFailed) {
               showErrorFlash(
                 context: context,
-                message: "Failed to update address",
+                message: translation.of('user.failed_to_update_address'),
               );
             } else if (state is ProfileDeleteAddressSuccess) {
               _getAppData();
@@ -100,19 +98,19 @@ class _ManageAddressContentState extends State<ManageAddressContent> {
             children: [
               Text(
                 translation.of("address_details"),
-                style: TextStyle(
+                style: Theme.of(context).textTheme.subtitle1?.copyWith(
                   color: Color(0xFF1D1B1E),
                   fontSize: 16,
-                  fontFamily: 'Poppins',
+                  fontFamily: AppConstants.defaultFont,
                   fontWeight: FontWeight.w600,
                 ),
               ),
               SizedBox(
-                height: 0.16,
+                height: AppConstants.defaultPadding* 0.008,
               ),
               Divider(),
               SizedBox(
-                height: 0.16,
+                height: AppConstants.defaultPadding* 0.008,
               ),
               // Container(
               //   height: 48,
@@ -224,11 +222,11 @@ class _ManageAddressContentState extends State<ManageAddressContent> {
                                 ),
                               ),
                               SizedBox(
-                                height: 16,
+                                height: AppConstants.defaultPadding*0.8,
                               ),
                               Divider(),
                               SizedBox(
-                                height: 16,
+                                height: AppConstants.defaultPadding*0.8,
                               )
                             ],
                           );
@@ -239,7 +237,7 @@ class _ManageAddressContentState extends State<ManageAddressContent> {
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 100),
                         child: Text(
-                          "No addresses added",
+                          translation.of('user.no_addresses_added'),
                           style:
                               Theme.of(context).textTheme.subtitle2?.copyWith(
                                     color: Theme.of(context)
@@ -306,14 +304,14 @@ class _ManageAddressContentState extends State<ManageAddressContent> {
                         ),
                         SizedBox(width: AppConstants.defaultPadding / 8),
                         Text(
-                          "Add new address",
+                          translation.of('user.add_new_address'),
                           style: Theme.of(context)
                               .textTheme
                               .subtitle2
                               ?.copyWith(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 16,
-                                fontFamily: 'Poppins',
+                                fontFamily: AppConstants.defaultFont,
                                 color: AppColorScheme.primaryColor,
                               ),
                         )

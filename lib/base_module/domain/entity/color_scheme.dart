@@ -24,7 +24,9 @@ mixin AppColorScheme {
   static Color inverseSurfaceLight = const Color(0xFF3C4B37);
   static Color tertiaryLight = const Color(0xFF7C757E);
   static Color onBlack = Color.fromARGB(255, 0, 0, 0);
-  static Color onTertiaryContainerLite = const Color(0xFF487CB9);
+  static Color onTertiaryContainerLite = const Color(0xFFF7EDFF);
+  static Color inActiveText = Color(0xFFD5BBFC);
+
 
   //DARK
   static Color primaryColorDark = const Color(0xFF00BAF2);

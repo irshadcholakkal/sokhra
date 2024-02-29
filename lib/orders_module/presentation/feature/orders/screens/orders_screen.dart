@@ -8,6 +8,7 @@ import '../../../../../base_module/domain/entity/color_scheme.dart';
 import '../../../../../base_module/domain/entity/translation.dart';
 import '../../../../../base_module/presentation/component/appbar/simple_app_bar.dart';
 import '../../../../../base_module/presentation/core/values/app_assets.dart';
+import '../../../../../base_module/presentation/core/values/app_constants.dart';
 import '../../../../../catalogue_module/domain/models/product.dart';
 import '../../../../../user_module/domain/entity/authentication.dart';
 import '../../../../../user_module/presentation/feature/authentication/widgets/custom_auth_button.dart';
@@ -80,10 +81,10 @@ class _OrdersScreenState extends State<OrdersScreen> {
                     Text(
                       translation.of('orders.active_orders'),
                      // 'Active Orders',
-                      style: TextStyle(
+                      style: Theme.of(context).textTheme.subtitle1?.copyWith(
                         color: Color(0xFF1D1B1E),
                         fontSize: 16,
-                        fontFamily: 'Poppins',
+                        fontFamily: AppConstants.defaultFont,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -107,10 +108,10 @@ class _OrdersScreenState extends State<OrdersScreen> {
                     Text(
                       translation.of('orders.order_history'),
                      // 'Order history',
-                      style: TextStyle(
+                      style: Theme.of(context).textTheme.subtitle1?.copyWith(
                         color: Color(0xFF1D1B1E),
                         fontSize: 16,
-                        fontFamily: 'Poppins',
+                        fontFamily: AppConstants.defaultFont,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -218,10 +219,10 @@ class _OrdersScreenState extends State<OrdersScreen> {
   //                 children: [
   //                   Text(
   //                     '#SE9865742',
-  //                     style: TextStyle(
+  //                     style: Theme.of(context).textTheme.subtitle1?.copyWith(
   //                       color: Color(0xFF1D1B1E),
   //                       fontSize: 11,
-  //                       fontFamily: 'Poppins',
+  //                       fontFamily: AppConstants.defaultFont,
   //                       fontWeight: FontWeight.w500,
   //                     ),
   //                   ),
@@ -229,10 +230,10 @@ class _OrdersScreenState extends State<OrdersScreen> {
   //                     padding: const EdgeInsets.only(left: 8.0),
   //                     child: Text(
   //                       'In progress',
-  //                       style: TextStyle(
+  //                       style: Theme.of(context).textTheme.subtitle1?.copyWith(
   //                         color: Color(0xFFF2994A),
   //                         fontSize: 8,
-  //                         fontFamily: 'Poppins',
+  //                         fontFamily: AppConstants.defaultFont,
   //                         fontWeight: FontWeight.w400,
   //                       ),
   //                     ),
@@ -243,10 +244,10 @@ class _OrdersScreenState extends State<OrdersScreen> {
   //                 children: [
   //                   Text(
   //                     '12 Dec 2023',
-  //                     style: TextStyle(
+  //                     style: Theme.of(context).textTheme.subtitle1?.copyWith(
   //                       color: Color(0xFF1D1B1E),
   //                       fontSize: 9,
-  //                       fontFamily: 'Poppins',
+  //                       fontFamily: AppConstants.defaultFont,
   //                       fontWeight: FontWeight.w400,
   //                     ),
   //                   ),
@@ -260,19 +261,19 @@ class _OrdersScreenState extends State<OrdersScreen> {
   //                   ),
   //                   Text(
   //                     ' Noon',
-  //                     style: TextStyle(
+  //                     style: Theme.of(context).textTheme.subtitle1?.copyWith(
   //                       color: Color(0xFF1D1A20),
   //                       fontSize: 7.41,
-  //                       fontFamily: 'Poppins',
+  //                       fontFamily: AppConstants.defaultFont,
   //                       fontWeight: FontWeight.w400,
   //                     ),
   //                   ),
   //                   Text(
   //                     ' 02:30 PM',
-  //                     style: TextStyle(
+  //                     style: Theme.of(context).textTheme.subtitle1?.copyWith(
   //                       color: Color(0xFF1D1A20),
   //                       fontSize: 7.41,
-  //                       fontFamily: 'Poppins',
+  //                       fontFamily: AppConstants.defaultFont,
   //                       fontWeight: FontWeight.w400,
   //                     ),
   //                   ),
@@ -289,10 +290,10 @@ class _OrdersScreenState extends State<OrdersScreen> {
   //                   ),
   //                   Text(
   //                     ' Home',
-  //                     style: TextStyle(
+  //                     style: Theme.of(context).textTheme.subtitle1?.copyWith(
   //                       color: Color(0xFF1D1B1E),
   //                       fontSize: 9.26,
-  //                       fontFamily: 'Poppins',
+  //                       fontFamily: AppConstants.defaultFont,
   //                       fontWeight: FontWeight.w400,
   //                     ),
   //                   ),
@@ -337,22 +338,22 @@ class _OrdersScreenState extends State<OrdersScreen> {
                     Text(
                       "${order.orderNumber}",
                       // '#SE9865742',
-                      style: TextStyle(
+                      style: Theme.of(context).textTheme.subtitle1?.copyWith(
                         color: Color(0xFF1D1B1E),
                         fontSize: 11,
-                        fontFamily: 'Poppins',
+                        fontFamily: AppConstants.defaultFont,
                         fontWeight: FontWeight.w500,
-                      ),
+                      ), 
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 8.0),
                       child: Text(
                         '${getStatus(order.status!)}',
                         //'Delivered',
-                        style: TextStyle(
+                        style: Theme.of(context).textTheme.subtitle1?.copyWith(
                           color: getColor(order.status!),
                           fontSize: 8,
-                          fontFamily: 'Poppins',
+                          fontFamily: AppConstants.defaultFont,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -364,10 +365,10 @@ class _OrdersScreenState extends State<OrdersScreen> {
                     Text(
                      '${formattedDateTime(order.createdAt)}',
                       //'12 Dec 2023',
-                      style: TextStyle(
+                      style: Theme.of(context).textTheme.subtitle1?.copyWith(
                         color: Color(0xFF1D1B1E),
                         fontSize: 9,
-                        fontFamily: 'Poppins',
+                        fontFamily: AppConstants.defaultFont,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -377,23 +378,23 @@ class _OrdersScreenState extends State<OrdersScreen> {
                     SvgPicture.asset(
                         "lib/base_module/presentation/core/assets/images/noon.svg"),
                     SizedBox(
-                      width: 3,
+                      width: AppConstants.defaultPadding * 0.15,
                     ),
                     Text(
                       ' Noon',
-                      style: TextStyle(
+                      style: Theme.of(context).textTheme.subtitle1?.copyWith(
                         color: Color(0xFF1D1A20),
                         fontSize: 7.41,
-                        fontFamily: 'Poppins',
+                        fontFamily: AppConstants.defaultFont,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
                     Text(
                       ' 02:30 PM',
-                      style: TextStyle(
+                      style: Theme.of(context).textTheme.subtitle1?.copyWith(
                         color: Color(0xFF1D1A20),
                         fontSize: 7.41,
-                        fontFamily: 'Poppins',
+                        fontFamily: AppConstants.defaultFont,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -411,10 +412,10 @@ class _OrdersScreenState extends State<OrdersScreen> {
                     Text(
                        ' ${order.shippingDetails?.type ?? "Unknown"}',
                       //' Home',
-                      style: TextStyle(
+                      style: Theme.of(context).textTheme.subtitle1?.copyWith(
                         color: Color(0xFF1D1B1E),
                         fontSize: 9.26,
-                        fontFamily: 'Poppins',
+                        fontFamily: AppConstants.defaultFont,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -501,7 +502,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                   //   fit: BoxFit.contain,
                   // ),
                   ),
-              SizedBox(width: 8),
+              SizedBox(width: AppConstants.defaultPadding* 0.4),
               Expanded(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -515,7 +516,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                       style: Theme.of(context).textTheme.caption?.copyWith(
                             fontWeight: FontWeight.w500,
                             fontSize: 14,
-                            fontFamily: 'Poppins',
+                            fontFamily: AppConstants.defaultFont,
                             color: Theme.of(context).colorScheme.onBackground,
                           ),
                       maxLines: 2,
@@ -540,7 +541,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                           //'500 mL',
                           style: Theme.of(context).textTheme.caption?.copyWith(
                                 fontSize: 9.05,
-                                fontFamily: 'Poppins',
+                                fontFamily: AppConstants.defaultFont,
                                 fontWeight: FontWeight.w500,
                                 color: Color(0xFF1D1A20),
                               ),
@@ -559,7 +560,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                                 Theme.of(context).textTheme.caption?.copyWith(
                                       color: AppColorScheme.primaryColor,
                                       fontSize: 12.57,
-                                      fontFamily: 'Poppins',
+                                      fontFamily: AppConstants.defaultFont,
                                       fontWeight: FontWeight.w400,
                                     ),
                           ),
@@ -570,7 +571,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                                 Theme.of(context).textTheme.caption?.copyWith(
                                       color: AppColorScheme.primaryColor,
                                       fontSize: 17.29,
-                                      fontFamily: 'Poppins',
+                                      fontFamily: AppConstants.defaultFont,
                                       fontWeight: FontWeight.w400,
                                     ),
                           ),

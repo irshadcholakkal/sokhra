@@ -71,6 +71,7 @@ class _LanguageSelectionState extends State<LanguageSelection> {
                     .then((_) {
                   setState(() {});
                 });
+
               });
             },
           ),
@@ -79,6 +80,7 @@ class _LanguageSelectionState extends State<LanguageSelection> {
               translation.setLanguage(language: code, save: true).then((_) {
                 setState(() {});
               });
+              
             });
           },
         ),

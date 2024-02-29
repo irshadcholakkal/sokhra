@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../base_module/domain/entity/color_scheme.dart';
+import '../../../base_module/domain/entity/translation.dart';
 import '../../../base_module/presentation/component/appbar/simple_app_bar.dart';
-import '../../../base_module/presentation/component/buttons/custom_close_button.dart';
-import '../../../base_module/presentation/component/padding/app_padding.dart';
-import '../../../base_module/presentation/core/values/app_constants.dart';
 import '../../../catalogue_module/presentation/feature/details/blocs/loctaion_check_cubit/location_check_cubit.dart';
 import 'manage_address_content.dart';
 
@@ -24,7 +22,7 @@ class ManageAddressBottomSheet extends StatelessWidget {
       resizeToAvoidBottomInset: false,
 
       backgroundColor: AppColorScheme.backgroundColorLight,
-      appBar: SimpleAppBar(title: "My Account",),
+      appBar: SimpleAppBar(title:translation.of('user.my_account')),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(

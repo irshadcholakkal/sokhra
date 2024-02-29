@@ -7,13 +7,8 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:lumiereorganics_app/base_module/presentation/util/validate.dart';
-import 'package:lumiereorganics_app/user_module/data/entity/input_models/sign_up_input.dart';
-import 'package:lumiereorganics_app/user_module/presentation/feature/profile/widgets/otp_verification_dialog.dart';
-import 'package:lumiereorganics_app/user_module/presentation/feature/sign_up/blocs/sign_up/sign_up_bloc.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-import '../../../../../app_settings_module/presentation/feature/app_settings/blocs/app_data/app_data_bloc.dart';
 import '../../../../../base_module/domain/entity/color_scheme.dart';
 import '../../../../../base_module/domain/entity/translation.dart';
 import '../../../../../base_module/presentation/component/alerts/flash_alert.dart';
@@ -23,11 +18,15 @@ import '../../../../../base_module/presentation/component/padding/app_padding.da
 import '../../../../../base_module/presentation/component/text_form_field/custom_text_form_filed.dart';
 import '../../../../../base_module/presentation/core/values/app_assets.dart';
 import '../../../../../base_module/presentation/core/values/app_constants.dart';
+import '../../../../../base_module/presentation/util/validate.dart';
 import '../../../../data/entity/input_models/otp_input.dart';
 import '../../../../data/entity/input_models/otp_type.dart';
+import '../../../../data/entity/input_models/sign_up_input.dart';
 import '../../../../domain/entity/authentication.dart';
 import '../../authentication/blocs/authentication/authentication_bloc.dart';
 import '../../profile/screens/add_address_screen.dart';
+import '../../profile/widgets/otp_verification_dialog.dart';
+import '../blocs/sign_up/sign_up_bloc.dart';
 
 class SignUpScreenPersonalDetials extends StatefulWidget {
   final String phone;
@@ -61,7 +60,7 @@ class _SignUpScreenState extends State<SignUpScreenPersonalDetials> {
   @override
   void initState() {
     super.initState();
-   // BlocProvider.of<AppDataBloc>(context).add(FetchAppData(reFetch: true));
+    // BlocProvider.of<AppDataBloc>(context).add(FetchAppData(reFetch: true));
     _authenticationBloc = BlocProvider.of<AuthenticationBloc>(context);
   }
 
@@ -128,21 +127,25 @@ class _SignUpScreenState extends State<SignUpScreenPersonalDetials> {
                       children: [
                         Text(
                           'Let’s introduce yourself',
-                          style: TextStyle(
-                            color: AppColorScheme.onBlack,
-                            fontSize: 22,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w500,
-                          ),
+                          style:
+                              Theme.of(context).textTheme.subtitle1?.copyWith(
+                                    color: AppColorScheme.onBlack,
+                                    fontSize: 22,
+                                    fontFamily: AppConstants.defaultFont,
+                                    fontWeight: FontWeight.w500,
+                                  ),
                         ),
                         Text(
                           'Enter your personal details',
-                          style: TextStyle(
-                            color: AppColorScheme.onBlack.withOpacity(0.50),
-                            fontSize: 12,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w400,
-                          ),
+                          style: Theme.of(context)
+                              .textTheme
+                              .subtitle1
+                              ?.copyWith(
+                                color: AppColorScheme.onBlack.withOpacity(0.50),
+                                fontSize: 12,
+                                fontFamily: AppConstants.defaultFont,
+                                fontWeight: FontWeight.w400,
+                              ),
                         )
                       ],
                     ),
@@ -234,11 +237,14 @@ class _SignUpScreenState extends State<SignUpScreenPersonalDetials> {
                             : Text(
                                 'Continue',
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: AppColorScheme.onPrimaryLight,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500,
-                                ),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .subtitle1
+                                    ?.copyWith(
+                                      color: AppColorScheme.onPrimaryLight,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500,
+                                    ),
                               ),
                       ),
                     ),
@@ -438,35 +444,34 @@ class _SignUpScreenState extends State<SignUpScreenPersonalDetials> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // if(firstName.isEmpty)
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'First name',
-                style: TextStyle(
-                  color: AppColorScheme.inActive.withOpacity(0.75),
-                  fontSize: 11,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              SizedBox(
-                height: 4,
-              ),
-            ],
-          ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              translation.of("user.first_name"),
+              style: Theme.of(context).textTheme.subtitle1?.copyWith(
+                    color: AppColorScheme.inActive.withOpacity(0.75),
+                    fontSize: 11,
+                    fontFamily: AppConstants.defaultFont,
+                    fontWeight: FontWeight.w500,
+                  ),
+            ),
+            SizedBox(
+              height: AppConstants.defaultPadding * 0.2,
+            ),
+          ],
+        ),
         CustomTextFormField(
           controller: _firstNameController,
-          hintText: "First name",
+          hintText: translation.of("user.first_name"),
           fillColor: AppColorScheme.backgroundLight,
           filled: true,
           validator: FormBuilderValidators.compose([
             FormBuilderValidators.required(
-              errorText: "required",
+              errorText: translation.of("user.required"),
             ),
           ]),
         )
-        
       ],
     );
   }
@@ -476,31 +481,30 @@ class _SignUpScreenState extends State<SignUpScreenPersonalDetials> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // if (lastName.isNotEmpty)
-          Column(
-            children: [
-              Text(
-                'Last name',
-                style: TextStyle(
-                  color: AppColorScheme.inActive.withOpacity(0.75),
-                  fontSize: 11,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ],
-          ),
-        SizedBox(
-          height: 4,
+        Column(
+          children: [
+            Text(
+              translation.of("user.last_name"),
+              style: Theme.of(context).textTheme.subtitle1?.copyWith(
+                    color: AppColorScheme.inActive.withOpacity(0.75),
+                    fontSize: 11,
+                    fontFamily: AppConstants.defaultFont,
+                    fontWeight: FontWeight.w500,
+                  ),
+            ),
+          ],
         ),
-         CustomTextFormField(
+        SizedBox(
+          height: AppConstants.defaultPadding * 0.2,
+        ),
+        CustomTextFormField(
           controller: _lastNameController,
-          
-          hintText: "Last name",
-              fillColor: AppColorScheme.backgroundLight,
+          hintText: translation.of("user.last_name"),
+          fillColor: AppColorScheme.backgroundLight,
           filled: true,
           validator: FormBuilderValidators.compose([
             FormBuilderValidators.required(
-              errorText: "required",
+              errorText: translation.of("user.required"),
             ),
           ]),
         )
@@ -582,33 +586,33 @@ class _SignUpScreenState extends State<SignUpScreenPersonalDetials> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // if (email.isNotEmpty)
-          Column(
-            children: [
-              Text(
-                'Email',
-                style: TextStyle(
-                  color: AppColorScheme.inActive.withOpacity(0.75),
-                  fontSize: 11,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ],
-          ),
-        SizedBox(
-          height: 4,
+        Column(
+          children: [
+            Text(
+              translation.of("user.email"),
+              style: Theme.of(context).textTheme.subtitle1?.copyWith(
+                    color: AppColorScheme.inActive.withOpacity(0.75),
+                    fontSize: 11,
+                    fontFamily: AppConstants.defaultFont,
+                    fontWeight: FontWeight.w500,
+                  ),
+            ),
+          ],
         ),
-         CustomTextFormField(
-              controller: _emailController,
-              hintText: "Enter e-mail address",
-              fillColor: AppColorScheme.backgroundLight,
-              filled: true,
-              validator: FormBuilderValidators.compose([
-                FormBuilderValidators.required(
-                  errorText: translation.of("required"),
-                ),
-              ]),
-            )
+        SizedBox(
+          height: AppConstants.defaultPadding * 0.2,
+        ),
+        CustomTextFormField(
+          controller: _emailController,
+          hintText: translation.of('user.enter_e-mail_address'),
+          fillColor: AppColorScheme.backgroundLight,
+          filled: true,
+          validator: FormBuilderValidators.compose([
+            FormBuilderValidators.required(
+              errorText: translation.of(translation.of("user.required")),
+            ),
+          ]),
+        )
       ],
     );
   }
@@ -725,7 +729,6 @@ class _SignUpScreenState extends State<SignUpScreenPersonalDetials> {
           name: "${firstName!} ${lastName!}",
           lastName: "",
           avatar: _image,
-
           phone:
               _formKey.currentState!.fields['phone']?.value?.trim()?.toString(),
           email:
@@ -764,7 +767,7 @@ class _SignUpScreenState extends State<SignUpScreenPersonalDetials> {
   }
 
   void _navigateToNext() {
-     final role = authentication.role;
+    final role = authentication.role;
     Navigator.pushAndRemoveUntil(
       context,
       MaterialPageRoute(builder: (context) => AddAddressScreen()),

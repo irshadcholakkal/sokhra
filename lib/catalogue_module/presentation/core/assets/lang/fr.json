@@ -18,7 +18,17 @@
     "top_seller":"meilleures ventes",
     "categories":"catégories",
     "seasonal_pulses":"légumineuses saisonnières",
-    "soft_drinks":"Boissons non alcoolisées"
+    "soft_drinks":"Boissons non alcoolisées",
+    "home":"maison",
+    "cart":"Chariot",
+    "orders":"ordres",
+    "profile":"profil",
+    "Logout":"Se déconnecter",
+    "address":"Adresse",
+    "my_orders":"Mes commandes",
+    "are_you_sure_to_logout":"Êtes-vous sûr de vous déconnecter ?",
+    "add":"Ajouter"
+
 
   },
   "search_bar":{

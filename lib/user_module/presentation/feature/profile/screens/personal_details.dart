@@ -7,6 +7,7 @@ import '../../../../../base_module/domain/entity/color_scheme.dart';
 import '../../../../../base_module/domain/entity/translation.dart';
 import '../../../../../base_module/presentation/component/appbar/simple_app_bar.dart';
 import '../../../../../base_module/presentation/component/padding/app_padding.dart';
+import '../../../../../base_module/presentation/core/values/app_constants.dart';
 import '../../../../domain/entity/authentication.dart';
 import '../widgets/profile_edit_view.dart';
 
@@ -46,34 +47,11 @@ class _personalDetailsState extends State<personalDetails> {
           // ExitPopupHelper.showExitPopup(context);
         }
       },
-      // child: Stack(
-      //   children: [
-      //     Container(
-      //       height: double.infinity,
-      //       width: double.infinity,
-      //       color: Theme.of(context).colorScheme.background,
-      //       child: SvgPicture.asset(
-      //         UserAssets.PATTERN,
-      //         fit: BoxFit.fill,
-      //       ),
-      //     ),
+
       child: Scaffold(
         resizeToAvoidBottomInset: true,
         backgroundColor: AppColorScheme.surfaceColorLight,
-        appBar: SimpleAppBar(title: 
-translation.of('user.my_account')        ),
-        // appBar: _args?.isFromDrawer ?? false
-        //     ? AppBar(
-        //         iconTheme:
-        //             IconThemeData(color: Theme.of(context).primaryColor),
-        //         backgroundColor: Colors.transparent,
-        //         elevation: 0,
-        //       )
-        //     : CustomAppbar(
-        //         isHome: true,
-        //         context: context,
-        //       ),
-        // bottomNavigationBar: CustomNavBar(),
+        appBar: SimpleAppBar(title: translation.of('user.my_account')),
         body: RefreshIndicator(
           onRefresh: () {
             return Future.delayed(Duration(seconds: 0), () {
@@ -83,22 +61,19 @@ translation.of('user.my_account')        ),
             });
           },
           child: SingleChildScrollView(
-
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
                     constraints: const BoxConstraints(maxWidth: 380),
-                   margin: EdgeInsets.all(20),
+                    margin: EdgeInsets.all(20),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         if (authentication.isAuthenticated)
                           Row(
-                            // mainAxisAlignment:
-                            // MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
                                 _editable
@@ -107,11 +82,11 @@ translation.of('user.my_account')        ),
                                 style: TextStyle(
                                   color: Color(0xFF1D1B1E),
                                   fontSize: 16,
-                                  fontFamily: 'Poppins',
+                                  fontFamily: AppConstants.defaultFont,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
-                             if (!_editable)
+                              if (!_editable)
                                 IconButton(
                                     onPressed: () {
                                       setState(() {
@@ -123,30 +98,11 @@ translation.of('user.my_account')        ),
                                       color: AppColorScheme.primaryColor,
                                       size: 16,
                                     ))
-                  
-                              // ElevatedButton(
-                              //   style: ButtonStyle(
-                              //     padding: MaterialStateProperty.all(
-                              //       const EdgeInsets.symmetric(
-                              //         horizontal:
-                              //             AppConstants.defaultPadding,
-                              //         vertical:
-                              //             AppConstants.defaultPadding / 4,
-                              //       ),
-                              //     ),
-                              //   ),
-                              //   onPressed: () {
-                              //     setState(() {
-                              //       _editable = !_editable;
-                              //     });
-                              //   },
-                              //   child: Text(
-                              //     translation.of("edit"),
-                              //   ),
-                              // )
                             ],
                           ),
-                          Divider(thickness: 0.50,),
+                        Divider(
+                          thickness: 0.50,
+                        ),
                         const AppPadding(),
                         ProfileEditView(
                           editable: _editable,
@@ -280,180 +236,178 @@ translation.of('user.my_account')        ),
                   //     }
                   //   },
                   // ),
-                    //---------------------------------Adress--------------------------------------------------------------------------------------//
-                           // if (authentication.role == Role.CUSTOMER)
-                    // Column(
-                    //   mainAxisAlignment: MainAxisAlignment.start,
-                    //   crossAxisAlignment: CrossAxisAlignment.start,
-                    //   children: [
-                    //     Center(
-                    //       child: Text(
-                    //         translation.of("user.saved_address"),
-                    //         style: Theme.of(context).textTheme.headline6,
-                    //       ),
-                    //     ),
-                    //     SizedBox(
-                    //       height: 10,
-                    //     ),
-                    //     Row(children: [
-                    //       SizedBox(
-                    //         width: 50,
-                    //       ),
-                    //     ]),
-                    //     BlocBuilder<AppDataBloc, AppDataState>(
-                    //         builder: (appDataContext, state) {
-                    //       if (state is FetchAppDataSuccess) {
-                    //         List<ShippingAddress?>? addressList =
-                    //             state.appData.addressDetails ?? [];
-                            //         if (addressList.isNotEmpty) {
-                    //           // debugPrint(
-                    //           //     "addresslist length:${addressList.length}");
-                    //           return SizedBox(
-                    //             height: 360,
-                    //             child: SingleChildScrollView(
-                    //               scrollDirection: Axis.horizontal,
-                    //               child: Row(
-                    //                 children: [
-                    //                   const SizedBox(
-                    //                     width: 10,
-                    //                   ),
-                    //                   ListView.builder(
-                    //                     padding: EdgeInsets.zero,
-                    //                     controller: _scrollController,
-                    //                     shrinkWrap: true,
-                    //                     physics:
-                    //                         NeverScrollableScrollPhysics(),
-                    //                     scrollDirection: Axis.horizontal,
-                    //                     itemCount: addressList.length,
-                    //                     itemBuilder: (context, index) {
-                    //                       return Center(
-                    //                         child: BlocListener<ProfileBloc,
-                    //                             ProfileState>(
-                    //                           listener:
-                    //                               (context2, profileState) {
-                    //                             if (profileState
-                    //                                 is ProfileEditAddressSuccess) {
-                    //                               BlocProvider.of<
-                    //                                           AppDataBloc>(
-                    //                                       context)
-                    //                                   .add(FetchAppData(
-                    //                                       reFetch: true));
-                    //                             }
-                              //                             if (profileState
-                    //                                 is ProfileDeleteAddressSuccess) {
-                    //                               BlocProvider.of<
-                    //                                           AppDataBloc>(
-                    //                                       context)
-                    //                                   .add(FetchAppData(
-                    //                                       reFetch: true));
-                    //                               showSuccessFlash(
-                    //                                   context: context,
-                    //                                   message: translation.of(
-                    //                                       "user.delete_address_success"));
-                    //                             }
-                    //                             if (profileState
-                    //                                 is ProfileDeleteAddressFailed) {
-                    //                               showErrorFlash(
-                    //                                   context: context,
-                    //                                   message: translation.of(
-                    //                                       "user.delete_address_failed"));
-                    //                             }
-                    //                           },
-                    //                           child:
-                    //                            AddressCard(
-                    //                             address: addressList[index],
-                    //                             userId: state.appData.id,
-                    //                           ),
-                    //                         ),
-                    //                       );
-                    //                     },
-                    //                   ),
-                    //                 ],
-                    //               ),
-                    //             ),
-                    //           );
-                    //         } else {
-                    //           return Container(
-                    //             child: Center(
-                    //               child: Text(translation
-                    //                   .of("address_list_is_empty")),
-                    //             ),
-                    //           );
-                    //         }
-                    //       } else if (state is FetchAppDataFailed) {
-                    //         return InkWell(
-                    //           onTap: () {
-                    //             BlocProvider.of<AppDataBloc>(context)
-                    //                 .add(FetchAppData(reFetch: true));
-                    //           },
-                    //           child: Center(
-                    //             child: Row(
-                    //               mainAxisAlignment: MainAxisAlignment.center,
-                    //               crossAxisAlignment:
-                    //                   CrossAxisAlignment.center,
-                    //               children: [
-                    //                 Text("Click to refresh"),
-                    //                 SizedBox(
-                    //                   width: 10,
-                    //                 ),
-                    //                 Icon(Icons.refresh)
-                    //               ],
-                    //             ),
-                    //           ),
-                    //         );
-                              //         //   Text(
-                    //         //   state.message,
-                    //         //   style: Theme.of(context)
-                    //         //       .textTheme
-                    //         //       .headline6!
-                    //         //       .copyWith(
-                    //         //           color: Theme.of(context)
-                    //         //               .colorScheme
-                    //         //               .primary),
-                    //         // );
-                    //       } else {
-                    //         return Container();
-                    //       }
-                    //     }),
-                    //     const AppPadding(
-                    //       dividedBy: 4,
-                    //     ),
-                    //     // SizedBox(
-                    //     //   height: 30.0,
-                    //     // ),
-                              //     Center(
-                    //       child: ElevatedButton(
-                    //         style: ButtonStyle(
-                    //           padding: MaterialStateProperty.all(
-                    //             const EdgeInsets.symmetric(
-                    //               horizontal: AppConstants.defaultPadding,
-                    //               vertical: AppConstants.defaultPadding / 4,
-                    //             ),
-                    //           ),
-                    //         ),
-                    //         onPressed: () {
-                    //           // pushNewScreenWithRouteSettings(context,
-                    //           //     settings: RouteSettings(
-                    //           //       name: UserRouter.addAddressScreen,
-                    //           //       arguments: EditAddressArguments(),
-                    //           //     ),
-                    //           //     screen: AddAddressScreen());
-                    //           Navigator.pushNamed(
-                    //               context, UserRouter.addAddressScreen,
-                    //               arguments: EditAddressArguments());
-                    //         },
-                    //         child: Text(
-                    //           translation.of("user.add_new_address"),
-                    //         ),
-                    //       ),
-                    //     ),
-                    //   ],
-                    // ),
-                  SizedBox(
-                    height: 30.0,
-                  ),
+                  //---------------------------------Adress--------------------------------------------------------------------------------------//
+                  // if (authentication.role == Role.CUSTOMER)
+                  // Column(
+                  //   mainAxisAlignment: MainAxisAlignment.start,
+                  //   crossAxisAlignment: CrossAxisAlignment.start,
+                  //   children: [
+                  //     Center(
+                  //       child: Text(
+                  //         translation.of("user.saved_address"),
+                  //         style: Theme.of(context).textTheme.headline6,
+                  //       ),
+                  //     ),
+                  //     SizedBox(
+                  //       height: 10,
+                  //     ),
+                  //     Row(children: [
+                  //       SizedBox(
+                  //         width: 50,
+                  //       ),
+                  //     ]),
+                  //     BlocBuilder<AppDataBloc, AppDataState>(
+                  //         builder: (appDataContext, state) {
+                  //       if (state is FetchAppDataSuccess) {
+                  //         List<ShippingAddress?>? addressList =
+                  //             state.appData.addressDetails ?? [];
+                  //         if (addressList.isNotEmpty) {
+                  //           // debugPrint(
+                  //           //     "addresslist length:${addressList.length}");
+                  //           return SizedBox(
+                  //             height: 360,
+                  //             child: SingleChildScrollView(
+                  //               scrollDirection: Axis.horizontal,
+                  //               child: Row(
+                  //                 children: [
+                  //                   const SizedBox(
+                  //                     width: 10,
+                  //                   ),
+                  //                   ListView.builder(
+                  //                     padding: EdgeInsets.zero,
+                  //                     controller: _scrollController,
+                  //                     shrinkWrap: true,
+                  //                     physics:
+                  //                         NeverScrollableScrollPhysics(),
+                  //                     scrollDirection: Axis.horizontal,
+                  //                     itemCount: addressList.length,
+                  //                     itemBuilder: (context, index) {
+                  //                       return Center(
+                  //                         child: BlocListener<ProfileBloc,
+                  //                             ProfileState>(
+                  //                           listener:
+                  //                               (context2, profileState) {
+                  //                             if (profileState
+                  //                                 is ProfileEditAddressSuccess) {
+                  //                               BlocProvider.of<
+                  //                                           AppDataBloc>(
+                  //                                       context)
+                  //                                   .add(FetchAppData(
+                  //                                       reFetch: true));
+                  //                             }
+                  //                             if (profileState
+                  //                                 is ProfileDeleteAddressSuccess) {
+                  //                               BlocProvider.of<
+                  //                                           AppDataBloc>(
+                  //                                       context)
+                  //                                   .add(FetchAppData(
+                  //                                       reFetch: true));
+                  //                               showSuccessFlash(
+                  //                                   context: context,
+                  //                                   message: translation.of(
+                  //                                       "user.delete_address_success"));
+                  //                             }
+                  //                             if (profileState
+                  //                                 is ProfileDeleteAddressFailed) {
+                  //                               showErrorFlash(
+                  //                                   context: context,
+                  //                                   message: translation.of(
+                  //                                       "user.delete_address_failed"));
+                  //                             }
+                  //                           },
+                  //                           child:
+                  //                            AddressCard(
+                  //                             address: addressList[index],
+                  //                             userId: state.appData.id,
+                  //                           ),
+                  //                         ),
+                  //                       );
+                  //                     },
+                  //                   ),
+                  //                 ],
+                  //               ),
+                  //             ),
+                  //           );
+                  //         } else {
+                  //           return Container(
+                  //             child: Center(
+                  //               child: Text(translation
+                  //                   .of("address_list_is_empty")),
+                  //             ),
+                  //           );
+                  //         }
+                  //       } else if (state is FetchAppDataFailed) {
+                  //         return InkWell(
+                  //           onTap: () {
+                  //             BlocProvider.of<AppDataBloc>(context)
+                  //                 .add(FetchAppData(reFetch: true));
+                  //           },
+                  //           child: Center(
+                  //             child: Row(
+                  //               mainAxisAlignment: MainAxisAlignment.center,
+                  //               crossAxisAlignment:
+                  //                   CrossAxisAlignment.center,
+                  //               children: [
+                  //                 Text("Click to refresh"),
+                  //                 SizedBox(
+                  //                   width: 10,
+                  //                 ),
+                  //                 Icon(Icons.refresh)
+                  //               ],
+                  //             ),
+                  //           ),
+                  //         );
+                  //         //   Text(
+                  //         //   state.message,
+                  //         //   style: Theme.of(context)
+                  //         //       .textTheme
+                  //         //       .headline6!
+                  //         //       .copyWith(
+                  //         //           color: Theme.of(context)
+                  //         //               .colorScheme
+                  //         //               .primary),
+                  //         // );
+                  //       } else {
+                  //         return Container();
+                  //       }
+                  //     }),
+                  //     const AppPadding(
+                  //       dividedBy: 4,
+                  //     ),
+                  //     // SizedBox(
+                  //     //   height: 30.0,
+                  //     // ),
+                  //     Center(
+                  //       child: ElevatedButton(
+                  //         style: ButtonStyle(
+                  //           padding: MaterialStateProperty.all(
+                  //             const EdgeInsets.symmetric(
+                  //               horizontal: AppConstants.defaultPadding,
+                  //               vertical: AppConstants.defaultPadding / 4,
+                  //             ),
+                  //           ),
+                  //         ),
+                  //         onPressed: () {
+                  //           // pushNewScreenWithRouteSettings(context,
+                  //           //     settings: RouteSettings(
+                  //           //       name: UserRouter.addAddressScreen,
+                  //           //       arguments: EditAddressArguments(),
+                  //           //     ),
+                  //           //     screen: AddAddressScreen());
+                  //           Navigator.pushNamed(
+                  //               context, UserRouter.addAddressScreen,
+                  //               arguments: EditAddressArguments());
+                  //         },
+                  //         child: Text(
+                  //           translation.of("user.add_new_address"),
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
+                  SizedBox(height: AppConstants.defaultPadding * 1.5),
                 ]),
-          
+
             ///////////////og start
             //   if (authentication.role == Role.CUSTOMER)
             //     Column(
@@ -634,15 +588,17 @@ translation.of('user.my_account')        ),
     //);
   }
 
-  Widget textField(String title,{bool isPassword = false, bool isNumber = false, required TextEditingController textController, int lines = 1}) {
+  Widget textField(String title,
+      {bool isPassword = false,
+      bool isNumber = false,
+      required TextEditingController textController,
+      int lines = 1}) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 2),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          SizedBox(
-            height: 10,
-          ),
+          SizedBox(height: AppConstants.defaultPadding * 0.5),
           Text(
             title,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
@@ -653,7 +609,7 @@ translation.of('user.my_account')        ),
           TextFormField(
             maxLines: lines,
             controller: textController,
-           // maxLength: length,
+            // maxLength: length,
             // inputFormatters: [
             //   LengthLimitingTextInputFormatter(length),
             // ],
@@ -663,7 +619,6 @@ translation.of('user.my_account')        ),
                 counterText: '',
                 border: InputBorder.none,
                 fillColor: Color(0xfff3f3f4),
-                
                 filled: true),
           )
         ],

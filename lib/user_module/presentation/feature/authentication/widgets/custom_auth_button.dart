@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../base_module/presentation/feature/demo/screen/on_boarding_screen.dart';
+import '../../../../../base_module/domain/entity/translation.dart';
+import '../../demo/screen/on_boarding_screen.dart';
 
 class GuestSignIn extends StatelessWidget {
   const GuestSignIn({Key? key}) : super(key: key);
@@ -18,7 +18,7 @@ class GuestSignIn extends StatelessWidget {
               ),
               (route) => false);
         },
-        child: Text("Sign In"),
+        child: Text(translation.of('user.sign_in')),
       ),
     );
   }

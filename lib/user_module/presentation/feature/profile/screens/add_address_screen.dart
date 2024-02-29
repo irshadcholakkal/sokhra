@@ -61,7 +61,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
   String additionalinfo = '';
   String phoneno = '';
   dynamic selectedZoneId = "";
-  Type ?selectedAddressType;
+  Type? selectedAddressType;
 
   // late EditAddressArguments _args;
 
@@ -83,7 +83,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
   TextStyle? get _hintStyle => Theme.of(context).textTheme.bodyMedium?.copyWith(
         color: Theme.of(context).colorScheme.inverseSurface.withOpacity(0.45),
         fontSize: 14,
-        fontFamily: 'Poppins',
+        fontFamily: AppConstants.defaultFont,
         fontWeight: FontWeight.w400,
         letterSpacing: 0.25,
       );
@@ -91,12 +91,10 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
       Theme.of(context).textTheme.bodyMedium?.copyWith(
             color: AppColorScheme.grey,
             fontSize: 11,
-            fontFamily: 'Poppins',
+            fontFamily: AppConstants.defaultFont,
             fontWeight: FontWeight.w400,
             letterSpacing: 0.25,
           );
-
-  
 
   final TextEditingController _buildingNoController = TextEditingController();
   final TextEditingController _streetController = TextEditingController();
@@ -135,18 +133,10 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
     // isEdit = _args.isEdit ?? false;
 
     return Scaffold(
-      // appBar: SimpleAppBar(
-      //   title: "My Account",
-      // ),
-      //  AppBar(
-      //   iconTheme: IconThemeData(color: Theme.of(context).primaryColor),
-      //   backgroundColor: Colors.transparent,
-      //   elevation: 0,
-      // ),
       backgroundColor: AppColorScheme.surfaceColorLight,
       appBar: widget.isCreateAccount == true
           ? null
-          : SimpleAppBar(title: "My Account"),
+          : SimpleAppBar(title: translation.of('user.my_account')),
       body: BlocListener<ProfileBloc, ProfileState>(
         listener: (context, state) {
           if (state is ProfileEditAddressSuccess) {
@@ -173,15 +163,14 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
             );
             BlocProvider.of<AppDataBloc>(context)
                 .add(FetchAppData(reFetch: true));
-            widget.isCreateAccount 
+            widget.isCreateAccount
                 ? Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
                       builder: (context) => HomeScreen(),
                     ),
                     (route) => false)
-                :
-                 Navigator.pop(context);
+                : Navigator.pop(context);
           }
           if (state is ProfileCreateAddressFailed) {
             showErrorFlash(
@@ -208,13 +197,16 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                           children: [
                             Text(
                               //"Edit address details",
-                              "Address",
-                              style: TextStyle(
-                                color: AppColorScheme.onBlack,
-                                fontSize: 16,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w600,
-                              ),
+                              translation.of('user.address'),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium
+                                  ?.copyWith(
+                                    color: AppColorScheme.onBlack,
+                                    fontSize: 16,
+                                    fontFamily: AppConstants.defaultFont,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                             ),
                             widget.isCreateAccount == true
                                 ? InkWell(
@@ -226,7 +218,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                                           ),
                                           (route) => false);
                                     },
-                                    child: Text('Skip',
+                                    child: Text(translation.of('user.Skip'),
                                         style: Theme.of(context)
                                             .textTheme
                                             .bodyMedium
@@ -245,13 +237,17 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                         SizedBox(
                           width: 342.74,
                           child: Text(
-                            'Enter the billing address',
-                            style: TextStyle(
-                              color: AppColorScheme.onBlack.withOpacity(0.50),
-                              fontSize: 12,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w400,
-                            ),
+                            translation.of('user.enter_the_billing_address'),
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium
+                                ?.copyWith(
+                                  color:
+                                      AppColorScheme.onBlack.withOpacity(0.50),
+                                  fontSize: 12,
+                                  fontFamily: AppConstants.defaultFont,
+                                  fontWeight: FontWeight.w400,
+                                ),
                           ),
                         ),
                         // Divider(),
@@ -375,12 +371,12 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
               widget.isCreateAccount == true
                   ? translation.of("create_account").toUpperCase()
                   : translation.of("add_newaddress").toUpperCase(),
-              style: TextStyle(
-                color: AppColorScheme.onPrimaryLight,
-                fontSize: 14,
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.w500,
-              ),
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: AppColorScheme.onPrimaryLight,
+                    fontSize: 14,
+                    fontFamily: AppConstants.defaultFont,
+                    fontWeight: FontWeight.w500,
+                  ),
             ),
           ),
         ),
@@ -451,7 +447,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Building no.', style: _labelTextStyle),
+              Text(translation.of('user.building_no'), style: _labelTextStyle),
             ],
           ),
 
@@ -464,7 +460,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
             });
           },
           fillColor: AppColorScheme.backgroundLight,
-          hintText: "Building no.",
+          hintText: translation.of('user.building_no'),
           hintStyle: _hintStyle,
         ),
         // FormBuilderTextField(
@@ -537,13 +533,13 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
             children: [
               Text(
                 '+973 9876432105',
-                style: TextStyle(
-                  color: Color(0xFF4B454D).withOpacity(0.75),
-                  fontSize: 11,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w400,
-                  letterSpacing: 0.50,
-                ),
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: Color(0xFF4B454D).withOpacity(0.75),
+                      fontSize: 11,
+                      fontFamily: AppConstants.defaultFont,
+                      fontWeight: FontWeight.w400,
+                      letterSpacing: 0.50,
+                    ),
               ),
             ],
           ),
@@ -697,7 +693,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Street', style: _labelTextStyle),
+              Text(translation.of('user.street_name'), style: _labelTextStyle),
             ],
           ),
         CustomTextFormField(
@@ -709,7 +705,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
             });
           },
           fillColor: AppColorScheme.backgroundLight,
-          hintText: translation.of("street"),
+          hintText: translation.of('user.street_name'),
           hintStyle: _hintStyle,
         ),
         // FormBuilderTextField(
@@ -851,7 +847,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
       ),
       hint: Text(
         "${_val ?? translation.of("user.address_type")}",
-        style: TextStyle(
+        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
             color: Theme.of(context).colorScheme.primary.withOpacity(0.5)),
       ),
       validator:
@@ -876,18 +872,17 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
     return FormBuilderCheckbox(
       name: 'set_as_default',
       title: Text(translation.of("set_as_default"),
-          style: TextStyle(
-            color: Color(0xFF4B454D),
-            fontSize: 11,
-            fontFamily: 'Poppins',
-            fontWeight: FontWeight.w500,
-          )),
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: Color(0xFF4B454D),
+                fontSize: 11,
+                fontFamily: AppConstants.defaultFont,
+                fontWeight: FontWeight.w500,
+              )),
       initialValue: widget.addressData?.isDefault ?? false,
       onChanged: (value) {
         setState(() {
-           _isDefault = value ?? false;
+          _isDefault = value ?? false;
         });
-       
       },
       activeColor: AppColorScheme.primaryColor,
       decoration: const InputDecoration(
@@ -909,7 +904,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Floor no.', style: _labelTextStyle),
+                    Text(translation.of("floor_no"), style: _labelTextStyle),
                   ],
                 ),
               CustomTextFormField(
@@ -942,7 +937,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Flat no.', style: _labelTextStyle),
+                    Text(translation.of("flat_no"), style: _labelTextStyle),
                   ],
                 ),
               CustomTextFormField(
@@ -972,7 +967,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Neighborhood name', style: _labelTextStyle),
+              Text(translation.of("neighborhood_name"), style: _labelTextStyle),
             ],
           ),
         CustomTextFormField(
@@ -999,7 +994,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Additional info, if any', style: _labelTextStyle),
+              Text(translation.of("additional_info"), style: _labelTextStyle),
             ],
           ),
         Container(
@@ -1031,25 +1026,23 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
 
   Widget _customDropdownButtonAdressType() {
     List<TextValueItem<Type>> addressTypeItems = [
-  TextValueItem(text: 'Home', value: Type.HOME),
-  TextValueItem(text: 'Office', value: Type.OFFICE),
-  TextValueItem(text: 'Shop', value:Type.SHOP),
-];
+      TextValueItem(text: 'Home', value: Type.HOME),
+      TextValueItem(text: 'Office', value: Type.OFFICE),
+      TextValueItem(text: 'Shop', value: Type.SHOP),
+    ];
 
     return CustomDropDown(
       items: addressTypeItems,
       icon: const Icon(Iconsax.arrow_down_1),
       fillColor: AppColorScheme.backgroundLight,
-      hintText: "Select address type",
+      hintText: translation.of('user.select_address_type'),
       hintStyle: _hintStyle,
       borderDecoration: _border,
       contentPadding: EdgeInsets.all(20),
       onChanged: (selectedType) {
         setState(() {
-           selectedAddressType=selectedType;
+          selectedAddressType = selectedType;
         });
-        
-        
       },
     );
   }
@@ -1079,7 +1072,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
             textStyle: _labelTextStyle,
             icon: const Icon(Iconsax.arrow_down_1),
             fillColor: AppColorScheme.backgroundLight,
-            hintText: "Select area ",
+            hintText: translation.of('user.select_area'),
             hintStyle: _hintStyle,
             borderDecoration: _border,
             contentPadding: EdgeInsets.all(20),
@@ -1108,26 +1101,27 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
       // else {
       BlocProvider.of<ProfileBloc>(context).add(ProfileCreateAddress(
         shippingInput: ShippingInput(
-         phone: _phoneController.text.isNotEmpty ? _phoneController.text : authentication.user?.phone,
-          // _formKey.currentState?.fields['phone']?.value.toString() ??
-          //     "${authentication.user?.phone}",
-          
-          note: _additionalInfoController.text,
-          firstName: authentication.user?.name,
-          lastName: authentication.user?.lastname,
-          email: authentication.user?.email,
-          address:_buildingNoController.text ,
-         // neighborhoodname: _neighbourController.text,
-          landmark: _neighbourController.text,
-          floorno: _floorNoController.text,
-          flatno: _flatNoController.text,
-          house: _buildingNoController.text,
-          street: _streetController.text,
-          zone: selectedZoneId,
-          isDefault:_isDefault,
-          type: selectedAddressType
-              //_formKey.currentState?.fields['set_as_default_address']?.value,
-        ),
+            phone: _phoneController.text.isNotEmpty
+                ? _phoneController.text
+                : authentication.user?.phone,
+            // _formKey.currentState?.fields['phone']?.value.toString() ??
+            //     "${authentication.user?.phone}",
+            note: _additionalInfoController.text,
+            firstName: authentication.user?.name,
+            lastName: authentication.user?.lastname,
+            email: authentication.user?.email,
+            address: _buildingNoController.text,
+            // neighborhoodname: _neighbourController.text,
+            landmark: _neighbourController.text,
+            floorno: _floorNoController.text,
+            flatno: _flatNoController.text,
+            house: _buildingNoController.text,
+            street: _streetController.text,
+            zone: selectedZoneId,
+            isDefault: _isDefault,
+            type: selectedAddressType
+            //_formKey.currentState?.fields['set_as_default_address']?.value,
+            ),
       ));
       // }
       // } else {

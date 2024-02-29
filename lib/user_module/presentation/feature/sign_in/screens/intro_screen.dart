@@ -5,7 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:lumiereorganics_app/base_module/presentation/feature/demo/screen/pasword_reset_mobile.dart';
+import 'package:lumiereorganics_app/user_module/presentation/feature/demo/screen/pasword_reset_mobile.dart';
+import '../../../../../base_module/domain/entity/translation.dart';
 import '../../../../../base_module/presentation/component/alerts/flash_alert.dart';
 import '../../../../../base_module/presentation/component/text_form_field/custom_text_form_filed.dart';
 import '../../../../../home/feature/home/screens/home_screen.dart';
@@ -14,9 +15,9 @@ import '../../../../../base_module/domain/entity/color_scheme.dart';
 import '../../../../../base_module/presentation/component/app_icons/app_icon_large.dart';
 import '../../../../../base_module/presentation/core/values/app_assets.dart';
 import '../../../../../base_module/presentation/core/values/app_constants.dart';
-import '../../../../../base_module/presentation/feature/demo/screen/blocs/sign_in_send_otp/sign_in_sent_otp_state.dart';
-import '../../../../../base_module/presentation/feature/demo/screen/otp_verification_screen.dart';
-import '../../../../../base_module/presentation/feature/demo/screen/mobile_number_sign_up_screen.dart';
+import '../../demo/screen/blocs/sign_in_send_otp/sign_in_sent_otp_state.dart';
+import '../../demo/screen/otp_verification_screen.dart';
+import '../../demo/screen/mobile_number_sign_up_screen.dart';
 import '../blocs/sign_in/sign_in_bloc.dart';
 
 class SignInPage extends StatefulWidget {
@@ -45,14 +46,17 @@ class _SignInPageState extends State<SignInPage> {
 
     _authenticationBloc = BlocProvider.of<AuthenticationBloc>(context);
   }
+   @override
+  void dispose() {
+    
+    _phoneController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: AppIconLarge( ),
-      //   toolbarHeight: 100,
-      // ),
       backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         child: SingleChildScrollView(
@@ -74,11 +78,7 @@ class _SignInPageState extends State<SignInPage> {
                       builder: (context) => HomeScreen(),
                     ),
                     (route) => false);
-                // Navigator.of(context).pushAndRemoveUntil(
-                //     MaterialPageRoute(
-                //       builder: (_) => HomeScreen(
-                //           // phone: _phoneController.text,
-                //           ),));
+               
               } else if (state is SignInFailed) {
                 setState(() {
                   _isLoading = false;
@@ -104,16 +104,18 @@ class _SignInPageState extends State<SignInPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Sign in',
-                            style: TextStyle(
-                              color: AppColorScheme.onBlack,
+                           translation.of("user.sign_in"),
+                            style:Theme.of(context).textTheme.subtitle1?.copyWith(
+                               color: AppColorScheme.onBlack,
                               fontSize: 22,
-                              fontFamily: 'Poppins',
+                              fontFamily: AppConstants.defaultFont,
                               fontWeight: FontWeight.w500,
-                            ),
-                          ),
+
+                            )
+                            
+                              ),
                           Text(
-                            'Sign in to your account and start exploring!',
+                            translation.of("user.start_exploring"),
                             style: Theme.of(context)
                                 .textTheme
                                 .subtitle2
@@ -123,29 +125,14 @@ class _SignInPageState extends State<SignInPage> {
                                         .colorScheme
                                         .onBackground
                                         .withOpacity(0.5),
-                                    fontFamily: 'Poppins'),
+                                    fontFamily: AppConstants.defaultFont),
                           )
-                          // AppIconLarge(),
-                          // SizedBox(height: 40),
-                          // SvgPicture.asset(ThemeAssets.appCaptionSvg),
+                         
                         ],
                       ),
                     ),
-                    SizedBox(height: 36),
-                    // Center(
-                    //   child: Text(
-                    //     "Log in or sign up",
-                    //     style:
-                    //         Theme.of(context).textTheme.subtitle2?.copyWith(
-                    //               fontWeight: FontWeight.w600,
-                    //               color: Theme.of(context)
-                    //                   .colorScheme
-                    //                   .onBackground
-                    //                   .withOpacity(0.5),
-                    //             ),
-                    //   ),
-                    // ),
-                    CustomTextFormField(
+                    SizedBox(height: AppConstants.defaultPadding*1.8),
+                      CustomTextFormField(
                       prefix: Padding(
                         padding: EdgeInsetsDirectional.only(
                           top: 15,
@@ -169,14 +156,14 @@ class _SignInPageState extends State<SignInPage> {
                       controller: _phoneController,
                       validator: (val) {
                         if (val!.isEmpty) {
-                          return "*Required";
+                          return translation.of("user.required");
                         } else if (val.length > 10 || val.length < 10) {
-                          return "*10 digit mobile number required";
+                          return translation.of("user.10_digit_mobile_number_required");
                         } else {
                           return null;
                         }
                       },
-                      hintText: "Mobile number",
+                      hintText: translation.of("user.mobile_number"),
                       hintStyle:
                           Theme.of(context).textTheme.subtitle2?.copyWith(
                                 fontSize: 14.0,
@@ -186,9 +173,9 @@ class _SignInPageState extends State<SignInPage> {
                       textInputType: TextInputType.numberWithOptions(),
                     ),
 
-                    SizedBox(height: 15),
+                    SizedBox(height: AppConstants.defaultPadding*0.75),
                     CustomTextFormField(
-                      hintText: "Enter password",
+                      hintText: translation.of("user.enter_password"),
                       hintStyle:
                           Theme.of(context).textTheme.subtitle2?.copyWith(
                                 fontSize: 14.0,
@@ -210,11 +197,11 @@ class _SignInPageState extends State<SignInPage> {
                           ),
                           child: Icon(Iconsax.lock)),
                     ),
-                    SizedBox(height: 5),
+                    SizedBox(height: AppConstants.defaultPadding* 0.25),
                     SizedBox(
                       width: 343,
                       child: Text(
-                        'Login using mobile OTP',
+                        translation.of("user.login_using_mobile_OTP"),
                         style: TextStyle(
                           color: AppColorScheme.primaryColor,
                           fontSize: 10,
@@ -224,7 +211,7 @@ class _SignInPageState extends State<SignInPage> {
                       ),
                     ),
                     SizedBox(
-                      height: 17,
+                      height: AppConstants.defaultPadding* 0.85,
                     ),
                     BlocBuilder<SignInBloc, SignInState>(
                       builder: (context, state) {
@@ -251,7 +238,7 @@ class _SignInPageState extends State<SignInPage> {
                                                 AppColorScheme.onPrimaryLight,
                                           )
                                         : Text(
-                                            "Sign in",
+                                            translation.of("user.sign_in"),
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .subtitle1
@@ -259,7 +246,7 @@ class _SignInPageState extends State<SignInPage> {
                                                     fontWeight: FontWeight.w500,
                                                     color: AppColorScheme
                                                         .onPrimaryLight,
-                                                    fontFamily: 'Poppins'),
+                                                    fontFamily: AppConstants.defaultFont),
                                           ),
                                   ),
                                   // >>>>>>> b3cf74574a006aa712d2b41e05012ab69329e5e1
@@ -270,7 +257,7 @@ class _SignInPageState extends State<SignInPage> {
                         );
                       },
                     ),
-                    SizedBox(height: 18),
+                    SizedBox(height: AppConstants.defaultPadding* 0.9),
                     SizedBox(
                       //width: 343,
                       child: Center(
@@ -284,14 +271,14 @@ class _SignInPageState extends State<SignInPage> {
                                 ));
                           },
                           child: Text(
-                            'Forgot Password ?',
+                            translation.of("user.forgot_password"),
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: AppColorScheme.onBlack.withOpacity(0.50),
                               fontSize: 12,
-                              fontFamily: 'Poppins',
+                              fontFamily: AppConstants.defaultFont,
                               fontWeight: FontWeight.w400,
-                              height: 0.11,
+                             // height: 0.11,
                               letterSpacing: 0.50,
                             ),
                           ),
@@ -300,7 +287,7 @@ class _SignInPageState extends State<SignInPage> {
                     ),
 
                     SizedBox(
-                      height: 8,
+                      height: AppConstants.defaultPadding* 0.4
                     ),
                     Center(
                       child: SizedBox(
@@ -310,7 +297,7 @@ class _SignInPageState extends State<SignInPage> {
                             TextSpan(
                               children: [
                                 TextSpan(
-                                  text: 'New user ?',
+                                  text: translation.of("user.new_user"),
                                   style: Theme.of(context)
                                       .textTheme
                                       .subtitle1
@@ -319,14 +306,8 @@ class _SignInPageState extends State<SignInPage> {
                                           color: AppColorScheme.onBlack
                                               .withOpacity(0.5),
                                           fontSize: 12,
-                                          fontFamily: 'Poppins'),
-                                  //  TextStyle(
-                                  //   color: AppColorScheme.onBlack.withOpacity(0.5),
-                                  //   fontSize: 12,
-                                  //   fontFamily: 'Poppins',
-                                  //   fontWeight: FontWeight.w400,
-                                  // ),
-                                ),
+                                          fontFamily: AppConstants.defaultFont),
+                                                                 ),
                                 TextSpan(
                                   text: ' ',
                                   style: Theme.of(context)
@@ -337,10 +318,10 @@ class _SignInPageState extends State<SignInPage> {
                                           color: AppColorScheme.onBlack
                                               .withOpacity(0.5),
                                           fontSize: 12,
-                                          fontFamily: 'Poppins'),
+                                          fontFamily: AppConstants.defaultFont),
                                 ),
                                 TextSpan(
-                                    text: 'Sign Up',
+                                    text: translation.of("user.signup"),
                                     style: Theme.of(context)
                                         .textTheme
                                         .subtitle1
@@ -348,7 +329,7 @@ class _SignInPageState extends State<SignInPage> {
                                             fontWeight: FontWeight.w400,
                                             color: AppColorScheme.primaryColor,
                                             fontSize: 12,
-                                            fontFamily: 'Poppins'),
+                                            fontFamily: AppConstants.defaultFont),
                                     recognizer: TapGestureRecognizer()
                                       ..onTap = () {
                                         Navigator.push(

@@ -12,6 +12,7 @@ import '../../../../../base_module/presentation/component/alerts/flash_alert.dar
 import '../../../../../base_module/presentation/component/appbar/simple_app_bar.dart';
 import '../../../../../base_module/presentation/component/padding/app_padding.dart';
 import '../../../../../base_module/presentation/component/text_form_field/custom_text_form_filed.dart';
+import '../../../../../base_module/presentation/core/values/app_constants.dart';
 import '../blocs/profile/profile_bloc.dart';
 
 class UpdatePasswordScreen extends StatefulWidget {
@@ -111,10 +112,10 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                           children: [
                             Text(
                               translation.of("change_password"),
-                              style: TextStyle(
+                              style: Theme.of(context).textTheme.subtitle1?.copyWith(
                                 color: Color(0xFF1D1B1E),
                                 fontSize: 16,
-                                fontFamily: 'Poppins',
+                                fontFamily: AppConstants.defaultFont,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -153,10 +154,10 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
             //           child: Text(
             //             translation.of("cancel").toUpperCase(),
             //             textAlign: TextAlign.center,
-            //             style: TextStyle(
+            //             style: Theme.of(context).textTheme.subtitle1?.copyWith(
             //               color: AppColorScheme.primaryColor,
             //               fontSize: 16,
-            //               fontFamily: 'Poppins',
+            //               fontFamily: AppConstants.defaultFont,
             //               fontWeight: FontWeight.w500,
             //             ),
             //           )),
@@ -167,10 +168,10 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
             //             : Text(
             //                 translation.of("save").toUpperCase(),
             //                 textAlign: TextAlign.center,
-            //                 style: TextStyle(
+            //                 style: Theme.of(context).textTheme.subtitle1?.copyWith(
             //                   //color: AppColorScheme.primaryColor,
             //                   fontSize: 16,
-            //                   fontFamily: 'Poppins',
+            //                   fontFamily: AppConstants.defaultFont,
             //                   fontWeight: FontWeight.w500,
             //                 ),
             //               ),
@@ -198,17 +199,17 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                         },
                         child: Text(
                           translation.of("cancel"),
-                          style: TextStyle(
+                          style: Theme.of(context).textTheme.subtitle1?.copyWith(
                             color: AppColorScheme.primaryColor,
                             fontSize: 14,
-                            fontFamily: 'Poppins',
+                            fontFamily: AppConstants.defaultFont,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(width: 16), // Add some space between the buttons
+                  SizedBox(width: AppConstants.defaultPadding*0.8), 
                   Expanded(
                     child: SizedBox(
                       height: 56,
@@ -223,10 +224,10 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                             ? const CupertinoActivityIndicator()
                             : Text(
                                 translation.of("save"),
-                                style: TextStyle(
+                                style: Theme.of(context).textTheme.subtitle1?.copyWith(
                                   color: AppColorScheme.onPrimaryLight,
                                   fontSize: 14,
-                                  fontFamily: 'Poppins',
+                                  fontFamily: AppConstants.defaultFont,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
@@ -249,21 +250,21 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
         Text(
           translation.of('user.current_password'),
           //'Current password',
-          style: TextStyle(
+          style: Theme.of(context).textTheme.subtitle1?.copyWith(
             color: AppColorScheme.inActive.withOpacity(0.75),
             fontSize: 11,
-            fontFamily: 'Poppins',
+            fontFamily: AppConstants.defaultFont,
             fontWeight: FontWeight.w500,
           ),
         ),
         SizedBox(
-          height: 4,
+          height: AppConstants.defaultPadding*0.2,
         ),
         CustomTextFormField(
           controller: _currentPassword,
           hintText: translation.of("user.current_password"),
           hintStyle:
-              TextStyle(color: AppColorScheme.grey, fontFamily: "Poppins"),
+              Theme.of(context).textTheme.subtitle1?.copyWith(color: AppColorScheme.grey, fontFamily: "Poppins"),
           fillColor: AppColorScheme.backgroundLight,
           enabled: !_loading,
           obscureText: !_isCurrentPasswordVisible,
@@ -278,15 +279,15 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                   _isCurrentPasswordVisible ? Iconsax.eye_slash : Iconsax.eye)),
           validator: FormBuilderValidators.compose([
             FormBuilderValidators.required(
-              errorText: "required",
+              errorText: translation.of('user.required'),
             ),
           ]),
         )
         //     FormBuilderTextField(
-        //       style: TextStyle(
+        //       style: Theme.of(context).textTheme.subtitle1?.copyWith(
         //         color: AppColorScheme.inActive,
         //         fontSize: 14,
-        //         fontFamily: 'Poppins',
+        //         fontFamily: AppConstants.defaultFont,
         //         fontWeight: FontWeight.w400,
         //       ),
         //       name: 'currentPassword',
@@ -347,10 +348,10 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
         Text(
           translation.of("user.new_password"),
           //'New password',
-          style: TextStyle(
+          style: Theme.of(context).textTheme.subtitle1?.copyWith(
             color: AppColorScheme.inActive.withOpacity(0.75),
             fontSize: 11,
-            fontFamily: 'Poppins',
+            fontFamily: AppConstants.defaultFont,
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -361,7 +362,7 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
           controller: _newPassword,
           hintText: translation.of("user.new_password"),
           hintStyle:
-              TextStyle(color: AppColorScheme.grey, fontFamily: "Poppins"),
+              Theme.of(context).textTheme.subtitle1?.copyWith(color: AppColorScheme.grey, fontFamily:AppConstants.defaultFont),
           fillColor: AppColorScheme.backgroundLight,
           enabled: !_loading,
           obscureText: !_isNewPasswordVisible,
@@ -376,15 +377,15 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                   _isNewPasswordVisible ? Iconsax.eye_slash : Iconsax.eye)),
           validator: FormBuilderValidators.compose([
             FormBuilderValidators.required(
-              errorText: "required",
+              errorText: translation.of('user.required'),
             ),
           ]),
         )
         //     FormBuilderTextField(
-        //       style: TextStyle(
+        //       style: Theme.of(context).textTheme.subtitle1?.copyWith(
         //         color: AppColorScheme.inActive,
         //         fontSize: 14,
-        //         fontFamily: 'Poppins',
+        //         fontFamily: AppConstants.defaultFont,
         //         fontWeight: FontWeight.w400,
         //       ),
         //       name: 'password',
@@ -446,10 +447,10 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
         Text(
           translation.of("user.confirm_password"),
           //'Confirm password',
-          style: TextStyle(
+          style: Theme.of(context).textTheme.subtitle1?.copyWith(
             color: AppColorScheme.inActive.withOpacity(0.75),
             fontSize: 11,
-            fontFamily: 'Poppins',
+            fontFamily: AppConstants.defaultFont,
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -460,7 +461,7 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
           controller: _confirmPassword,
           hintText: translation.of("user.confirm_password"),
           hintStyle:
-              TextStyle(color: AppColorScheme.grey, fontFamily: "Poppins"),
+              Theme.of(context).textTheme.subtitle1?.copyWith(color: AppColorScheme.grey, fontFamily: AppConstants.defaultFont),
           fillColor: AppColorScheme.backgroundLight,
           enabled: !_loading,
           obscureText: !_isConfirmPasswordVisible,
@@ -482,15 +483,15 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
               return null;
             },
             FormBuilderValidators.required(
-              errorText: "Confirm Password is required",
+              errorText: translation.of('user.confirm_password_is_required'),
             ),
           ]),
         )
         //     FormBuilderTextField(
-        //       style: TextStyle(
+        //       style: Theme.of(context).textTheme.subtitle1?.copyWith(
         //         color: AppColorScheme.inActive,
         //         fontSize: 14,
-        //         fontFamily: 'Poppins',
+        //         fontFamily: AppConstants.defaultFont,
         //         fontWeight: FontWeight.w400,
         //       ),
         //       name: 'confirmPassword',

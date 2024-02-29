@@ -17,7 +17,18 @@
     "top_seller":"أفضل البائعين",
     "categories":"فئات",
     "seasonal_pulses":"البقول الموسمية",
-    "soft_drinks":"المشروبات الغازية"
+    "soft_drinks":"المشروبات الغازية",
+    "home":"بيت",
+    "cart":"عربة التسوق",
+    "orders":"طلبات",
+    "profile":"حساب تعريفي",
+    "Logout":"تسجيل خروج",
+    "address":"عنوان",
+    "my_orders":"طلباتي",
+    "are_you_sure_to_logout":"هل أنت متأكد من تسجيل الخروج؟",
+    "add":"يضيف"
+
+
 
   },
   "search_bar":{

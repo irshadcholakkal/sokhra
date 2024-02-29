@@ -4,20 +4,11 @@ import 'package:collection/collection.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:iconsax/iconsax.dart';
-import 'package:lumiereorganics_app/catalogue_module/presentation/feature/list_catalogue/widgets/bottom_navigation.dart';
-import 'package:lumiereorganics_app/new_cart_module/presentation/blocs/new_cart_bloc/new_cart_state.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../../../base_module/domain/entity/color_scheme.dart';
 import '../../../base_module/domain/entity/translation.dart';
 import '../../../base_module/presentation/component/appbar/simple_app_bar.dart';
-import '../../../base_module/presentation/component/buttons/custom_close_button.dart';
-import '../../../base_module/presentation/component/images/custom_image_view.dart';
-import '../../../base_module/presentation/component/images/custom_network_image.dart';
-import '../../../base_module/presentation/core/values/app_assets.dart';
 import '../../../base_module/presentation/core/values/app_constants.dart';
-import '../../../base_module/presentation/util/string_modifiers.dart';
 import '../../../catalogue_module/presentation/feature/details/blocs/delivery_check_cubit/delivery_check_cubit.dart';
 import '../../../catalogue_module/presentation/feature/list_catalogue/widgets/check_out_item_list.dart';
 import '../../../check_out_module/presentation/feature/check_out/check_out_screen.dart';
@@ -25,6 +16,7 @@ import '../../../user_module/domain/user_data.dart';
 import '../../domain/new_cart_model.dart';
 import '../blocs/new_cart_bloc/new_cart_bloc.dart';
 import '../blocs/new_cart_bloc/new_cart_event.dart';
+import '../blocs/new_cart_bloc/new_cart_state.dart';
 
 class CartBottomBar extends StatefulWidget {
   final List<Cart>? cartList;
@@ -416,9 +408,6 @@ class _CartBottomBarState extends State<CartBottomBar> {
                                                   children: [
                                                     Text(
                                                        translation.of('cart.total_price'),
-
-                                                      
-                                                      
                                                       //'Total price',
                                                       textAlign:
                                                           TextAlign.center,
@@ -427,7 +416,7 @@ class _CartBottomBarState extends State<CartBottomBar> {
                                                             .onBlack
                                                             .withOpacity(0.5),
                                                         fontSize: 14,
-                                                        fontFamily: 'Poppins',
+                                                        fontFamily: AppConstants.defaultFont,
                                                         fontWeight:
                                                             FontWeight.w400,
                                                       ),
@@ -443,7 +432,7 @@ class _CartBottomBarState extends State<CartBottomBar> {
                                                                       .onBlack,
                                                               fontSize: 16,
                                                               fontFamily:
-                                                                  'Poppins',
+                                                                  AppConstants.defaultFont,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .w400,
@@ -458,7 +447,7 @@ class _CartBottomBarState extends State<CartBottomBar> {
                                                                       .onBlack,
                                                               fontSize: 22,
                                                               fontFamily:
-                                                                  'Poppins',
+                                                                  AppConstants.defaultFont,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .w400,
@@ -516,7 +505,7 @@ class _CartBottomBarState extends State<CartBottomBar> {
                                                                       .surface,
                                                                   fontSize: 16,
                                                                   fontFamily:
-                                                                      'Poppins',
+                                                                      AppConstants.defaultFont,
                                                                 ),
                                                           ),
                                                           // SizedBox(width: 3),
@@ -560,7 +549,7 @@ class _CartBottomBarState extends State<CartBottomBar> {
                      // "Cart is empty",
                       style: TextStyle(
                           fontSize: 14,
-                          fontFamily: 'Poppins',
+                          fontFamily: AppConstants.defaultFont,
                           fontWeight: FontWeight.w500,
                           color: AppColorScheme.onBlack),
                     )),

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:lumiereorganics_app/base_module/domain/entity/color_scheme.dart';
 import 'package:shimmer/shimmer.dart';
+
 import '../../../../../base_module/data/entity/models/sort_input.dart';
 import '../../../../../base_module/domain/entity/app.dart';
+import '../../../../../base_module/domain/entity/color_scheme.dart';
 import '../../../../../base_module/domain/entity/translation.dart';
 import '../../../../../base_module/presentation/component/appbar/custom_appbar.dart';
 import '../../../../../base_module/presentation/component/padding/app_padding.dart';
@@ -75,18 +76,8 @@ class _ProductsListState extends State<ProductsList> {
           isHome: false,
           context: context,
           categoryId: args.id,
-          // isProductList: true,
-          // onSortButtonClick: () {
-          //   _sortBottomSheet(context);
-          // },
-        ),
-        // floatingActionButton: FloatingActionButton(
-        //   onPressed: () {
-        //     _sortBottomSheet(context);
-        //   },
-        //   child: Icon(MdiIcons.sort),
-        // ),
-        body: RefreshIndicator(
+                 ),
+                body: RefreshIndicator(
           onRefresh: _reFetchContent,
           child: MultiBlocListener(
             listeners: [
@@ -107,9 +98,7 @@ class _ProductsListState extends State<ProductsList> {
             child: BlocProvider<SubCategoryCubit>(
               create: (context) => _subCategoryCubit,
               child: Container(
-                // padding: const EdgeInsets.symmetric(
-                //     horizontal: AppConstants.defaultPadding / 4),
-                child: ListView(
+                               child: ListView(
                   children: [
                     const AppPadding(
                       dividedBy: 2,
@@ -407,7 +396,7 @@ class _ProductsListState extends State<ProductsList> {
                 },
                 child: AnimationConfiguration.staggeredGrid(
                   position: index,
-                  columnCount: 2, // Same as the crossAxisCount above
+                  columnCount: 2, 
                   duration: const Duration(milliseconds: 500),
                   child: SlideAnimation(
                     verticalOffset: 50.0,

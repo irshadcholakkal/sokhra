@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../../../base_module/data/entity/models/data_response.dart';
-import '../../../../../../base_module/presentation/feature/demo/screen/blocs/sign_in_send_otp/sign_in_sent_otp_state.dart';
+import '../../../demo/screen/blocs/sign_in_send_otp/sign_in_sent_otp_state.dart';
 import '../../../../../data/repositories/user_provider.dart';
 
 part 'send_otp_event.dart';

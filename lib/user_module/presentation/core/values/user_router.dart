@@ -83,7 +83,7 @@
 
 import 'package:flutter/material.dart';
 import '../../feature/sign_in/screens/intro_screen.dart';
-import '../../../../base_module/presentation/feature/demo/screen/mobile_number_sign_up_screen.dart';
+import '../../feature/demo/screen/mobile_number_sign_up_screen.dart';
 import '../../feature/drawer/screens/drawer_screen.dart';
 import '../../feature/notifications/screens/notifications_screen.dart';
 import '../../feature/profile/screens/personal_details.dart';

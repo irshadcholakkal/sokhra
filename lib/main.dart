@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:form_builder_validators/localization/l10n.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:lumiereorganics_app/base_module/presentation/feature/demo/screen/on_boarding_screen.dart';
+import 'package:lumiereorganics_app/user_module/presentation/feature/demo/screen/on_boarding_screen.dart';
 import 'package:lumiereorganics_app/catalogue_module/presentation/feature/list_catalogue/blocs/get_deliver_shift_by_zone_bloc/get_delivery_shift_by_zone_bloc.dart';
 import 'app_settings_module/presentation/feature/app_settings/blocs/app_data/app_data_bloc.dart';
 import 'app_settings_module/presentation/feature/app_settings/blocs/configurations/configurations_bloc.dart';
@@ -14,8 +14,8 @@ import 'base_module/domain/entity/app.dart';
 import 'base_module/domain/entity/app_theme_singleton.dart';
 import 'base_module/domain/entity/translation.dart';
 import 'base_module/presentation/core/values/app_constants.dart';
-import 'base_module/presentation/feature/demo/screen/blocs/sign_in_send_otp/sign_in_sent_otp_bloc.dart';
-import 'base_module/presentation/feature/demo/screen/splash_screen.dart';
+import 'user_module/presentation/feature/demo/screen/blocs/sign_in_send_otp/sign_in_sent_otp_bloc.dart';
+import 'user_module/presentation/feature/demo/screen/splash_screen.dart';
 import 'base_module/presentation/feature/network/blocs/network_bloc.dart';
 import 'base_module/presentation/feature/theming/bloc/theme_bloc.dart';
 import 'base_module/presentation/feature/translation/bloc/translation_bloc.dart';
@@ -314,9 +314,6 @@ Future<void> main() async {
           // BlocProvider<TranslationBloc>(
           //   create: (context) => TranslationBloc(),
           // ),
-
-          
-
           // BlocProvider<TsetBloc>(
           //   create: (_) => TsetBloc(),
           // ),
@@ -368,6 +365,8 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+       
+
     debugPrint("token is ${authentication.token}");
     debugPrint("userID is ${authentication.user?.id}");
 
@@ -408,7 +407,9 @@ class _MyAppState extends State<MyApp> {
             builder: (context, _) {
               return LayoutBuilder(
                 builder: (_, constraints) {
+                  
                   return MaterialApp(
+                    
                     debugShowCheckedModeBanner: false,
                     navigatorKey: globalNavigatorKey,
                     scaffoldMessengerKey: globalSnackBarKey,
