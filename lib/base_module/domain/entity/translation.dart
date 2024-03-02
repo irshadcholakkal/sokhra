@@ -18,6 +18,7 @@ class Translation {
     // 'customer_module',
     'user_module',
     // 'vendor_module',
+   // 'check_out_module'
     'catalogue_module',
     'cart_wishlist_module',
     'orders_module',

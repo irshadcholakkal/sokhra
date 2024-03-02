@@ -13,6 +13,7 @@ import '../../../../../user_module/domain/entity/authentication.dart';
 import '../../../../../user_module/presentation/components/signout_card.dart';
 import '../../../../../user_module/presentation/core/values/user_assets.dart';
 import '../../../../../user_module/presentation/feature/authentication/blocs/authentication/authentication_bloc.dart';
+import '../../../../../user_module/presentation/feature/demo/screen/on_boarding_screen.dart';
 import '../bloc/deliverd_delivery_by_delivery_boy/delivered_delivery_by_delivery_boy_bloc.dart';
 import '../bloc/pending_delivery_by_delivery_boy/pending_delivery_by_delivery_boy_bloc.dart';
 import '../widgets/delivery_tab_widget.dart';
@@ -120,7 +121,7 @@ class _DriverHomeScreenState extends State<DriverHomeScreen> {
                                                 .primaryColorLight,
                                             fontSize: 16),
                                   ),
-                                  const SizedBox(width: 6),
+                                  const SizedBox(width: AppConstants.defaultPadding*0.3),
                                 ],
                               ),
                             ),
@@ -146,7 +147,7 @@ class _DriverHomeScreenState extends State<DriverHomeScreen> {
                                       //     .onPrimary
                                     ),
                                   ),
-                                  const SizedBox(width: 6),
+                                  const SizedBox(width:AppConstants.defaultPadding*0.3),
                                   Container(
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
@@ -209,10 +210,6 @@ class _DriverHomeScreenState extends State<DriverHomeScreen> {
 
     BlocProvider.of<AuthenticationBloc>(context).add(SignedOut());
 
-    // Navigator.pushNamedAndRemoveUntil(
-    //   context,
-    //   UserRouter.signInScreen,
-    //       (route) => false,
-    // );
+    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => OnBoardingScreen(),), (route) => false);
   }
 }

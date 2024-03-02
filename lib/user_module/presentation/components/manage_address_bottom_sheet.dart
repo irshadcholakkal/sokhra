@@ -21,7 +21,8 @@ class ManageAddressBottomSheet extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
 
-      backgroundColor: AppColorScheme.backgroundColorLight,
+      backgroundColor: Theme.of(context).canvasColor,
+      //AppColorScheme.backgroundColorLight,
       appBar: SimpleAppBar(title:translation.of('user.my_account')),
       body: SafeArea(
         child: SingleChildScrollView(

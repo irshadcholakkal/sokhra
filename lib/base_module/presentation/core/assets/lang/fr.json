@@ -96,6 +96,35 @@
 
 
 
+    "checkout":{
+        "checkout":"Vérifier",
+        "delivery_address":"Adresse de livraison",
+        "cart_is_empty":"Le panier est vide",
+        "delivery_charge":"Frais de livraison",
+        "grand_total":"total",
+        "add_address": "Ajoutez l'adresse",
+        "change": "Changement",
+        "continue_to_payment":"Continuer vers le paiement",
+        "schedule_delivery":"Planifier la livraison",
+        "select_date_and_time":"Sélectionnez la date et l'heure",
+        "selected_date":"Date sélectionnée",
+        "promo_code":"Code promo",
+        "apply":"Appliquer",
+        "payment_details":"Détails de paiement",
+        "discount":"Rabais",
+        "vat":"VAT",
+        "payable_amount":"Montant payable",
+        "choose_payment_method":"Choisissez le mode de paiement",
+        "select_shift":"Sélectionnez un quart de travail",
+        "shift_not_available":"Changement non disponible",
+        "confirm_schedule":"Confirmer le calendrier",
+        "cart_items":"Articles du panier",
+        "add":"Ajouter"
+        
+    },
+
+
+
     "theme": {
         "placeholderText": "Texte de typographie",
         "typeHere": "Entrer ici",

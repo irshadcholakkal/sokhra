@@ -1,17 +1,14 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 import '../../../../../base_module/domain/entity/color_scheme.dart';
 import '../../../../../base_module/domain/entity/translation.dart';
 import '../../../../../base_module/presentation/component/images/custom_network_image.dart';
 import '../../../../../base_module/presentation/component/padding/app_padding.dart';
 import '../../../../../base_module/presentation/core/values/app_constants.dart';
 import '../../../../../base_module/presentation/util/string_modifiers.dart';
-import '../../../../../cart_wishlist_module/domain/models/cart_list.dart';
 import '../../../../../new_cart_module/domain/new_cart_model.dart';
 import '../../../../../new_cart_module/presentation/widget/increment_button_cart_page.dart';
-import '../../../../../new_cart_module/presentation/widget/increment_decrement_button.dart';
 import '../../../../../new_cart_module/presentation/widget/out_of_stock_button.dart';
 import '../../../../../user_module/domain/user_data.dart';
 import '../../../../domain/models/product_status.dart';
@@ -122,9 +119,7 @@ class _ItemListWidgetState extends State<ItemListWidget> {
                       if (cartItem.id != null) {
                         itemQuantity = cartItem.quantity ?? 1;
                       }
-
                       return
-
                           // Container(
                           //   margin: EdgeInsetsDirectional.only(bottom: 8),
                           //   child: IntrinsicHeight(
@@ -220,7 +215,6 @@ class _ItemListWidgetState extends State<ItemListWidget> {
                           //     ),
                           //   ),
                           // );
-
                           GestureDetector(
                         onTap: () {},
                         child: Container(
@@ -268,7 +262,8 @@ class _ItemListWidgetState extends State<ItemListWidget> {
                                     fit: BoxFit.contain,
                                   ),
                                 ),
-                                SizedBox(width: 8),
+                                SizedBox(
+                                    width: AppConstants.defaultPadding * 0.4),
                                 Expanded(
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -276,16 +271,21 @@ class _ItemListWidgetState extends State<ItemListWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        translation.isArabic?product?.nameAr ?? product?.nameEn ?? '-':
-                                        translation.isFrench?product?.nameFr ?? product?.nameEn ?? '-':
-                                        product?.nameEn ?? '-',
+                                        translation.isArabic
+                                            ? product?.nameAr ??
+                                                product?.nameEn ??
+                                                '-'
+                                            : translation.isFrench
+                                                ? product?.nameFr ??
+                                                    product?.nameEn ??
+                                                    '-'
+                                                : product?.nameEn ?? '-',
                                         style: Theme.of(context)
                                             .textTheme
                                             .caption
                                             ?.copyWith(
                                               fontWeight: FontWeight.w500,
                                               fontSize: 14,
-                                              fontFamily: 'Poppins',
                                               color: Theme.of(context)
                                                   .colorScheme
                                                   .onBackground,
@@ -304,7 +304,8 @@ class _ItemListWidgetState extends State<ItemListWidget> {
                                               shape: RoundedRectangleBorder(
                                                 side: BorderSide(
                                                     width: 0.38,
-                                                    color: Color(0xFFCBC4CF)),
+                                                    color: AppColorScheme
+                                                        .primaryColorDark),
                                                 borderRadius:
                                                     BorderRadius.circular(4.52),
                                               ),
@@ -319,7 +320,6 @@ class _ItemListWidgetState extends State<ItemListWidget> {
                                                     .caption
                                                     ?.copyWith(
                                                       fontSize: 9.05,
-                                                      fontFamily: 'Poppins',
                                                       fontWeight:
                                                           FontWeight.w500,
                                                       color: Color(0xFF1D1A20),
@@ -343,7 +343,6 @@ class _ItemListWidgetState extends State<ItemListWidget> {
                                                     color: AppColorScheme
                                                         .primaryColor,
                                                     fontSize: 12.57,
-                                                    fontFamily: 'Poppins',
                                                     fontWeight: FontWeight.w400,
                                                   ),
                                             ),
@@ -358,7 +357,6 @@ class _ItemListWidgetState extends State<ItemListWidget> {
                                                     color: AppColorScheme
                                                         .primaryColor,
                                                     fontSize: 17.29,
-                                                    fontFamily: 'Poppins',
                                                     fontWeight: FontWeight.w400,
                                                   ),
                                             ),
@@ -368,7 +366,8 @@ class _ItemListWidgetState extends State<ItemListWidget> {
                                     ],
                                   ),
                                 ),
-                                SizedBox(width: 8),
+                                SizedBox(
+                                    width: AppConstants.defaultPadding * 0.4),
                                 // if (isInStock)
                                 IncrementDecrementButtonCartPage(
                                   products: product,
@@ -589,16 +588,21 @@ class _ItemListWidgetState extends State<ItemListWidget> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      translation.isArabic?product?.nameAr ??product?.nameEn ?? '-':
-                                      translation.isFrench?product?.nameFr ?? product?.nameEn ?? '-':
-                                      product?.nameEn ?? '-',
+                                      translation.isArabic
+                                          ? product?.nameAr ??
+                                              product?.nameEn ??
+                                              '-'
+                                          : translation.isFrench
+                                              ? product?.nameFr ??
+                                                  product?.nameEn ??
+                                                  '-'
+                                              : product?.nameEn ?? '-',
                                       style: Theme.of(context)
                                           .textTheme
                                           .caption
                                           ?.copyWith(
                                             fontWeight: FontWeight.w500,
                                             fontSize: 14,
-                                            fontFamily: 'Poppins',
                                             color: Theme.of(context)
                                                 .colorScheme
                                                 .onBackground,
@@ -616,7 +620,8 @@ class _ItemListWidgetState extends State<ItemListWidget> {
                                         shape: RoundedRectangleBorder(
                                           side: BorderSide(
                                               width: 0.38,
-                                              color: Color(0xFFCBC4CF)),
+                                              color: AppColorScheme
+                                                  .primaryColorDark),
                                           borderRadius:
                                               BorderRadius.circular(4.52),
                                         ),
@@ -631,7 +636,6 @@ class _ItemListWidgetState extends State<ItemListWidget> {
                                             .caption
                                             ?.copyWith(
                                               fontSize: 9.05,
-                                              fontFamily: 'Poppins',
                                               fontWeight: FontWeight.w500,
                                               color: Color(0xFF1D1A20),
                                             ),
@@ -647,7 +651,7 @@ class _ItemListWidgetState extends State<ItemListWidget> {
                                     //       .caption
                                     //       ?.copyWith(
                                     //         fontSize: 12.57,
-                                    //         fontFamily: 'Poppins',
+                                    //         fontFamily: AppConstants.defaultFont,
                                     //         fontWeight: FontWeight.w400,
                                     //         color:
                                     //             AppColorScheme.primaryColor,
@@ -667,7 +671,6 @@ class _ItemListWidgetState extends State<ItemListWidget> {
                                                   color: AppColorScheme
                                                       .primaryColor,
                                                   fontSize: 12.57,
-                                                  fontFamily: 'Poppins',
                                                   fontWeight: FontWeight.w400,
                                                 ),
                                           ),
@@ -682,7 +685,6 @@ class _ItemListWidgetState extends State<ItemListWidget> {
                                                   color: AppColorScheme
                                                       .primaryColor,
                                                   fontSize: 17.29,
-                                                  fontFamily: 'Poppins',
                                                   fontWeight: FontWeight.w400,
                                                 ),
                                           ),

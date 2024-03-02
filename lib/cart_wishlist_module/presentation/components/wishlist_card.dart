@@ -43,15 +43,12 @@ class _WishlistCardState extends State<WishlistCard> {
     super.initState();
   }
 
-  getWishList(){
-
-    BlocProvider.of<CustomerWishlistBloc>(context)
-        .add(CustomerWishListFetchEvent(
-        reFetch: true,
-        lat: userData.lat,
-        lng:  userData.lng
-    ));
+  getWishList() {
+    BlocProvider.of<CustomerWishlistBloc>(context).add(
+        CustomerWishListFetchEvent(
+            reFetch: true, lat: userData.lat, lng: userData.lng));
   }
+
   @override
   Widget build(BuildContext context) {
     // widget.cartItem.product.variant?.choices?.forEach((element) {
@@ -89,7 +86,6 @@ class _WishlistCardState extends State<WishlistCard> {
           child: BlocBuilder<CustomerWishlistBloc, CustomerWishlistState>(
             builder: (context, state) {
               if (state is CustomerWishlistMutationSuccessState) {
-
                 getWishList();
 
                 wishListFn(context);
@@ -275,9 +271,11 @@ class _WishlistCardState extends State<WishlistCard> {
               ? Image.network(
                   AppConstants.filesUrl + wishList!.product!.thumbnailImage!,
                   fit: BoxFit.cover,
-                  errorBuilder: (context, object, stackTrace) =>  Image.asset(ThemeAssets.dummy_image_product,fit: BoxFit.cover),
+                  errorBuilder: (context, object, stackTrace) => Image.asset(
+                      ThemeAssets.dummy_image_product,
+                      fit: BoxFit.cover),
                 )
-              : Image.asset(ThemeAssets.dummy_image_product,fit: BoxFit.cover),
+              : Image.asset(ThemeAssets.dummy_image_product, fit: BoxFit.cover),
           // child: urlList.length == 2
           //     ? Image.memory(base64.decode("${urlList[1]}"))
           //     : Image.network(
@@ -366,9 +364,8 @@ class _WishlistCardState extends State<WishlistCard> {
                           deviceId: app.deviceId,
                           product: wishList?.product?.productId,
                           variant: wishList?.variant?.variantId),
-                    lng: userData.lng,
-                    lat: userData.lat
-                  )),
+                      lng: userData.lng,
+                      lat: userData.lat)),
               child: Icon(
                 Icons.favorite_outline,
                 color: Theme.of(context).colorScheme.primary,

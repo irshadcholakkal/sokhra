@@ -5,11 +5,11 @@ mixin AppColorScheme {
   //LIGHT
   static Color primaryColorLight = const Color(0xFF324631);
   static Color primaryVariantColorLight = const Color(0xFF514642);
-  static Color secondaryColorLight = const Color(0xFF6FA841);
+  static Color secondaryColorLight = const Color(0xFFECDCFF);
   static Color primaryColor = Color(0xFF9160E8);
   static Color secondaryVariantColorLight = const Color(0xFFFFF6A9);
   static Color accentColorLight = const Color(0xFFB50020); 
-  static Color errorColorLight = const Color(0xFFFF6A85);
+   static Color errorColorLight = const Color(0xFFFF6A85);
   static Color grey = Colors.grey;
   static Color scaffoldBackgroundColorLight = const Color(0xFFFEF7FF);
   static Color scaffoldBackgroundColorLightTwo = const Color(0xFFFFFFFF);
@@ -29,7 +29,7 @@ mixin AppColorScheme {
 
 
   //DARK
-  static Color primaryColorDark = const Color(0xFF00BAF2);
+  static Color primaryColorDark = const Color(0xFFCBC4CF);
   static Color primaryVariantColorDark = const Color(0xFF008ABF);
   static Color secondaryColorDark = const Color(0xFF000081);
   static Color secondaryVariantColorDark = const Color(0xFF000053);
@@ -61,7 +61,7 @@ mixin AppColorScheme {
   static Color textFieldHintColor = const Color(0x6642493F);
   static Color textFieldBorderColor = const Color(0xBF9C9C9C);
   static Color productCardBorderColor = const Color(0x1A000000);
-  // static Color secondaryBackgroundColor = const Color(0xFFF1F1EB);
+   //static Color secondaryBackgroundColor = const Color(0xFFF1F1EB);
   static Color secondaryBackgroundColor = const Color(0xFFF5F6FB);
   static Color sheetBackgroundColor = const Color(0xFFF5F6FB);
   static Color barrierColor = const Color(0xFF5D5F5A);

@@ -108,7 +108,7 @@ class _SignInPageState extends State<SignInPage> {
                             style:Theme.of(context).textTheme.subtitle1?.copyWith(
                                color: AppColorScheme.onBlack,
                               fontSize: 22,
-                              fontFamily: AppConstants.defaultFont,
+                              
                               fontWeight: FontWeight.w500,
 
                             )
@@ -125,7 +125,7 @@ class _SignInPageState extends State<SignInPage> {
                                         .colorScheme
                                         .onBackground
                                         .withOpacity(0.5),
-                                    fontFamily: AppConstants.defaultFont),
+                                   ),
                           )
                          
                         ],
@@ -246,7 +246,7 @@ class _SignInPageState extends State<SignInPage> {
                                                     fontWeight: FontWeight.w500,
                                                     color: AppColorScheme
                                                         .onPrimaryLight,
-                                                    fontFamily: AppConstants.defaultFont),
+                                                   ),
                                           ),
                                   ),
                                   // >>>>>>> b3cf74574a006aa712d2b41e05012ab69329e5e1
@@ -276,7 +276,7 @@ class _SignInPageState extends State<SignInPage> {
                             style: TextStyle(
                               color: AppColorScheme.onBlack.withOpacity(0.50),
                               fontSize: 12,
-                              fontFamily: AppConstants.defaultFont,
+                              
                               fontWeight: FontWeight.w400,
                              // height: 0.11,
                               letterSpacing: 0.50,
@@ -306,7 +306,7 @@ class _SignInPageState extends State<SignInPage> {
                                           color: AppColorScheme.onBlack
                                               .withOpacity(0.5),
                                           fontSize: 12,
-                                          fontFamily: AppConstants.defaultFont),
+                                         ),
                                                                  ),
                                 TextSpan(
                                   text: ' ',
@@ -318,7 +318,7 @@ class _SignInPageState extends State<SignInPage> {
                                           color: AppColorScheme.onBlack
                                               .withOpacity(0.5),
                                           fontSize: 12,
-                                          fontFamily: AppConstants.defaultFont),
+                                         ),
                                 ),
                                 TextSpan(
                                     text: translation.of("user.signup"),
@@ -329,7 +329,7 @@ class _SignInPageState extends State<SignInPage> {
                                             fontWeight: FontWeight.w400,
                                             color: AppColorScheme.primaryColor,
                                             fontSize: 12,
-                                            fontFamily: AppConstants.defaultFont),
+                                           ),
                                     recognizer: TapGestureRecognizer()
                                       ..onTap = () {
                                         Navigator.push(

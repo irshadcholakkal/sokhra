@@ -78,6 +78,33 @@
     "remove":"يزيل",
     "add_newaddress":"إضافة عنوان جديد",
 
+    "checkout":{
+        "checkout":"الدفع",
+        "delivery_address":"عنوان التسليم",
+        "cart_is_empty":"البطاقه خاليه",
+        "delivery_charge":"رسوم التوصيل",
+        "grand_total":"المجموع الإجمالي",
+        "add_address": "اضف عنوان",
+        "change": "يتغير",
+        "continue_to_payment":"الاستمرار في الدفع",
+        "schedule_delivery":"تسليم الجدول الزمني",
+        "select_date_and_time":"حدد التاريخ والوقت",
+        "selected_date":"التاريخ المحدد",
+        "promo_code":"رمز ترويجي",
+        "apply":"يتقدم",
+        "payment_details":"بيانات الدفع",
+        "discount":"تخفيض",
+        "vat":"ضريبة القيمة المضافة",
+        "payable_amount":"المبلغ المستحق",
+        "choose_payment_method":"اختر وسيلة الدفع",
+        "select_shift":"حدد التحول",
+        "shift_not_available":"التحول غير متاح",
+        "confirm_schedule":"تأكيد الجدول الزمني",
+        "cart_items":"عناصر السلة",
+        "add":"يضيف"
+        
+    },
+
 
     "theme": {
         "placeholderText": "نص الطباعة",

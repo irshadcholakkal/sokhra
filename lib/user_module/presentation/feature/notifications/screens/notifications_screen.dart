@@ -40,7 +40,8 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: AppColorScheme.backgroundColorLight,
+        backgroundColor: Theme.of(context).canvasColor,
+        //AppColorScheme.backgroundColorLight,
         appBar:
             SimpleAppBar(
               title: 

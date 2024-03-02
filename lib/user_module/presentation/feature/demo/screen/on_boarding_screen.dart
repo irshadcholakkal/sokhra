@@ -20,7 +20,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   TextStyle? get _homeTitleStyle =>
       Theme.of(context).textTheme.subtitle1?.copyWith(
             fontWeight: FontWeight.w600,
-            fontFamily: AppConstants.defaultFont,
+            
             fontSize: 24,
             color: Theme.of(context).colorScheme.onBackground,
           );
@@ -28,7 +28,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: AppColorScheme.backgroundColorLight,
+      backgroundColor: Theme.of(context).canvasColor,
+      //AppColorScheme.backgroundColorLight,
       body: SafeArea(
           child: Container(
         margin: EdgeInsets.all(23),
@@ -48,7 +49,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         style: Theme.of(context).textTheme.subtitle1?.copyWith(
                               color: AppColorScheme.onBlack,
                               fontSize: 24,
-                              fontFamily: AppConstants.defaultFont,
+                              
                               fontWeight: FontWeight.w600,
                             )
                         
@@ -58,7 +59,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       style: Theme.of(context).textTheme.subtitle1?.copyWith(
                               color: AppColorScheme.primaryColor,
                               fontSize: 24,
-                              fontFamily: AppConstants.defaultFont,
+                              
                               fontWeight: FontWeight.w600,
                             )
                       
@@ -69,7 +70,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       style: Theme.of(context).textTheme.subtitle1?.copyWith(
                               color: AppColorScheme.onBlack,
                               fontSize: 24,
-                              fontFamily: AppConstants.defaultFont,
+                              
                               fontWeight: FontWeight.w600,
                             )
                               ),
@@ -78,7 +79,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       style:Theme.of(context).textTheme.subtitle1?.copyWith(
                               color: AppColorScheme.primaryColor,
                               fontSize: 24,
-                              fontFamily: AppConstants.defaultFont,
+                              
                               fontWeight: FontWeight.w600,
                      ) ),
                     TextSpan(
@@ -86,7 +87,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       style: Theme.of(context).textTheme.subtitle1?.copyWith(
                               color: AppColorScheme.onBlack,
                               fontSize: 24,
-                              fontFamily: AppConstants.defaultFont,
+                              
                               fontWeight: FontWeight.w600,
                             )
                                          ),
@@ -103,7 +104,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 style:Theme.of(context).textTheme.subtitle1?.copyWith(
                               color: AppColorScheme.onBlack.withOpacity(0.50),
                               fontSize: 12,
-                              fontFamily: AppConstants.defaultFont,
+                              
                               fontWeight: FontWeight.w400,
                             )
                 
@@ -137,7 +138,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     style: Theme.of(context).textTheme.subtitle1?.copyWith(
                               color: AppColorScheme.scaffoldBackgroundColorLightTwo,
                               fontSize: 14,
-                              fontFamily: AppConstants.defaultFont,
+                              
                               fontWeight: FontWeight.w500,
                             )
                    
@@ -174,7 +175,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     style: Theme.of(context).textTheme.subtitle1?.copyWith(
                               color: AppColorScheme.primaryColor,
                               fontSize: 14,
-                              fontFamily: AppConstants.defaultFont,
+                              
                               fontWeight: FontWeight.w500,
                             )
                     
@@ -194,7 +195,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                             fontWeight: FontWeight.w400,
                             color: AppColorScheme.onBlack.withOpacity(0.5),
                             fontSize: 12,
-                            fontFamily: AppConstants.defaultFont),
+                           ),
                         
                       ),
                       TextSpan(
@@ -203,7 +204,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                             fontWeight: FontWeight.w400,
                             color: AppColorScheme.onBlack.withOpacity(0.5),
                             fontSize: 12,
-                            fontFamily: AppConstants.defaultFont),
+                           ),
                       ),
                       TextSpan(
                         text: translation.of("user.signup"),
@@ -211,7 +212,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                             fontWeight: FontWeight.w400,
                             color: AppColorScheme.primaryColor,
                             fontSize: 12,
-                            fontFamily: AppConstants.defaultFont),
+                           ),
                         recognizer: TapGestureRecognizer()
                           ..onTap = (() {
                             Navigator.push(

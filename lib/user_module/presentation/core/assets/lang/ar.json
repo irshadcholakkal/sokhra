@@ -7,7 +7,7 @@
     "reset": "تفريغ الحقول  ",
     "mobile": "موبايل",
     "phone": "هاتف",
-    "phone_or_email":"الهاتف أو البريد الإلكتروني",
+    "phone_or_email": "الهاتف أو البريد الإلكتروني",
     "reset_password": "إعادة تعيين كلمة المرور",
     "sign_in_google": "الدخول بإستخدام جوجل",
     "signing_in": "تسجيل الدخول...",
@@ -31,7 +31,7 @@
     "sign_up": "إنشاء حساب",
     "not_found": "غير موجود",
     "language": "لغة",
-    "switchLanguage":"التغيير إلى English",
+    "switchLanguage": "التغيير إلى English",
     "switch_to": "التبديل إلى",
     "not_signed_in": "أنت غير مسجل الدخول",
     "password_changed": "تم تغيير كلمة المرور الخاصة بك بنجاح",
@@ -63,59 +63,49 @@
     "pending": "المعلقه",
     "delivered": "تسليم",
     "not_delivered": "لم يتم تسليمها",
-
-    "my_account":"حسابي",
-    "personal_details":"تفاصيل شخصية",
-    "addresses":"عناوين",
-
-    "letsfindthe":"دعونا نجد",
-    "best":"أفضل",
-    "healthy":"صحيح",
-    "grocery":" خضروات",
-    "LetsExplore":"دعنا نستكشف",
-    "signup":"اشتراك",
-    "lorem_ipsum":"باب لوريم إيبسوم مهم، باب لوريم إيبسوم مهم، باب لوريم إيبسوم مهم، باب لوريم إيبسوم مهم.",
-    "start_exploring":"قم بتسجيل الدخول إلى حسابك وابدأ في الاستكشاف!",
-    "required":"*مطلوب",
-    "10_digit_mobile_number_required":"*مطلوب رقم جوال مكون من 10 أرقام",
-    "mobile_number":"رقم الهاتف المحمول",
-    "enter_password":"أدخل كلمة المرور",
-    "login_using_mobile_OTP":"تسجيل الدخول باستخدام OTP المحمول",
-    "an_OTP_will_be_sent_to_your_mobile_number":"سيتم إرسال كلمة مرور لمرة واحدة (OTP) إلى رقم هاتفك المحمول",
-    "continue":"يكمل",
-    "already_a_user":"هل أنت مستخدم بالفعل؟",
-    "enter_otp":"أدخل كلمة المرور لمرة واحدة",
-    "enter_otp_sent":"أدخل كلمة المرور لمرة واحدة (OTP) المرسلة إلى رقم هاتفك المحمول",
-    "enter_strong_password":"أدخل كلمة مرور قوية",
-    "password_must_be_least_8_characters_long":"يجب أن تتكون كلمة المرور من 8 أحرف على الأقل.",
-    "passwords_do_not_match":"كلمة المرور غير مطابقة",
-    "enter_e-mail_address":"أدخل عنوان البريد الالكتروني",
-    "skip":"يتخطى",
-    "enter_the_billing_address":"أدخل عنوان إرسال الفواتير",
-    "building_no":"لا للبناء.",
-    "select_address_type":"حدد نوع العنوان",
-    "select_area":"حدد المنطقة",
-    "logout":"تسجيل خروج",
-    "failed_to_update_address":"فشل تحديث العنوان",
-    "no_addresses_added":"لم تتم إضافة أي عناوين",
-    "confirm_password_is_required":"تأكيد كلمة المرور مطلوب"
-
-
-
-
-
-
-
-
-
-
+    "my_account": "حسابي",
+    "personal_details": "تفاصيل شخصية",
+    "addresses": "عناوين",
+    "letsfindthe": "دعونا نجد",
+    "best": "أفضل",
+    "healthy": "صحيح",
+    "grocery": " خضروات",
+    "LetsExplore": "دعنا نستكشف",
+    "signup": "اشتراك",
+    "lorem_ipsum": "باب لوريم إيبسوم مهم، باب لوريم إيبسوم مهم، باب لوريم إيبسوم مهم، باب لوريم إيبسوم مهم.",
+    "start_exploring": "قم بتسجيل الدخول إلى حسابك وابدأ في الاستكشاف!",
+    "required": "*مطلوب",
+    "10_digit_mobile_number_required": "*مطلوب رقم جوال مكون من 10 أرقام",
+    "mobile_number": "رقم الهاتف المحمول",
+    "enter_password": "أدخل كلمة المرور",
+    "login_using_mobile_OTP": "تسجيل الدخول باستخدام OTP المحمول",
+    "an_OTP_will_be_sent_to_your_mobile_number": "سيتم إرسال كلمة مرور لمرة واحدة (OTP) إلى رقم هاتفك المحمول",
+    "continue": "يكمل",
+    "already_a_user": "هل أنت مستخدم بالفعل؟",
+    "enter_otp": "أدخل كلمة المرور لمرة واحدة",
+    "enter_otp_sent": "أدخل كلمة المرور لمرة واحدة (OTP) المرسلة إلى رقم هاتفك المحمول",
+    "enter_strong_password": "أدخل كلمة مرور قوية",
+    "password_must_be_least_8_characters_long": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل.",
+    "passwords_do_not_match": "كلمة المرور غير مطابقة",
+    "enter_e-mail_address": "أدخل عنوان البريد الالكتروني",
+    "skip": "يتخطى",
+    "enter_the_billing_address": "أدخل عنوان إرسال الفواتير",
+    "building_no": "لا للبناء.",
+    "select_address_type": "حدد نوع العنوان",
+    "select_area": "حدد المنطقة",
+    "logout": "تسجيل خروج",
+    "failed_to_update_address": "فشل تحديث العنوان",
+    "no_addresses_added": "لم تتم إضافة أي عناوين",
+    "confirm_password_is_required": "تأكيد كلمة المرور مطلوب",
+    "sign_up_failed": "فشل انشاء الحساب",
+    "let_introduce_yourself": "دعونا نقدم نفسك",
+    "enter_your_personal_details": "أدخل بياناتك الشخصية"
   },
   "footer": {
     "contactUs": "اتصل بنا",
     "about": "حول"
   },
-  "language":{
-    "my_account":"حسابي"
-
+  "language": {
+    "my_account": "حسابي"
   }
 }

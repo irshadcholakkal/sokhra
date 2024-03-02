@@ -88,7 +88,8 @@ class _PasswordResetOtpState extends State<PasswordResetOtp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColorScheme.backgroundColorLight,
+      backgroundColor:Theme.of(context).canvasColor,
+      // AppColorScheme.backgroundColorLight,
       body: SafeArea(
         child: SingleChildScrollView(
           child: BlocListener<SignInBloc, SignInState>(

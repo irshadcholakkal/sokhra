@@ -83,7 +83,6 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
   TextStyle? get _hintStyle => Theme.of(context).textTheme.bodyMedium?.copyWith(
         color: Theme.of(context).colorScheme.inverseSurface.withOpacity(0.45),
         fontSize: 14,
-        fontFamily: AppConstants.defaultFont,
         fontWeight: FontWeight.w400,
         letterSpacing: 0.25,
       );
@@ -91,7 +90,6 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
       Theme.of(context).textTheme.bodyMedium?.copyWith(
             color: AppColorScheme.grey,
             fontSize: 11,
-            fontFamily: AppConstants.defaultFont,
             fontWeight: FontWeight.w400,
             letterSpacing: 0.25,
           );
@@ -204,7 +202,6 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                                   ?.copyWith(
                                     color: AppColorScheme.onBlack,
                                     fontSize: 16,
-                                    fontFamily: AppConstants.defaultFont,
                                     fontWeight: FontWeight.w600,
                                   ),
                             ),
@@ -245,7 +242,6 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                                   color:
                                       AppColorScheme.onBlack.withOpacity(0.50),
                                   fontSize: 12,
-                                  fontFamily: AppConstants.defaultFont,
                                   fontWeight: FontWeight.w400,
                                 ),
                           ),
@@ -374,7 +370,6 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: AppColorScheme.onPrimaryLight,
                     fontSize: 14,
-                    fontFamily: AppConstants.defaultFont,
                     fontWeight: FontWeight.w500,
                   ),
             ),
@@ -536,7 +531,6 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: Color(0xFF4B454D).withOpacity(0.75),
                       fontSize: 11,
-                      fontFamily: AppConstants.defaultFont,
                       fontWeight: FontWeight.w400,
                       letterSpacing: 0.50,
                     ),
@@ -875,7 +869,6 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 color: Color(0xFF4B454D),
                 fontSize: 11,
-                fontFamily: AppConstants.defaultFont,
                 fontWeight: FontWeight.w500,
               )),
       initialValue: widget.addressData?.isDefault ?? false,

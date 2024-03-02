@@ -736,17 +736,7 @@ class _SearchPageState extends State<SearchPage> {
   int selectedIndexBrand = 0;
   int _selectedSubCategoryIndex = 0;
 
-// List<String> _items = [
-//   "All drinks",
-//   "Sugar free",
-//   "Soft drinks",
-//   "Cool drinks",
-//   "Soft drinks",
-// ];
   List<String> _itemSortBy = [
-    // "All ",
-    // "Price : Low to high",
-    // "Price : High to low",
     translation.of('search_page.all'),
     translation.of('search_page.low_high'),
     translation.of('search_page.high_low'),
@@ -839,7 +829,7 @@ class _SearchPageState extends State<SearchPage> {
               children: [
                 _appBar(),
                 SizedBox(
-                  height: 20,
+                  height: AppConstants.defaultPadding,
                 ),
                 _tabItems(),
                 SizedBox(
@@ -954,11 +944,14 @@ class _SearchPageState extends State<SearchPage> {
                               alignment: Alignment.topLeft,
                               child: Text(
                                 "No results found for “${_search.text}”",
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'Poppins',
-                                    fontWeight: FontWeight.w500,
-                                    color: Color(0xFF1D1A20).withOpacity(0.50)),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText1
+                                    ?.copyWith(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500,
+                                        color: AppColorScheme.onBlack
+                                            .withOpacity(0.50)),
                               ),
                             ),
                           );
@@ -1044,7 +1037,7 @@ class _SearchPageState extends State<SearchPage> {
             child: SingleChildScrollView(
               controller: _scrollController,
               physics: AlwaysScrollableScrollPhysics(),
-              padding: EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(AppConstants.defaultPadding * 0.4),
               child: BlocConsumer<SubcategoryItemsBloc, SubcategoryItemsState>(
                 listener: (context, state) {
                   if (state is SubcategoryItemsLoaded) {
@@ -1056,7 +1049,8 @@ class _SearchPageState extends State<SearchPage> {
                     return GridView.builder(
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
-                      padding: EdgeInsets.all(8.0),
+                      padding:
+                          EdgeInsets.all(AppConstants.defaultPadding * 0.4),
                       gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                         maxCrossAxisExtent: 240,
                         childAspectRatio: 136 / 240,
@@ -1306,9 +1300,11 @@ class _SearchPageState extends State<SearchPage> {
                 child: Center(
                   child: Text(
                     translation.isArabic
-                        ? subCategoryListWithAll[index].nameAr??subCategoryListWithAll[index].nameEn!
+                        ? subCategoryListWithAll[index].nameAr ??
+                            subCategoryListWithAll[index].nameEn!
                         : translation.isFrench
-                            ? subCategoryListWithAll[index].nameFr??subCategoryListWithAll[index].nameEn!
+                            ? subCategoryListWithAll[index].nameFr ??
+                                subCategoryListWithAll[index].nameEn!
                             : subCategoryListWithAll[index].nameEn!,
                     // widget.subCategoryList[index].nameEn!,
                     //_items[index],
@@ -1432,11 +1428,15 @@ class _SearchPageState extends State<SearchPage> {
                               child: Center(
                                 child: Text(
                                   translation.isArabic
-                                      ? widget.subCategoryList[index].nameAr??widget.subCategoryList[index].nameEn!
+                                      ? widget.subCategoryList[index].nameAr ??
+                                          widget.subCategoryList[index].nameEn!
                                       : translation.isFrench
-                                          ? widget
-                                              .subCategoryList[index].nameFr??widget.subCategoryList[index].nameEn!
-                                          : widget.subCategoryList[index].nameEn!,
+                                          ? widget.subCategoryList[index]
+                                                  .nameFr ??
+                                              widget.subCategoryList[index]
+                                                  .nameEn!
+                                          : widget
+                                              .subCategoryList[index].nameEn!,
                                   //_items[index],
                                   style: TextStyle(
                                     color: _selectedSubCategoryIndex == index
@@ -1533,7 +1533,7 @@ class _SearchPageState extends State<SearchPage> {
                   ),
                   Text(
                     translation.of('search_page.brand'),
-                   // 'Brand',
+                    // 'Brand',
                     style: TextStyle(
                       color: Color(0xFF1D1A20),
                       fontSize: 16,
@@ -1597,13 +1597,11 @@ class _SearchPageState extends State<SearchPage> {
                       ElevatedButton(
                         onPressed: () {},
                         child: Text(
-                           translation.of('search_page.reset_filter'),
+                          translation.of('search_page.reset_filter'),
                           //"Reset Filter",
                           style: TextStyle(
                             color: AppColorScheme.primaryColor,
-                            fontSize: translation.isFrench?
-                            12:
-                            16,
+                            fontSize: translation.isFrench ? 12 : 16,
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w500,
                           ),
@@ -1632,9 +1630,7 @@ class _SearchPageState extends State<SearchPage> {
                           //"Apply Filter",
                           style: TextStyle(
                             color: AppColorScheme.onPrimaryLight,
-                            fontSize: translation.isFrench?
-                            12:
-                            16,
+                            fontSize: translation.isFrench ? 12 : 16,
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w500,
                           ),
@@ -1802,7 +1798,7 @@ class _SearchPageState extends State<SearchPage> {
           ...title,
         ],
         CircleAvatar(
-          backgroundColor: Color(0xFFF5F5F5),
+          backgroundColor: AppColorScheme.backgroundColorLight,
           // radius: 24,
           radius: 14,
           child: CustomNetworkImage(

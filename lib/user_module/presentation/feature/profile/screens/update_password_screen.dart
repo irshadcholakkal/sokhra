@@ -115,7 +115,7 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                               style: Theme.of(context).textTheme.subtitle1?.copyWith(
                                 color: Color(0xFF1D1B1E),
                                 fontSize: 16,
-                                fontFamily: AppConstants.defaultFont,
+                                
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -129,7 +129,6 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                             const AppPadding(dividedBy: 2),
                             _confirmPasswordTextField(),
                             const AppPadding(),
-                            // const AppPadding(multipliedBy: 4),
                           ],
                         ),
                       ),
@@ -138,47 +137,7 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                 ),
               ),
             ),
-            // SizedBox(
-            //   // width: double.infinity,
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.spaceAround,
-            //     children: [
-            //       ElevatedButton(
-            //           onPressed: () {
-            //             Navigator.pop(context);
-            //           },
-            //           style: ElevatedButton.styleFrom(
-            //             backgroundColor:
-            //                 Color(0xFFF7F2FA),
-            //           ),
-            //           child: Text(
-            //             translation.of("cancel").toUpperCase(),
-            //             textAlign: TextAlign.center,
-            //             style: Theme.of(context).textTheme.subtitle1?.copyWith(
-            //               color: AppColorScheme.primaryColor,
-            //               fontSize: 16,
-            //               fontFamily: AppConstants.defaultFont,
-            //               fontWeight: FontWeight.w500,
-            //             ),
-            //           )),
-            //       ElevatedButton(
-            //         onPressed: _submitForm,
-            //         child: _loading
-            //             ? const CupertinoActivityIndicator()
-            //             : Text(
-            //                 translation.of("save").toUpperCase(),
-            //                 textAlign: TextAlign.center,
-            //                 style: Theme.of(context).textTheme.subtitle1?.copyWith(
-            //                   //color: AppColorScheme.primaryColor,
-            //                   fontSize: 16,
-            //                   fontFamily: AppConstants.defaultFont,
-            //                   fontWeight: FontWeight.w500,
-            //                 ),
-            //               ),
-            //       ),
-            //     ],
-            //   ),
-            // ),
+            
 
             SizedBox(
               height: 56,
@@ -202,7 +161,7 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                           style: Theme.of(context).textTheme.subtitle1?.copyWith(
                             color: AppColorScheme.primaryColor,
                             fontSize: 14,
-                            fontFamily: AppConstants.defaultFont,
+                            
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -227,7 +186,7 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                                 style: Theme.of(context).textTheme.subtitle1?.copyWith(
                                   color: AppColorScheme.onPrimaryLight,
                                   fontSize: 14,
-                                  fontFamily: AppConstants.defaultFont,
+                                  
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
@@ -253,7 +212,7 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
           style: Theme.of(context).textTheme.subtitle1?.copyWith(
             color: AppColorScheme.inActive.withOpacity(0.75),
             fontSize: 11,
-            fontFamily: AppConstants.defaultFont,
+            
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -283,60 +242,7 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
             ),
           ]),
         )
-        //     FormBuilderTextField(
-        //       style: Theme.of(context).textTheme.subtitle1?.copyWith(
-        //         color: AppColorScheme.inActive,
-        //         fontSize: 14,
-        //         fontFamily: AppConstants.defaultFont,
-        //         fontWeight: FontWeight.w400,
-        //       ),
-        //       name: 'currentPassword',
-        //       decoration: InputDecoration(
-        //           fillColor: Color(0xFFF7F2FA),
-        //           enabledBorder:
-        //           OutlineInputBorder(
-        //   borderSide:
-        //       BorderSide(
-        //      // width: 5,
-        //       color: Color(0xFFF7F2FA),),
-        //   borderRadius: BorderRadius.circular(10.0),
-        // ),
-        // focusedBorder:  OutlineInputBorder(
-        //   borderSide:
-        //       BorderSide(
-        //      // width: 5,
-        //       color: Color(0xFFF7F2FA),),
-        //   borderRadius: BorderRadius.circular(10.0),
-        // ),
-        //           //border:OutlineInputBorder(borderRadius: BorderRadius.circular(0)),
-        //           hintText: translation.of("user.current_password"),
-        //           // prefixIcon: Icon(
-        //           //   MdiIcons.lockOutline,
-        //           //   color: Theme.of(context).colorScheme.primary,
-        //           // ),
-        //           suffixIcon: IconButton(
-        //               onPressed: () {
-        //                 setState(() {
-        //                   _isCurrentPasswordVisible = !_isCurrentPasswordVisible;
-        //                 });
-        //               },
-        //               icon: Icon(_isCurrentPasswordVisible
-        //                   ? Iconsax.eye_slash
-        //                   : Iconsax.eye))),
-        //       // decoration: InputDecoration(
-        //       //   labelText: translation.of("user.current_password"),
-        //       //   prefixIcon: const Icon(MdiIcons.lockOutline),
-        //       // ),
-        //       obscureText: !_isCurrentPasswordVisible,
-        //       obscuringCharacter: '*',
-        //       textInputAction: TextInputAction.next,
-        //       validator: FormBuilderValidators.compose([
-        //         FormBuilderValidators.required(),
-        //       ]),
-        //       onChanged: (value) {
-        //         _formKey.currentState?.fields['currentPassword']?.validate();
-        //       },
-        //     ),
+        
       ],
     );
   }
@@ -351,7 +257,7 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
           style: Theme.of(context).textTheme.subtitle1?.copyWith(
             color: AppColorScheme.inActive.withOpacity(0.75),
             fontSize: 11,
-            fontFamily: AppConstants.defaultFont,
+            
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -362,7 +268,7 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
           controller: _newPassword,
           hintText: translation.of("user.new_password"),
           hintStyle:
-              Theme.of(context).textTheme.subtitle1?.copyWith(color: AppColorScheme.grey, fontFamily:AppConstants.defaultFont),
+              Theme.of(context).textTheme.subtitle1?.copyWith(color: AppColorScheme.grey, ),
           fillColor: AppColorScheme.backgroundLight,
           enabled: !_loading,
           obscureText: !_isNewPasswordVisible,
@@ -381,61 +287,7 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
             ),
           ]),
         )
-        //     FormBuilderTextField(
-        //       style: Theme.of(context).textTheme.subtitle1?.copyWith(
-        //         color: AppColorScheme.inActive,
-        //         fontSize: 14,
-        //         fontFamily: AppConstants.defaultFont,
-        //         fontWeight: FontWeight.w400,
-        //       ),
-        //       name: 'password',
-        //       decoration: InputDecoration(
-        //           fillColor: Color(0xFFF7F2FA),
-        //           enabledBorder:
-        //           OutlineInputBorder(
-        //   borderSide:
-        //       BorderSide(
-        //      // width: 5,
-        //       color: Color(0xFFF7F2FA),),
-        //   borderRadius: BorderRadius.circular(10.0),
-        // ),
-        // focusedBorder:  OutlineInputBorder(
-        //   borderSide:
-        //       BorderSide(
-        //      // width: 5,
-        //       color: Color(0xFFF7F2FA),),
-        //   borderRadius: BorderRadius.circular(10.0),
-        // ),
-        //           // border:
-        //           //     OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-        //           hintText: translation.of("user.new_password"),
-        //           // prefixIcon: Icon(
-        //           //   MdiIcons.lockOutline,
-        //           //   color: Theme.of(context).colorScheme.primary,
-        //           // ),
-        //           suffixIcon: IconButton(
-        //               onPressed: () {
-        //                 setState(() {
-        //                   _isNewPasswordVisible = !_isNewPasswordVisible;
-        //                 });
-        //               },
-        //               icon: Icon(_isNewPasswordVisible
-        //                   ? Iconsax.eye_slash
-        //                   : Iconsax.eye))),
-        //       // decoration: InputDecoration(
-        //       //   labelText: translation.of("user.new_password"),
-        //       //   prefixIcon: const Icon(MdiIcons.lockOutline),
-        //       // ),
-        //       obscureText: !_isNewPasswordVisible,
-        //       obscuringCharacter: "*",
-        //       textInputAction: TextInputAction.next,
-        //       validator: (value) {
-        //         return Validate.password(value);
-        //       },
-        //       onChanged: (value) {
-        //         _formKey.currentState?.fields['password']?.validate();
-        //       },
-        //     ),
+       
       ],
     );
   }
@@ -450,7 +302,7 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
           style: Theme.of(context).textTheme.subtitle1?.copyWith(
             color: AppColorScheme.inActive.withOpacity(0.75),
             fontSize: 11,
-            fontFamily: AppConstants.defaultFont,
+            
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -461,7 +313,7 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
           controller: _confirmPassword,
           hintText: translation.of("user.confirm_password"),
           hintStyle:
-              Theme.of(context).textTheme.subtitle1?.copyWith(color: AppColorScheme.grey, fontFamily: AppConstants.defaultFont),
+              Theme.of(context).textTheme.subtitle1?.copyWith(color: AppColorScheme.grey, ),
           fillColor: AppColorScheme.backgroundLight,
           enabled: !_loading,
           obscureText: !_isConfirmPasswordVisible,
@@ -487,66 +339,7 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
             ),
           ]),
         )
-        //     FormBuilderTextField(
-        //       style: Theme.of(context).textTheme.subtitle1?.copyWith(
-        //         color: AppColorScheme.inActive,
-        //         fontSize: 14,
-        //         fontFamily: AppConstants.defaultFont,
-        //         fontWeight: FontWeight.w400,
-        //       ),
-        //       name: 'confirmPassword',
-        //       decoration: InputDecoration(
-        //           fillColor: Color(0xFFF7F2FA),
-        //           enabledBorder:
-        //           OutlineInputBorder(
-        //   borderSide:
-        //       BorderSide(
-        //      // width: 5,
-        //       color: Color(0xFFF7F2FA),),
-        //   borderRadius: BorderRadius.circular(10.0),
-        // ),
-        // focusedBorder:  OutlineInputBorder(
-        //   borderSide:
-        //       BorderSide(
-        //      // width: 5,
-        //       color: Color(0xFFF7F2FA),),
-        //   borderRadius: BorderRadius.circular(10.0),
-        // ),
-        //           // border:
-        //           //     OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-        //           hintText: translation.of("user.confirm_password"),
-        //           // prefixIcon: Icon(
-        //           //   MdiIcons.lockOutline,
-        //           //   color: Theme.of(context).colorScheme.primary,
-        //           // )
-        //           suffixIcon: IconButton(
-        //               onPressed: () {
-        //                 setState(() {
-        //                   _isConfirmPasswordVisible = !_isConfirmPasswordVisible;
-        //                 });
-        //               },
-        //               icon: Icon(_isConfirmPasswordVisible
-        //                   ? Iconsax.eye_slash
-        //                   : Iconsax.eye))),
-        //       // decoration: InputDecoration(
-        //       //   labelText: translation.of("user.confirm_password"),
-        //       //   prefixIcon: const Icon(MdiIcons.lockOutline),
-        //       // ),
-        //       obscureText: !_isConfirmPasswordVisible,
-        //       obscuringCharacter: "*",
-        //       textInputAction: TextInputAction.done,
-        //       validator: (value) {
-        //         return Validate.equal(
-        //           _formKey.currentState?.fields['password']?.value
-        //               ?.trim()
-        //               ?.toString(),
-        //           value,
-        //         );
-        //       },
-        //       onChanged: (value) {
-        //         _formKey.currentState?.fields['confirmPassword']?.validate();
-        //       },
-        //     ),
+        
       ],
     );
   }

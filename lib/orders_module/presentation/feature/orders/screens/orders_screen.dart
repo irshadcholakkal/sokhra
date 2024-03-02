@@ -39,159 +39,164 @@ class _OrdersScreenState extends State<OrdersScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColorScheme.surfaceColorLight,
-      appBar: SimpleAppBar(
-          title: translation.of("orders.my_orders"), ontap: widget.onPress),
-      body: RefreshIndicator(
-        onRefresh: () {
-          return Future.delayed(
-            const Duration(milliseconds: 500),
-            _fetchOrders,
-          );
-        },
-        child: authentication.isAuthenticated?
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: 10),
-          child: SingleChildScrollView(
-            child:
-                BlocBuilder<OrderBloc, OrderState>(builder: (context, state) {
-              if (state is FetchOrdersLoading) {
-                return Center(
-                  child: CircularProgressIndicator(
-                    color: AppColorScheme.primaryColor,
-                  ),
-                );
-              }
-              if (state is FetchOrdersSuccess) {
-                final orders = state.orders;
+        backgroundColor: AppColorScheme.surfaceColorLight,
+        appBar: SimpleAppBar(
+            title: translation.of("orders.my_orders"), ontap: widget.onPress),
+        body: RefreshIndicator(
+            onRefresh: () {
+              return Future.delayed(
+                const Duration(milliseconds: 500),
+                _fetchOrders,
+              );
+            },
+            child: authentication.isAuthenticated
+                ? Container(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: SingleChildScrollView(
+                      child: BlocBuilder<OrderBloc, OrderState>(
+                          builder: (context, state) {
+                        if (state is FetchOrdersLoading) {
+                          return Center(
+                            child: CircularProgressIndicator(
+                              color: AppColorScheme.primaryColor,
+                            ),
+                          );
+                        }
+                        if (state is FetchOrdersSuccess) {
+                          final orders = state.orders;
 
-                final List<Order> activeOrders = orders
-                    .where((order) =>
-                        order.status == OrderStatus.PENDING ||
-                        order.status == OrderStatus.DISPATCHED)
-                    .toList();
-                final List<Order> orderHistory = orders
-                    .where((order) =>
-                        order.status != OrderStatus.PENDING &&
-                        order.status != OrderStatus.DISPATCHED)
-                    .toList();
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      translation.of('orders.active_orders'),
-                     // 'Active Orders',
-                      style: Theme.of(context).textTheme.subtitle1?.copyWith(
-                        color: Color(0xFF1D1B1E),
-                        fontSize: 16,
-                        fontFamily: AppConstants.defaultFont,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    activeOrders.isNotEmpty
-                        ? ListView.builder(
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            itemCount: activeOrders.length,
-                            itemBuilder: (context, index) {
-                              final order = activeOrders[index];
-                              return  _orderCard(order: order);
-                              //_activeOrdersList();
-                            },
-                          )
-                        : Center(
-                            child: Text(
-                              translation.of('orders.no_active_orders'),
-                             // 'no_active_orders'
+                          final List<Order> activeOrders = orders
+                              .where((order) =>
+                                  order.status == OrderStatus.PENDING ||
+                                  order.status == OrderStatus.DISPATCHED)
+                              .toList();
+                          final List<Order> orderHistory = orders
+                              .where((order) =>
+                                  order.status != OrderStatus.PENDING &&
+                                  order.status != OrderStatus.DISPATCHED)
+                              .toList();
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                translation.of('orders.active_orders'),
+                                // 'Active Orders',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .subtitle1
+                                    ?.copyWith(
+                                      color: Color(0xFF1D1B1E),
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                    ),
                               ),
-                          ),
-                    Text(
-                      translation.of('orders.order_history'),
-                     // 'Order history',
-                      style: Theme.of(context).textTheme.subtitle1?.copyWith(
-                        color: Color(0xFF1D1B1E),
-                        fontSize: 16,
-                        fontFamily: AppConstants.defaultFont,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    orderHistory.isNotEmpty
-                        ? ListView.builder(
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            itemCount: orderHistory.length,
-                            itemBuilder: (context, index) {
-                              final order = orderHistory[index];
-                              return _orderCard(order: order);
-                            },
-                          )
-                        : Center(
-                            child: Text(
-                              translation.of('orders.no_any_orders'),
-                              //"No any Orders"
+                              activeOrders.isNotEmpty
+                                  ? ListView.builder(
+                                      shrinkWrap: true,
+                                      physics: NeverScrollableScrollPhysics(),
+                                      itemCount: activeOrders.length,
+                                      itemBuilder: (context, index) {
+                                        final order = activeOrders[index];
+                                        return _orderCard(order: order);
+                                        //_activeOrdersList();
+                                      },
+                                    )
+                                  : Center(
+                                      child: Text(
+                                        translation
+                                            .of('orders.no_active_orders'),
+                                        // 'no_active_orders'
+                                      ),
+                                    ),
+                              Text(
+                                translation.of('orders.order_history'),
+                                // 'Order history',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .subtitle1
+                                    ?.copyWith(
+                                      color: Color(0xFF1D1B1E),
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                    ),
                               ),
-                          ),
-                  ],
-                );
-              }
-              if (state is FetchOrdersFailed) {
-                return Center(
-                  child: Text(state.message.toString()),
-                );
-              }
-              return SizedBox();
-            }),
-          ),
-        ):GuestSignIn()
+                              orderHistory.isNotEmpty
+                                  ? ListView.builder(
+                                      shrinkWrap: true,
+                                      physics: NeverScrollableScrollPhysics(),
+                                      itemCount: orderHistory.length,
+                                      itemBuilder: (context, index) {
+                                        final order = orderHistory[index];
+                                        return _orderCard(order: order);
+                                      },
+                                    )
+                                  : Center(
+                                      child: Text(
+                                        translation.of('orders.no_any_orders'),
+                                        //"No any Orders"
+                                      ),
+                                    ),
+                            ],
+                          );
+                        }
+                        if (state is FetchOrdersFailed) {
+                          return Center(
+                            child: Text(state.message.toString()),
+                          );
+                        }
+                        return SizedBox();
+                      }),
+                    ),
+                  )
+                : GuestSignIn()
 
-        // child: SingleChildScrollView(
-        //   controller: _scrollController,
-        //   physics: AlwaysScrollableScrollPhysics(),
-        //   padding: const EdgeInsets.symmetric(
-        //     horizontal: AppConstants.defaultPadding / 2,
-        //   ),
-        //   child: Column(
-        //     children: [
-        // AppPadding(dividedBy: 2),
-        // BlocBuilder<OrderBloc, OrderState>(
-        //   builder: (context, state) {
-        //     if (state is FetchOrdersSuccess) {
-        //       final orders = state.orders;
-        //   if (orders.isNotEmpty) {
-        //     return ListView.builder(
-        //       shrinkWrap: true,
-        //       itemCount: orders.length,
-        //       physics: NeverScrollableScrollPhysics(),
-        //       itemBuilder: (context, index) {
-        //         final order = orders[index];
-        //         return OrderCard(order: order);
-        //       },
-        //     );
-        //   }
-        //   return SizedBox(
-        //     height: 300,
-        //     child: Center(
-        //       child: Text("Orders is empty"),
-        //     ),
-        //   );
-        // }
-        //     return LoadingOrErrorIndicator(
-        //       padding: const EdgeInsets.only(
-        //         top: AppConstants.defaultPadding * 2,
-        //         bottom: AppConstants.defaultPadding,
-        //       ),
-        //       isLoading: state is! FetchOrdersFailed,
-        //       error: state.errorMessage,
-        //       onRetry: _fetchOrders,
-        //     );
-        //   },
-        // ),
-        // AppPadding(dividedBy: 2),
-        //   ],
-        // ),
-        // ),
-      )
-    );
+            // child: SingleChildScrollView(
+            //   controller: _scrollController,
+            //   physics: AlwaysScrollableScrollPhysics(),
+            //   padding: const EdgeInsets.symmetric(
+            //     horizontal: AppConstants.defaultPadding / 2,
+            //   ),
+            //   child: Column(
+            //     children: [
+            // AppPadding(dividedBy: 2),
+            // BlocBuilder<OrderBloc, OrderState>(
+            //   builder: (context, state) {
+            //     if (state is FetchOrdersSuccess) {
+            //       final orders = state.orders;
+            //   if (orders.isNotEmpty) {
+            //     return ListView.builder(
+            //       shrinkWrap: true,
+            //       itemCount: orders.length,
+            //       physics: NeverScrollableScrollPhysics(),
+            //       itemBuilder: (context, index) {
+            //         final order = orders[index];
+            //         return OrderCard(order: order);
+            //       },
+            //     );
+            //   }
+            //   return SizedBox(
+            //     height: 300,
+            //     child: Center(
+            //       child: Text("Orders is empty"),
+            //     ),
+            //   );
+            // }
+            //     return LoadingOrErrorIndicator(
+            //       padding: const EdgeInsets.only(
+            //         top: AppConstants.defaultPadding * 2,
+            //         bottom: AppConstants.defaultPadding,
+            //       ),
+            //       isLoading: state is! FetchOrdersFailed,
+            //       error: state.errorMessage,
+            //       onRetry: _fetchOrders,
+            //     );
+            //   },
+            // ),
+            // AppPadding(dividedBy: 2),
+            //   ],
+            // ),
+            // ),
+            ));
   }
 
   void _fetchOrders([bool reFetch = true]) {
@@ -222,7 +227,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
   //                     style: Theme.of(context).textTheme.subtitle1?.copyWith(
   //                       color: Color(0xFF1D1B1E),
   //                       fontSize: 11,
-  //                       fontFamily: AppConstants.defaultFont,
+  //
   //                       fontWeight: FontWeight.w500,
   //                     ),
   //                   ),
@@ -233,7 +238,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
   //                       style: Theme.of(context).textTheme.subtitle1?.copyWith(
   //                         color: Color(0xFFF2994A),
   //                         fontSize: 8,
-  //                         fontFamily: AppConstants.defaultFont,
+  //
   //                         fontWeight: FontWeight.w400,
   //                       ),
   //                     ),
@@ -247,7 +252,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
   //                     style: Theme.of(context).textTheme.subtitle1?.copyWith(
   //                       color: Color(0xFF1D1B1E),
   //                       fontSize: 9,
-  //                       fontFamily: AppConstants.defaultFont,
+  //
   //                       fontWeight: FontWeight.w400,
   //                     ),
   //                   ),
@@ -264,7 +269,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
   //                     style: Theme.of(context).textTheme.subtitle1?.copyWith(
   //                       color: Color(0xFF1D1A20),
   //                       fontSize: 7.41,
-  //                       fontFamily: AppConstants.defaultFont,
+  //
   //                       fontWeight: FontWeight.w400,
   //                     ),
   //                   ),
@@ -273,7 +278,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
   //                     style: Theme.of(context).textTheme.subtitle1?.copyWith(
   //                       color: Color(0xFF1D1A20),
   //                       fontSize: 7.41,
-  //                       fontFamily: AppConstants.defaultFont,
+  //
   //                       fontWeight: FontWeight.w400,
   //                     ),
   //                   ),
@@ -293,7 +298,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
   //                     style: Theme.of(context).textTheme.subtitle1?.copyWith(
   //                       color: Color(0xFF1D1B1E),
   //                       fontSize: 9.26,
-  //                       fontFamily: AppConstants.defaultFont,
+  //
   //                       fontWeight: FontWeight.w400,
   //                     ),
   //                   ),
@@ -339,11 +344,10 @@ class _OrdersScreenState extends State<OrdersScreen> {
                       "${order.orderNumber}",
                       // '#SE9865742',
                       style: Theme.of(context).textTheme.subtitle1?.copyWith(
-                        color: Color(0xFF1D1B1E),
-                        fontSize: 11,
-                        fontFamily: AppConstants.defaultFont,
-                        fontWeight: FontWeight.w500,
-                      ), 
+                            color: Color(0xFF1D1B1E),
+                            fontSize: 11,
+                            fontWeight: FontWeight.w500,
+                          ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 8.0),
@@ -351,11 +355,10 @@ class _OrdersScreenState extends State<OrdersScreen> {
                         '${getStatus(order.status!)}',
                         //'Delivered',
                         style: Theme.of(context).textTheme.subtitle1?.copyWith(
-                          color: getColor(order.status!),
-                          fontSize: 8,
-                          fontFamily: AppConstants.defaultFont,
-                          fontWeight: FontWeight.w400,
-                        ),
+                              color: getColor(order.status!),
+                              fontSize: 8,
+                              fontWeight: FontWeight.w400,
+                            ),
                       ),
                     ),
                   ],
@@ -363,14 +366,13 @@ class _OrdersScreenState extends State<OrdersScreen> {
                 Row(
                   children: [
                     Text(
-                     '${formattedDateTime(order.createdAt)}',
+                      '${formattedDateTime(order.createdAt)}',
                       //'12 Dec 2023',
                       style: Theme.of(context).textTheme.subtitle1?.copyWith(
-                        color: Color(0xFF1D1B1E),
-                        fontSize: 9,
-                        fontFamily: AppConstants.defaultFont,
-                        fontWeight: FontWeight.w400,
-                      ),
+                            color: Color(0xFF1D1B1E),
+                            fontSize: 9,
+                            fontWeight: FontWeight.w400,
+                          ),
                     ),
                     SizedBox(
                       width: 3,
@@ -383,20 +385,18 @@ class _OrdersScreenState extends State<OrdersScreen> {
                     Text(
                       ' Noon',
                       style: Theme.of(context).textTheme.subtitle1?.copyWith(
-                        color: Color(0xFF1D1A20),
-                        fontSize: 7.41,
-                        fontFamily: AppConstants.defaultFont,
-                        fontWeight: FontWeight.w400,
-                      ),
+                            color: Color(0xFF1D1A20),
+                            fontSize: 7.41,
+                            fontWeight: FontWeight.w400,
+                          ),
                     ),
                     Text(
                       ' 02:30 PM',
                       style: Theme.of(context).textTheme.subtitle1?.copyWith(
-                        color: Color(0xFF1D1A20),
-                        fontSize: 7.41,
-                        fontFamily: AppConstants.defaultFont,
-                        fontWeight: FontWeight.w400,
-                      ),
+                            color: Color(0xFF1D1A20),
+                            fontSize: 7.41,
+                            fontWeight: FontWeight.w400,
+                          ),
                     ),
                   ],
                 ),
@@ -410,14 +410,13 @@ class _OrdersScreenState extends State<OrdersScreen> {
                       ThemeAssets.location,
                     ),
                     Text(
-                       ' ${order.shippingDetails?.type ?? "Unknown"}',
+                      ' ${order.shippingDetails?.type ?? "Unknown"}',
                       //' Home',
                       style: Theme.of(context).textTheme.subtitle1?.copyWith(
-                        color: Color(0xFF1D1B1E),
-                        fontSize: 9.26,
-                        fontFamily: AppConstants.defaultFont,
-                        fontWeight: FontWeight.w400,
-                      ),
+                            color: Color(0xFF1D1B1E),
+                            fontSize: 9.26,
+                            fontWeight: FontWeight.w400,
+                          ),
                     ),
                   ],
                 ),
@@ -437,10 +436,9 @@ class _OrdersScreenState extends State<OrdersScreen> {
               itemCount: order.orders?.length,
               itemBuilder: (context, index) {
                 return _productCard(
-                  product: order.orders![index].productInfo?.name,
-                  productVariant: order.orders![index].productInfo?.variant,
-                  productPrice: order.orders![index].pricing!
-                );
+                    product: order.orders![index].productInfo?.name,
+                    productVariant: order.orders![index].productInfo?.variant,
+                    productPrice: order.orders![index].pricing!);
               },
             ),
           ),
@@ -451,8 +449,8 @@ class _OrdersScreenState extends State<OrdersScreen> {
 
   Widget _productCard({
     required product,
-   required  productVariant,
-   required OrderProductPricing productPrice,
+    required productVariant,
+    required OrderProductPricing productPrice,
   }) {
     return Container(
         margin: EdgeInsetsDirectional.only(bottom: 16),
@@ -502,7 +500,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                   //   fit: BoxFit.contain,
                   // ),
                   ),
-              SizedBox(width: AppConstants.defaultPadding* 0.4),
+              SizedBox(width: AppConstants.defaultPadding * 0.4),
               Expanded(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -516,7 +514,6 @@ class _OrdersScreenState extends State<OrdersScreen> {
                       style: Theme.of(context).textTheme.caption?.copyWith(
                             fontWeight: FontWeight.w500,
                             fontSize: 14,
-                            fontFamily: AppConstants.defaultFont,
                             color: Theme.of(context).colorScheme.onBackground,
                           ),
                       maxLines: 2,
@@ -541,7 +538,6 @@ class _OrdersScreenState extends State<OrdersScreen> {
                           //'500 mL',
                           style: Theme.of(context).textTheme.caption?.copyWith(
                                 fontSize: 9.05,
-                                fontFamily: AppConstants.defaultFont,
                                 fontWeight: FontWeight.w500,
                                 color: Color(0xFF1D1A20),
                               ),
@@ -560,7 +556,6 @@ class _OrdersScreenState extends State<OrdersScreen> {
                                 Theme.of(context).textTheme.caption?.copyWith(
                                       color: AppColorScheme.primaryColor,
                                       fontSize: 12.57,
-                                      fontFamily: AppConstants.defaultFont,
                                       fontWeight: FontWeight.w400,
                                     ),
                           ),
@@ -571,7 +566,6 @@ class _OrdersScreenState extends State<OrdersScreen> {
                                 Theme.of(context).textTheme.caption?.copyWith(
                                       color: AppColorScheme.primaryColor,
                                       fontSize: 17.29,
-                                      fontFamily: AppConstants.defaultFont,
                                       fontWeight: FontWeight.w400,
                                     ),
                           ),
@@ -590,22 +584,22 @@ class _OrdersScreenState extends State<OrdersScreen> {
     switch (status) {
       case OrderStatus.PENDING:
         return translation.of('orders.active');
-        //"Active";
+      //"Active";
       case OrderStatus.DISPATCHED:
         return translation.of('orders.dispatched');
-        //"Dispatched";
+      //"Dispatched";
       case OrderStatus.DELIVERED:
         return translation.of('orders.delivered');
-        //"Delivered";
+      //"Delivered";
       case OrderStatus.DECLINED:
         return translation.of('orders.declined');
-        //"Declined";
+      //"Declined";
       case OrderStatus.CANCELLED:
         return translation.of('orders.cancelled');
-        //"Cancelled";
+      //"Cancelled";
       case OrderStatus.DISPATCH_HELD:
         return translation.of('orders.dispatch_held');
-        //"Dispatch held";
+      //"Dispatch held";
       default:
         return "";
     }

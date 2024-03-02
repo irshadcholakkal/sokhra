@@ -78,7 +78,8 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColorScheme.backgroundColorLight,
+      backgroundColor:Theme.of(context).canvasColor,
+      // AppColorScheme.backgroundColorLight,
       body: SafeArea(
         child: SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: AppConstants.defaultPadding),
@@ -148,7 +149,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                               Theme.of(context).textTheme.subtitle1?.copyWith(
                                     color: AppColorScheme.onBlack,
                                     fontSize: 22,
-                                    fontFamily: AppConstants.defaultFont,
+                                    
                                     fontWeight: FontWeight.w500,
                                   ),
                         ),
@@ -163,7 +164,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                                       .colorScheme
                                       .onBackground
                                       .withOpacity(0.5),
-                                  fontFamily: AppConstants.defaultFont),
+                                  ),
                         )
                       ],
                     ),
@@ -213,7 +214,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                                 fontSize: 14.0,
                                 fontWeight: FontWeight.w400,
                                 color: AppColorScheme.textFieldHintColor,
-                                fontFamily: AppConstants.defaultFont),
+                                ),
                         border: _border,
                         enabledBorder: _border,
                         focusedBorder: _border,
@@ -274,8 +275,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                                               .textTheme
                                               .subtitle1
                                               ?.copyWith(
-                                                fontFamily:
-                                                    AppConstants.defaultFont,
+                                               
                                                 fontWeight: FontWeight.w500,
                                                 color: AppColorScheme
                                                     .backgroundColorLight,
@@ -305,7 +305,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                                       color: AppColorScheme.onBlack
                                           .withOpacity(0.5),
                                       fontSize: 12,
-                                      fontFamily: AppConstants.defaultFont),
+                                      ),
                             ),
                             TextSpan(
                               text: ' ',
@@ -317,7 +317,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                                       color: AppColorScheme.onBlack
                                           .withOpacity(0.5),
                                       fontSize: 12,
-                                      fontFamily: AppConstants.defaultFont),
+                                      ),
                             ),
                             TextSpan(
                               text: translation.of("user.sign_in"),
@@ -328,7 +328,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                                       fontWeight: FontWeight.w400,
                                       color: AppColorScheme.primaryColor,
                                       fontSize: 12,
-                                      fontFamily: AppConstants.defaultFont),
+                                      ),
                             ),
                           ],
                         ),

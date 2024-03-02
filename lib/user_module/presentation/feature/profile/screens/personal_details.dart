@@ -67,7 +67,7 @@ class _personalDetailsState extends State<personalDetails> {
                 children: [
                   Container(
                     constraints: const BoxConstraints(maxWidth: 380),
-                    margin: EdgeInsets.all(20),
+                    margin: EdgeInsets.all(AppConstants.defaultPadding),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -79,10 +79,9 @@ class _personalDetailsState extends State<personalDetails> {
                                 _editable
                                     ? translation.of("user.updateProfile")
                                     : translation.of("personal_details"),
-                                style: TextStyle(
-                                  color: Color(0xFF1D1B1E),
+                                style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                                  color: AppColorScheme.onBlack,
                                   fontSize: 16,
-                                  fontFamily: AppConstants.defaultFont,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
@@ -618,7 +617,7 @@ class _personalDetailsState extends State<personalDetails> {
             decoration: InputDecoration(
                 counterText: '',
                 border: InputBorder.none,
-                fillColor: Color(0xfff3f3f4),
+                fillColor: AppColorScheme.onPrimaryLight,
                 filled: true),
           )
         ],

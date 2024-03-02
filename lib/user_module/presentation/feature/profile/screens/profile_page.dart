@@ -20,6 +20,7 @@ import '../../../../domain/entity/authentication.dart';
 import '../../../../domain/user_data.dart';
 import '../../../components/manage_address_bottom_sheet.dart';
 import '../../../components/signout_card.dart';
+import '../../demo/screen/on_boarding_screen.dart';
 import 'language_selection_screen.dart';
 import 'personal_details.dart';
 import 'update_password_screen.dart';
@@ -174,9 +175,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         decoration: ShapeDecoration(
-          color: Color(0xFFF7F2FA),
+          color: AppColorScheme.secondaryColorLight.withOpacity(0.30),
+        //   Color(0xFFF7F2FA),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(AppConstants.cornerRadiusMin),
           ),
         ),
         child: Center(
@@ -188,7 +190,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
               style: Theme.of(context).textTheme.subtitle1?.copyWith(
                     color: AppColorScheme.onBlack,
                     fontSize: 16,
-                    fontFamily: AppConstants.defaultFont,
                     fontWeight: FontWeight.w500,
                   ),
             ),
@@ -245,7 +246,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
               style: Theme.of(context).textTheme.subtitle1?.copyWith(
                     color: AppColorScheme.accentColorLight,
                     fontSize: 16,
-                    fontFamily: AppConstants.defaultFont,
                     fontWeight: FontWeight.w500,
                   ),
             ),
@@ -288,5 +288,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     //   graphQLService.resetCache();
     //   CustomPageController.controller.jumpToTab(0);
     // });
+
+    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => OnBoardingScreen(),), (route) => false);
   }
 }

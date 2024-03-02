@@ -36,7 +36,8 @@ class _MobileNumberScreenForSignUpState
   void initState() {
     super.initState();
   }
-   @override
+
+  @override
   void dispose() {
     _phoneController.dispose();
     super.dispose();
@@ -45,7 +46,7 @@ class _MobileNumberScreenForSignUpState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-           backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         child: SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: 24),
@@ -70,41 +71,42 @@ class _MobileNumberScreenForSignUpState
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  AppPadding(multipliedBy: 1.25,),
+                  AppPadding(
+                    multipliedBy: 1.25,
+                  ),
                   AppIconLarge(),
-                  AppPadding(multipliedBy: 8.1,),
+                  AppPadding(
+                    multipliedBy: 8.1,
+                  ),
                   Container(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          translation.of("user.sign_up"),
-                          style: Theme.of(context).textTheme.subtitle1?.copyWith(
-                            color: AppColorScheme.onBlack,
-                            fontSize: 22,
-                            fontFamily: AppConstants.defaultFont,
-                            fontWeight: FontWeight.w500,
-                          )
-                          
-                        ),
+                        Text(translation.of("user.sign_up"),
+                            style:
+                                Theme.of(context).textTheme.subtitle1?.copyWith(
+                                      color: AppColorScheme.onBlack,
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.w500,
+                                    )),
                         Text(
                           translation.of(
                               "user.an_OTP_will_be_sent_to_your_mobile_number"),
-                          style: Theme.of(context)
-                              .textTheme
-                              .subtitle2
-                              ?.copyWith(
-                                  fontWeight: FontWeight.w400,
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .onBackground
-                                      .withOpacity(0.5),
-                                  fontFamily: AppConstants.defaultFont),
+                          style:
+                              Theme.of(context).textTheme.subtitle2?.copyWith(
+                                    fontWeight: FontWeight.w400,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onBackground
+                                        .withOpacity(0.5),
+                                  ),
                         )
                       ],
                     ),
                   ),
-                  AppPadding(multipliedBy: 1.8,),
+                  AppPadding(
+                    multipliedBy: 1.8,
+                  ),
                   TextFormField(
                     inputFormatters: [
                       FilteringTextInputFormatter.deny(RegExp("[a-zA-Z]"))
@@ -126,10 +128,10 @@ class _MobileNumberScreenForSignUpState
                       }
                     },
                     style: Theme.of(context).textTheme.subtitle2?.copyWith(
-                        fontSize: 14.0,
-                        fontWeight: FontWeight.w400,
-                        color: Theme.of(context).colorScheme.onBackground,
-                        fontFamily: AppConstants.defaultFont),
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.w400,
+                          color: Theme.of(context).colorScheme.onBackground,
+                        ),
                     decoration: InputDecoration(
                         counterText: "",
                         prefixIcon: Padding(
@@ -147,14 +149,12 @@ class _MobileNumberScreenForSignUpState
                           ),
                         ),
                         hintText: translation.of("user.mobile_number"),
-                        hintStyle: Theme.of(context)
-                            .textTheme
-                            .subtitle2
-                            ?.copyWith(
-                                fontSize: 14.0,
-                                fontWeight: FontWeight.w400,
-                                color: AppColorScheme.textFieldHintColor,
-                                fontFamily: AppConstants.defaultFont),
+                        hintStyle:
+                            Theme.of(context).textTheme.subtitle2?.copyWith(
+                                  fontSize: 14.0,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColorScheme.textFieldHintColor,
+                                ),
                         border: _border,
                         enabledBorder: _border,
                         focusedBorder: _border,
@@ -172,7 +172,7 @@ class _MobileNumberScreenForSignUpState
                         filled: true,
                         fillColor: AppColorScheme.backgroundLight),
                   ),
-                 AppPadding(),
+                  AppPadding(),
                   BlocBuilder<SendOtpBloc, SendOtpState>(
                     builder: (context, state) {
                       return ValueListenableBuilder(
@@ -210,10 +210,10 @@ class _MobileNumberScreenForSignUpState
                                               .textTheme
                                               .subtitle1
                                               ?.copyWith(
-                                                  fontWeight: FontWeight.w500,
-                                                  color: AppColorScheme
-                                                      .backgroundColorLight,
-                                                  fontFamily: AppConstants.defaultFont),
+                                                fontWeight: FontWeight.w500,
+                                                color: AppColorScheme
+                                                    .backgroundColorLight,
+                                              ),
                                         ),
                                 ),
                                 // >>>>>>> b3cf74574a006aa712d2b41e05012ab69329e5e1
@@ -236,11 +236,11 @@ class _MobileNumberScreenForSignUpState
                                   .textTheme
                                   .subtitle1
                                   ?.copyWith(
-                                      fontWeight: FontWeight.w400,
-                                      color: AppColorScheme.onBlack
-                                          .withOpacity(0.5),
-                                      fontSize: 12,
-                                      fontFamily: AppConstants.defaultFont),
+                                    fontWeight: FontWeight.w400,
+                                    color:
+                                        AppColorScheme.onBlack.withOpacity(0.5),
+                                    fontSize: 12,
+                                  ),
                             ),
                             TextSpan(
                               text: ' ',
@@ -248,11 +248,11 @@ class _MobileNumberScreenForSignUpState
                                   .textTheme
                                   .subtitle1
                                   ?.copyWith(
-                                      fontWeight: FontWeight.w400,
-                                      color: AppColorScheme.onBlack
-                                          .withOpacity(0.5),
-                                      fontSize: 12,
-                                      fontFamily: AppConstants.defaultFont),
+                                    fontWeight: FontWeight.w400,
+                                    color:
+                                        AppColorScheme.onBlack.withOpacity(0.5),
+                                    fontSize: 12,
+                                  ),
                             ),
                             TextSpan(
                               text: translation.of("user.sign_in"),
@@ -268,10 +268,10 @@ class _MobileNumberScreenForSignUpState
                                   .textTheme
                                   .subtitle1
                                   ?.copyWith(
-                                      fontWeight: FontWeight.w400,
-                                      color: AppColorScheme.primaryColor,
-                                      fontSize: 12,
-                                      fontFamily: AppConstants.defaultFont),
+                                    fontWeight: FontWeight.w400,
+                                    color: AppColorScheme.primaryColor,
+                                    fontSize: 12,
+                                  ),
                             ),
                           ],
                         ),

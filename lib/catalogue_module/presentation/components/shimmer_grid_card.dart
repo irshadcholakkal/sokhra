@@ -28,7 +28,7 @@ class ShimmerGridCard extends StatelessWidget {
                     color: Colors.yellow,
                   ),
                 ),
-                SizedBox(height: 10,)  ,
+                SizedBox(height: AppConstants.defaultPadding *0.5,)  ,
                 Shimmer.fromColors(
                   baseColor: Colors.grey.shade300,
                   highlightColor: AppColorScheme.onPrimaryLight.withOpacity(0.6),

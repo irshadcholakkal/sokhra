@@ -35,7 +35,6 @@ class HomeProductCard extends StatelessWidget {
     this.margin,
   }) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -58,7 +57,7 @@ class HomeProductCard extends StatelessWidget {
                   InkWell(
                     onTap: () {
                       print("************************${cartItem?.id}");
-                      
+
                       // _productDetailsBottomSheet(
                       //   product: product,
                       //   isInCart: isInCart,
@@ -120,7 +119,6 @@ class HomeProductCard extends StatelessWidget {
                                 Theme.of(context).textTheme.caption?.copyWith(
                                       fontWeight: FontWeight.w500,
                                       fontSize: 10,
-                                      fontFamily: AppConstants.defaultFont,
                                       color: Theme.of(context)
                                           .colorScheme
                                           .onBackground
@@ -130,17 +128,17 @@ class HomeProductCard extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                           ),
                           Text(
-                            ( 
-                              translation.isArabic?product.nameAr ?? product.nameEn!:
-                              translation.isFrench?product.nameFr ?? product.nameEn!:
-                              product.nameEn ?? ""
-                             //product.brand?.name??""
-                              ),
+                            (translation.isArabic
+                                ? product.nameAr ?? product.nameEn!
+                                : translation.isFrench
+                                    ? product.nameFr ?? product.nameEn!
+                                    : product.nameEn ?? ""
+                            //product.brand?.name??""
+                            ),
                             textAlign: TextAlign.start,
                             style:
                                 Theme.of(context).textTheme.caption?.copyWith(
                                       fontSize: 10.04,
-                                      fontFamily: AppConstants.defaultFont,
                                       fontWeight: FontWeight.w500,
                                       color: Theme.of(context)
                                           .colorScheme
@@ -193,7 +191,6 @@ class HomeProductCard extends StatelessWidget {
                               "MAD ${product.variants?.firstOrNull?.price?.toString().split('.').first ?? ""}",
                               style: Theme.of(context).textTheme.caption?.copyWith(
                                   fontWeight: FontWeight.w500,
-                                  fontFamily: AppConstants.defaultFont,
                                   fontSize: 12,
                                   color: AppColorScheme.primaryColor
                                   //Theme.of(context).colorScheme.onBackground,
@@ -211,7 +208,6 @@ class HomeProductCard extends StatelessWidget {
                                       .caption
                                       ?.copyWith(
                                           fontWeight: FontWeight.w500,
-                                          fontFamily: AppConstants.defaultFont,
                                           fontSize: 12,
                                           color: Color(0xFFD5BBFC)
                                           //Theme.of(context).colorScheme.onBackground,
@@ -234,7 +230,7 @@ class HomeProductCard extends StatelessWidget {
                             ),
                           ],
                         ),
-                      
+
                         if (isInStock)
                           isInCart
                               ? IncrementDecrementButton(
@@ -250,34 +246,31 @@ class HomeProductCard extends StatelessWidget {
                                   // pincode: "560038",
                                 )
                               : AddToCartButtonNew(
-                            
                                   width: double.infinity,
                                   borderRadius: 8,
                                   choiceId: product.variants?.first.id ?? "",
                                   deviceId: App().deviceId!,
                                   pincode: userData.pinCode,
-                                  
+
                                   // pincode: "560038",
                                   productId: product.id!,
                                   quantity:
                                       product.variants?.first.minimumQuantity ??
                                           1,
-                                          variantChoiceId: product.variants?.first.id??"",
-                                  text: translation.of('catalogue.add')
-                                )
-                                    else
+                                  variantChoiceId:
+                                      product.variants?.first.id ?? "",
+                                  text: translation.of('catalogue.add'))
+                        else
                           OutOfStockButton(
                             width: double.infinity,
                             borderRadius: 8,
                           )
-                          
                       ],
                     ),
                   ),
                 ],
               ),
             ),
-          
             Container(
               width: 46,
               height: 21,
@@ -296,7 +289,6 @@ class HomeProductCard extends StatelessWidget {
                   style: TextStyle(
                     color: AppColorScheme.onPrimaryLight,
                     fontSize: 10,
-                    fontFamily: AppConstants.defaultFont,
                     fontWeight: FontWeight.w500,
                   ),
                 ),

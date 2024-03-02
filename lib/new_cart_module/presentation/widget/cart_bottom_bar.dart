@@ -45,7 +45,7 @@ class _CartBottomBarState extends State<CartBottomBar> {
     _getTotal();
     BlocProvider.of<NewCartBloc>(context)
         .add(FetchCartItems(pincode: userData.pinCode));
-        print("_cartList${_cartList}");
+    print("_cartList${_cartList}");
   }
 
   @override
@@ -91,7 +91,7 @@ class _CartBottomBarState extends State<CartBottomBar> {
               //"Shopping cart",
               color: AppColorScheme.backgroundLight,
               ontap: widget.onPress),
-          body: _isloading!=true
+          body: _isloading != true
               ? Center(child: CupertinoActivityIndicator())
               : _cartList.isNotEmpty == true
                   ? Container(
@@ -407,7 +407,8 @@ class _CartBottomBarState extends State<CartBottomBar> {
                                                 Column(
                                                   children: [
                                                     Text(
-                                                       translation.of('cart.total_price'),
+                                                      translation.of(
+                                                          'cart.total_price'),
                                                       //'Total price',
                                                       textAlign:
                                                           TextAlign.center,
@@ -416,7 +417,6 @@ class _CartBottomBarState extends State<CartBottomBar> {
                                                             .onBlack
                                                             .withOpacity(0.5),
                                                         fontSize: 14,
-                                                        fontFamily: AppConstants.defaultFont,
                                                         fontWeight:
                                                             FontWeight.w400,
                                                       ),
@@ -431,8 +431,6 @@ class _CartBottomBarState extends State<CartBottomBar> {
                                                                   AppColorScheme
                                                                       .onBlack,
                                                               fontSize: 16,
-                                                              fontFamily:
-                                                                  AppConstants.defaultFont,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .w400,
@@ -446,8 +444,6 @@ class _CartBottomBarState extends State<CartBottomBar> {
                                                                   AppColorScheme
                                                                       .onBlack,
                                                               fontSize: 22,
-                                                              fontFamily:
-                                                                  AppConstants.defaultFont,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .w400,
@@ -504,8 +500,6 @@ class _CartBottomBarState extends State<CartBottomBar> {
                                                                       .colorScheme
                                                                       .surface,
                                                                   fontSize: 16,
-                                                                  fontFamily:
-                                                                      AppConstants.defaultFont,
                                                                 ),
                                                           ),
                                                           // SizedBox(width: 3),
@@ -545,11 +539,10 @@ class _CartBottomBarState extends State<CartBottomBar> {
                     )
                   : Center(
                       child: Text(
-                         translation.of('cart.cart_is_empty'),
-                     // "Cart is empty",
+                      translation.of('cart.cart_is_empty'),
+                      // "Cart is empty",
                       style: TextStyle(
                           fontSize: 14,
-                          fontFamily: AppConstants.defaultFont,
                           fontWeight: FontWeight.w500,
                           color: AppColorScheme.onBlack),
                     )),
@@ -561,11 +554,11 @@ class _CartBottomBarState extends State<CartBottomBar> {
     double totalTax = 0.0;
 
     _cartList.forEach((item) {
-      final variant = item.variant ?? 
+      final variant = item.variant ??
           item.product?.variants?.firstWhereOrNull(
             (element) => element.id == item.variant?.id,
           );
-          print("varientIds${variant}");
+      print("varientIds${variant}");
 
       final tax = item.product?.tax?.tax?.fold<double>(0.0, (result, element) {
             return result + (element.percentage ?? 0.0);

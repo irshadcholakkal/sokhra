@@ -307,7 +307,6 @@ class _CartListScrollView extends StatelessWidget {
                         } else {
                           // Navigator.of(context)
                           //     .pushNamed(UserRouter.signInScreen);
-
                           // pushNewScreenWithRouteSettings(context,
                           //     settings: RouteSettings(
                           //       name: UserRouter.signInScreen,

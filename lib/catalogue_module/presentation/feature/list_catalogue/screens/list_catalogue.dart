@@ -73,7 +73,7 @@ class _ListCatalogueState extends State<ListCatalogue> {
   TextStyle? get _homeTitleStyle =>
       Theme.of(context).textTheme.subtitle1?.copyWith(
             fontWeight: FontWeight.w600,
-            fontFamily: AppConstants.defaultFont,
+           
             fontSize: 16,
             color: Theme.of(context).colorScheme.onBackground,
           );
@@ -146,7 +146,7 @@ class _ListCatalogueState extends State<ListCatalogue> {
   Widget _searchBox() {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(AppConstants.cornerRadiuscircleMin),
           color: AppColorScheme.onTertiaryContainerLite),
       height: 36,
       width: 302,
@@ -204,7 +204,7 @@ class _ListCatalogueState extends State<ListCatalogue> {
                   style: Theme.of(context).textTheme.subtitle1!.copyWith(
                         fontWeight: FontWeight.w400,
                         fontSize: 12,
-                        fontFamily: AppConstants.defaultFont,
+                        
                         color: AppColorScheme.grey,
                         // Color(0xFFAEAAAE)
                       ),
@@ -413,7 +413,8 @@ class _ListCatalogueState extends State<ListCatalogue> {
                                 height: 69.41,
                                 width: 69.41,
                                 decoration: BoxDecoration(
-                                  color: Color(0xFFE5F3F4),
+                                  color:AppColorScheme.secondaryColorLight,
+                                  // Color(0xFFE5F3F4),
                                   borderRadius: BorderRadius.circular(
                                     AppConstants.cornerRadiuscircle,
                                   ),
@@ -456,7 +457,7 @@ class _ListCatalogueState extends State<ListCatalogue> {
                                       ?.copyWith(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 10,
-                                        fontFamily: AppConstants.defaultFont,
+                                        
                                         color: Theme.of(context)
                                             .colorScheme
                                             .onBackground,
@@ -689,9 +690,7 @@ class _ListCatalogueState extends State<ListCatalogue> {
                             multipliedBy: 1,
                           ),
                           _categoriesSection(),
-                          // AppPadding(
-                          //   multipliedBy: 1,
-                          // ),
+                          
                           _topSellersSection(),
                           AppPadding(
                             multipliedBy: 1,
@@ -751,7 +750,8 @@ class _ListCatalogueState extends State<ListCatalogue> {
         body: SingleChildScrollView(
           child: Container(
             margin: EdgeInsets.symmetric(horizontal: 25.0),
-            color: AppColorScheme.backgroundColorLight,
+            color:Theme.of(context).canvasColor,
+            //
             width: double.infinity,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -1369,7 +1369,7 @@ class _ListCatalogueState extends State<ListCatalogue> {
                     style: TextStyle(
                       color: Color(0xFF1D1B1E),
                       fontSize: 12,
-                      fontFamily: AppConstants.defaultFont,
+                      
                       fontWeight: FontWeight.w400,
                     ),
                   )
@@ -1392,7 +1392,7 @@ class _ListCatalogueState extends State<ListCatalogue> {
                             .onBackground
                             .withOpacity(0.5),
                         fontSize: 10,
-                        fontFamily: AppConstants.defaultFont,
+                        
                       ),
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,

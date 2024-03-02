@@ -110,14 +110,12 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
                         Theme.of(context).textTheme.subtitle1?.copyWith(
                               color: AppColorScheme.primaryColor,
                               fontSize: 11,
-                              fontFamily: AppConstants.defaultFont,
                               fontWeight: FontWeight.w500,
                             ),
                     unselectedLabelStyle:
                         Theme.of(context).textTheme.subtitle1?.copyWith(
                               color: AppColorScheme.primaryColor,
                               fontSize: 11,
-                              fontFamily: AppConstants.defaultFont,
                               fontWeight: FontWeight.w500,
                             ),
                     currentIndex: _currentIndex,
@@ -172,8 +170,10 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
                         color: AppColorScheme.primaryColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(AppConstants.cornerRadiusMin),
-                            bottomRight: Radius.circular(AppConstants.cornerRadiusMin),
+                            bottomLeft:
+                                Radius.circular(AppConstants.cornerRadiusMin),
+                            bottomRight:
+                                Radius.circular(AppConstants.cornerRadiusMin),
                           ),
                         ),
                       ),

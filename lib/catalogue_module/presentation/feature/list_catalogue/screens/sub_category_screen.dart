@@ -265,7 +265,7 @@
 //                                       backgroundColor: _selectedSubcategoryId ==
 //                                               widget.subCategoryList[index].id
 //                                           ? Color(0xFFD1FDD9)
-//                                           : Color(0xFFF5F5F5),
+//                                           :AppColorScheme.onBackgroundLight,
 //                                       radius: 24,
 //                                       child: CustomNetworkImage(
 //                                         urlList: [
@@ -564,7 +564,7 @@
 //           ...title,
 //         ],
 //         CircleAvatar(
-//           backgroundColor: Color(0xFFF5F5F5),
+//           backgroundColor:AppColorScheme.onBackgroundLight,
 //           // radius: 24,
 //           radius: 14,
 //           child: CustomNetworkImage(
@@ -841,7 +841,7 @@ class _SubCategoryScreenState extends State<SubCategoryScreen> {
                                       backgroundColor: _selectedSubcategoryId ==
                                               widget.subCategoryList[index].id
                                           ? Color(0xFFD1FDD9)
-                                          : Color(0xFFF5F5F5),
+                                          :AppColorScheme.onBackgroundLight,
                                       radius: 24,
                                       child: CustomNetworkImage(
                                         urlList: [
@@ -1148,7 +1148,7 @@ class _SubCategoryScreenState extends State<SubCategoryScreen> {
           ...title,
         ],
         CircleAvatar(
-          backgroundColor: Color(0xFFF5F5F5),
+          backgroundColor:AppColorScheme.onBackgroundLight,
           // radius: 24,
           radius: 14,
           child: CustomNetworkImage(

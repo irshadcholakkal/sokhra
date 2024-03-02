@@ -99,18 +99,17 @@ class _ManageAddressContentState extends State<ManageAddressContent> {
               Text(
                 translation.of("address_details"),
                 style: Theme.of(context).textTheme.subtitle1?.copyWith(
-                  color: Color(0xFF1D1B1E),
-                  fontSize: 16,
-                  fontFamily: AppConstants.defaultFont,
-                  fontWeight: FontWeight.w600,
-                ),
+                      color: Color(0xFF1D1B1E),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
               ),
               SizedBox(
-                height: AppConstants.defaultPadding* 0.008,
+                height: AppConstants.defaultPadding * 0.008,
               ),
               Divider(),
               SizedBox(
-                height: AppConstants.defaultPadding* 0.008,
+                height: AppConstants.defaultPadding * 0.008,
               ),
               // Container(
               //   height: 48,
@@ -167,8 +166,8 @@ class _ManageAddressContentState extends State<ManageAddressContent> {
                   if (state is FetchAppDataSuccess) {
                     if (state.appData.addressDetails?.isEmpty == true &&
                         widget.isFromLocationScreen) {
-                     // _addAddress;
-                     EditAddressScreen();
+                      // _addAddress;
+                      EditAddressScreen();
                     }
                   }
                 },
@@ -176,7 +175,7 @@ class _ManageAddressContentState extends State<ManageAddressContent> {
                   if (state is FetchAppDataSuccess) {
                     final appData = state.appData;
                     final addresses = appData.addressDetails ?? [];
-        
+
                     if (addresses.isNotEmpty) {
                       return ListView.builder(
                         shrinkWrap: true,
@@ -184,7 +183,7 @@ class _ManageAddressContentState extends State<ManageAddressContent> {
                         physics: NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
                           final addressData = addresses[index];
-        
+
                           return Column(
                             children: [
                               InkWell(
@@ -199,15 +198,15 @@ class _ManageAddressContentState extends State<ManageAddressContent> {
                                           type: addressData.type,
                                           phone: addressData.phone,
                                           email: addressData.email,
-                                         address: addressData.address,
-                                         firstName: addressData.firstName,
+                                          address: addressData.address,
+                                          firstName: addressData.firstName,
                                           house: addressData.house,
-                                         pincode: addressData.pincode,
-                                         landmark: addressData.landmark,
-                                         lat: double.tryParse(
+                                          pincode: addressData.pincode,
+                                          landmark: addressData.landmark,
+                                          lat: double.tryParse(
                                             addressData.lat ?? "",
                                           ),
-                                         lng: double.tryParse(
+                                          lng: double.tryParse(
                                             addressData.lng ?? "",
                                           ),
                                           isDefault: true,
@@ -222,11 +221,11 @@ class _ManageAddressContentState extends State<ManageAddressContent> {
                                 ),
                               ),
                               SizedBox(
-                                height: AppConstants.defaultPadding*0.8,
+                                height: AppConstants.defaultPadding * 0.8,
                               ),
                               Divider(),
                               SizedBox(
-                                height: AppConstants.defaultPadding*0.8,
+                                height: AppConstants.defaultPadding * 0.8,
                               )
                             ],
                           );
@@ -238,13 +237,14 @@ class _ManageAddressContentState extends State<ManageAddressContent> {
                         padding: const EdgeInsets.symmetric(vertical: 100),
                         child: Text(
                           translation.of('user.no_addresses_added'),
-                          style:
-                              Theme.of(context).textTheme.subtitle2?.copyWith(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .onBackground,
-                                    fontWeight: FontWeight.w400,
-                                  ),
+                          style: Theme.of(context)
+                              .textTheme
+                              .subtitle2
+                              ?.copyWith(
+                                color:
+                                    Theme.of(context).colorScheme.onBackground,
+                                fontWeight: FontWeight.w400,
+                              ),
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -261,16 +261,13 @@ class _ManageAddressContentState extends State<ManageAddressContent> {
                   );
                 },
               ),
-        
+
               DottedBorder(
                 radius: Radius.circular(10),
                 color: AppColorScheme.primaryColor,
                 strokeWidth: 1.5,
                 borderType: BorderType.RRect,
                 dashPattern: [8, 4],
-                
-              
-        
                 child: Container(
                   height: 48,
                   width: double.maxFinite,
@@ -285,14 +282,16 @@ class _ManageAddressContentState extends State<ManageAddressContent> {
                     borderRadius: BorderRadius.circular(10
                         //AppConstants.cornerRadius,
                         ),
-                        
                   ),
                   child: InkWell(
-                    onTap:(){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => 
-                     // EditAddressScreen(),
-                     AddAddressScreen(isCreateAccount: false),
-                      ));
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                // EditAddressScreen(),
+                                AddAddressScreen(isCreateAccount: false),
+                          ));
                     },
                     // _addAddress,
                     child: Row(
@@ -305,15 +304,12 @@ class _ManageAddressContentState extends State<ManageAddressContent> {
                         SizedBox(width: AppConstants.defaultPadding / 8),
                         Text(
                           translation.of('user.add_new_address'),
-                          style: Theme.of(context)
-                              .textTheme
-                              .subtitle2
-                              ?.copyWith(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 16,
-                                fontFamily: AppConstants.defaultFont,
-                                color: AppColorScheme.primaryColor,
-                              ),
+                          style:
+                              Theme.of(context).textTheme.subtitle2?.copyWith(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 16,
+                                    color: AppColorScheme.primaryColor,
+                                  ),
                         )
                       ],
                     ),

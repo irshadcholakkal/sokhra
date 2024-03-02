@@ -95,6 +95,32 @@
     "add_newaddress":"Add NewAddress",
 
 
+    "checkout":{
+    "checkout":"Checkout",
+        "delivery_address":"Delivery Address",
+        "cart_is_empty":"Cart is empty",
+        "delivery_charge":"Delivery charge",
+        "grand_total":"Grand total",
+        "add_address": "Add address",
+        "change": "Change",
+        "continue_to_payment":"Continue to Payment",
+        "schedule_delivery":"Schedule delivery",
+        "select_date_and_time":"Select date and time",
+        "selected_date":"Selected date",
+        "promo_code":"Promo code",
+        "apply":"Apply",
+        "payment_details":"Payment details",
+        "discount":"Discount",
+        "vat":"VAT",
+        "payable_amount":"Payable amount",
+        "choose_payment_method":"Choose payment method",
+        "select_shift":"Select shift",
+        "shift_not_available":"Shift Not Available",
+        "confirm_schedule":"Confirm Schedule",
+        "cart_items":"Cart items",
+        "add":"Add"},
+
+
 
 
     "theme": {

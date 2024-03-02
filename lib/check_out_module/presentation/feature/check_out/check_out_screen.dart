@@ -75,9 +75,9 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
   TextEditingController dateController = TextEditingController();
   TextEditingController dateController2 = TextEditingController();
   TextEditingController _promocode = TextEditingController();
-    final _formKey = GlobalKey<FormState>();
- String? selectedStartDate = "";
- String? selectedEndDate = "";
+  final _formKey = GlobalKey<FormState>();
+  String? selectedStartDate = "";
+  String? selectedEndDate = "";
 
   String? _zoneId = "";
 
@@ -112,7 +112,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
     _cartList = widget.cartList ?? [];
     _getAddress();
     _getTotal();
-    
+
     _getDir();
     _initialiseControllers();
     _controller = PlayerController();
@@ -164,10 +164,20 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
           listener: (context, paymentState) {
             if (paymentState is InitiatePaymentSuccess) {
               final response = paymentState.response;
-             Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => PaymentStatusScreen(),), (route) => false);
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PaymentStatusScreen(),
+                  ),
+                  (route) => false);
 
               if (response.status?.toUpperCase() == "SUCCESS") {
-               Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => PaymentStatusScreen(),), (route) => false);
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => PaymentStatusScreen(),
+                    ),
+                    (route) => false);
 
                 // Navigator.pop(context);
                 // Navigator.of(context).pushNamed(
@@ -179,17 +189,26 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                 //         arguments: PaymentStatusScreenArgs()),
                 //     screen: PaymentStatusScreen());
               } else {
-                             Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => PaymentStatusScreen(),), (route) => false);
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => PaymentStatusScreen(),
+                    ),
+                    (route) => false);
 
                 // Navigator.of(context).pushNamed(
                 //   PaymentsRouter.paymentScreen,
                 //   arguments: PaymentScreenArgs(response: response),
                 // );
               }
-              
             }
-            if(paymentState is InitiatePaymentFailed ){
-         Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => PaymentStatusScreen(),), (route) => false);
+            if (paymentState is InitiatePaymentFailed) {
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PaymentStatusScreen(),
+                  ),
+                  (route) => false);
               print("-----------------------FAILED---------------------");
             }
           },
@@ -214,7 +233,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
 
           return Scaffold(
             backgroundColor: AppColorScheme.surfaceColorLight,
-            appBar: SimpleAppBar(title: "Checkout"),
+            appBar: SimpleAppBar(title: translation.of('checkout.checkout')),
             body: _cartList.isNotEmpty == true
                 ? RefreshIndicator(
                     onRefresh: () {
@@ -265,52 +284,53 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                               // _deliveryInstructionsWidget(),
                               // AppPadding(dividedBy: 2),
                               Text(
-                                'Delivery Address',
-                                style: TextStyle(
-                                  color: Color(0xFF1D1A20),
-                                  fontSize: 16,
-                                  fontFamily: 'Poppins',
-                                  fontWeight: FontWeight.w500,
-                                 
-                                ),
+                                translation.of('checkout.delivery_address'),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText1
+                                    ?.copyWith(
+                                      color: AppColorScheme.onBlack,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                    ),
                               ),
                               _addressCard(),
                               //AppPadding(dividedBy: 2),
                               SizedBox(
-                                height: 24,
+                                height: AppConstants.defaultPadding * 1.2,
                               ),
                               Divider(
-                                height: 0.50,
+                                height: AppConstants.defaultPadding * 0.025,
                               ),
-                          
+
                               SizedBox(
-                                height: 24,
+                                height: AppConstants.defaultPadding * 1.2,
                               ),
                               _scheduledelivery(),
                               SizedBox(
-                                height: 24,
+                                height: AppConstants.defaultPadding * 1.2,
                               ),
                               Divider(
-                                height: 0.50,
+                                height: AppConstants.defaultPadding * 0.025,
                               ),
-                          
+
                               SizedBox(
-                                height: 24,
+                                height: AppConstants.defaultPadding * 1.2,
                               ),
                               _promoCode(),
                               SizedBox(
-                                height: 24,
+                                height: AppConstants.defaultPadding * 1.2,
                               ),
                               _paymentDetails(),
                               SizedBox(
-                                height: 24,
+                                height: AppConstants.defaultPadding * 1.2,
                               ),
                               Divider(
-                                height: 0.50,
+                                height: AppConstants.defaultPadding * 0.025,
                               ),
-                          
+
                               SizedBox(
-                                height: 24,
+                                height: AppConstants.defaultPadding * 1.2,
                               ),
                               _choosePaymentMethod(),
                             ],
@@ -319,10 +339,10 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                       ),
                     ),
                   )
-                : Center(child: Text("Cart is empty")),
+                : Center(child: Text(translation.of('checkout.cart_is_empty'))),
             bottomNavigationBar:
                 // deliveryInfo != null &&
-                          _addressId != null &&
+                _addressId != null &&
                         _cartList.isNotEmpty == true &&
                         _totalAmount > 0 &&
                         outStockItems.isEmpty
@@ -355,13 +375,13 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Delivery charge",
+                translation.of('checkout.delivery_charge'),
                 style: Theme.of(context).textTheme.caption?.copyWith(
                       fontWeight: FontWeight.w500,
                       color: Theme.of(context).colorScheme.onBackground,
                     ),
               ),
-              SizedBox(height: 15),
+              SizedBox(height: AppConstants.defaultPadding * 0.75),
               Text(
                 "₹$_deliveryCharge",
                 style: Theme.of(context).textTheme.caption?.copyWith(
@@ -371,7 +391,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
               )
             ],
           ),
-          SizedBox(height: 2),
+          SizedBox(height: AppConstants.defaultPadding * 0.1),
           if (_freeDeliveryAmount > 0 && _deliveryCharge > 0)
             Text(
               "Add products worth ₹$_freeDeliveryAmount more to get free delivery",
@@ -381,7 +401,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                     color: Theme.of(context).colorScheme.onTertiary,
                   ),
             ),
-          AppPadding(dividedBy: 4),
+          AppPadding(dividedBy: AppConstants.defaultPadding * 0.2),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -389,7 +409,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                 text: TextSpan(
                   children: [
                     TextSpan(
-                      text: 'Grand total',
+                      text: translation.of('checkout.grand_total'),
                       style: Theme.of(context).textTheme.caption?.copyWith(
                             fontWeight: FontWeight.w600,
                             color: Theme.of(context).colorScheme.onBackground,
@@ -786,7 +806,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                   // ));
                 },
                 child: Text(
-                  "Add address",
+                  translation.of('checkout.add_address'),
                   style: Theme.of(context).textTheme.caption?.copyWith(
                         fontWeight: FontWeight.w500,
                         color: Theme.of(context).colorScheme.onBackground,
@@ -806,7 +826,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                   // fit: BoxFit.cover,
                 ),
                 SizedBox(
-                  width: 5,
+                  width: AppConstants.defaultPadding * 0.25,
                 ),
                 Expanded(
                   child: Column(
@@ -851,12 +871,12 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                           // ),
                           Text(
                             "${StringModifiers.enumToString(addressItem?.type)?.replaceAll("_", " ")}",
-                            style: TextStyle(
-                              color: Color(0xFF1D1B1E),
-                              fontSize: 12,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w400,
-                            ),
+                            style:
+                                Theme.of(context).textTheme.bodyText1?.copyWith(
+                                      color: AppColorScheme.onSurfaceLight,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                    ),
                           )
                         ],
                       ),
@@ -881,7 +901,6 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                                             .onBackground
                                             .withOpacity(0.5),
                                         fontSize: 10,
-                                        fontFamily: 'Poppins',
                                       ),
                               overflow: TextOverflow.ellipsis,
                               maxLines: 2,
@@ -913,19 +932,19 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                               decoration: ShapeDecoration(
                                 shape: RoundedRectangleBorder(
                                   side: BorderSide(
-                                      width: 0.42, color: Color(0xFFCBC4CF)),
+                                      width: 0.42,
+                                      color: AppColorScheme.primaryColorDark),
                                   borderRadius: BorderRadius.circular(8.36),
                                 ),
                               ),
                               child: Center(
                                 child: Text(
-                                  "Change",
+                                  translation.of('checkout.change'),
                                   style: Theme.of(context)
                                       .textTheme
                                       .caption
                                       ?.copyWith(
                                         fontSize: 9.19,
-                                        fontFamily: 'Poppins',
                                         fontWeight: FontWeight.w500,
                                         color: AppColorScheme.primaryColor,
                                       ),
@@ -1043,14 +1062,13 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                         Text(
                           payState is PaymentLoading
                               ? translation.of("loading")
-                              : "Continue to Payment",
+                              : translation.of('checkout.continue_to_payment'),
                           style: Theme.of(context)
                               .textTheme
                               .subtitle1
                               ?.copyWith(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 16,
-                                fontFamily: 'Poppins',
                                 color: Theme.of(context).colorScheme.surface,
                               ),
                         ),
@@ -1187,33 +1205,32 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
     });
   }
 
-  double _getGrandTotal() => _totalAmount + _deliveryCharge- reductionPrice;
+  double _getGrandTotal() => _totalAmount + _deliveryCharge - reductionPrice;
 
   void _submitFormWithoutWallet() {
     if (_addressId != null) {
       final _grandTotal = _getGrandTotal();
-    bool validate = _formKey.currentState!.validate();
-    if(validate==true){
-      BlocProvider.of<PaymentBloc>(context).add(
-        PaymentInitiateEvent(
-          input: InitiatePaymentInput(
-            addressId: _addressId,
-            invoiceAmount: _grandTotal,
-            paymentType: selectedPaymentMethod,
-            // PaymentType.PAYMENT_GATEWAY,
-            promoDiscount: 0,
-            subTotal: _grandTotal,
-            promoCode: _promocode.text,
-             note: _notesController.text,
-            deviceId: app.deviceId,
-            customerAudio: File(_path ?? ""),
-             deliveryDate: dateController2.text  ,
-             deliveryShift:selectedShift?.id ,
+      bool validate = _formKey.currentState!.validate();
+      if (validate == true) {
+        BlocProvider.of<PaymentBloc>(context).add(
+          PaymentInitiateEvent(
+            input: InitiatePaymentInput(
+              addressId: _addressId,
+              invoiceAmount: _grandTotal,
+              paymentType: selectedPaymentMethod,
+              // PaymentType.PAYMENT_GATEWAY,
+              promoDiscount: 0,
+              subTotal: _grandTotal,
+              promoCode: _promocode.text,
+              note: _notesController.text,
+              deviceId: app.deviceId,
+              customerAudio: File(_path ?? ""),
+              deliveryDate: dateController2.text,
+              deliveryShift: selectedShift?.id,
+            ),
           ),
-        ),
-      );}else{
-
-      }
+        );
+      } else {}
     }
   }
 
@@ -1293,36 +1310,32 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Schedule delivery',
-            style: TextStyle(
-              color: Color(0xFF1D1A20),
-              fontSize: 16,
-              fontFamily: 'Poppins',
-              fontWeight: FontWeight.w500,
-            ),
+            translation.of('checkout.schedule_delivery'),
+            style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                  color: AppColorScheme.onBlack,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
           ),
           SizedBox(
-            height: 6,
+            height: AppConstants.defaultPadding * 0.3,
           ),
           !scheduled
               ? GestureDetector(
                   onTap: _scheduleDeliveryBottomSheet,
                   child: TextFormField(
                     validator: (value) {
-                      if (value!.isEmpty) 
-                      return "*Required";
-                     
+                      if (value!.isEmpty) return "*Required";
                     },
                     enabled: false,
                     decoration: InputDecoration(
-                      hintText: 'Select date and time',
+                      hintText: translation.of('checkout.select_date_and_time'),
                       prefixIcon: Icon(Iconsax.calendar_1),
                       contentPadding:
                           EdgeInsets.only(top: 4, right: 16, bottom: 4),
                       isDense: true,
                       filled: true,
                       fillColor: AppColorScheme.backgroundLight,
-                      
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(4),
@@ -1335,32 +1348,27 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                         borderSide: BorderSide.none,
                       ),
                       errorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                     borderSide: BorderSide(
-                       color: AppColorScheme.errorColorDark
-                     )
-                      ),
-                      
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide:
+                              BorderSide(color: AppColorScheme.errorColorDark)),
                     ),
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w400,
-                      color: Color(0xFF1D1B1E),
-                    ),
+                    style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: AppColorScheme.onSurfaceLight,
+                        ),
                   ),
                 )
               : Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Selected date',
-                      style: TextStyle(
-                        color: AppColorScheme.inActive.withOpacity(0.75),
-                        fontSize: 11,
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w500,
-                      ),
+                      translation.of('checkout.selected_date'),
+                      style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                            color: AppColorScheme.inActive.withOpacity(0.75),
+                            fontSize: 11,
+                            fontWeight: FontWeight.w500,
+                          ),
                     ),
                     Container(
                       child: Row(
@@ -1373,21 +1381,24 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                           ),
                           Text(
                             dateController2.text,
-                            style: TextStyle(
-                              color: Color(0xFF1D1A20),
-                              fontSize: 14,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w400,
-                            ),
+                            style:
+                                Theme.of(context).textTheme.bodyText1?.copyWith(
+                                      color: AppColorScheme.onBlack,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w400,
+                                    ),
                           ),
                           Text(
                               "${selectedShift?.startTime}-${selectedShift?.endTime}",
-                              style: TextStyle(
-                                color: Color(0xFF1D1A20).withOpacity(0.50),
-                                fontSize: 14,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w400,
-                              )),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1
+                                  ?.copyWith(
+                                    color: AppColorScheme.onBlack
+                                        .withOpacity(0.50),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                  )),
                           InkWell(
                             onTap: _scheduleDeliveryBottomSheet,
                             child: Icon(
@@ -1422,7 +1433,10 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
             backgroundColor: AppColorScheme.backgroundLight,
             content: Text(
               translation.of("cart.enter_valid_promocode"),
-              style: TextStyle(color: AppColorScheme.errorColorDark),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyText1
+                  ?.copyWith(color: AppColorScheme.errorColorDark),
             ),
           ));
         }
@@ -1431,7 +1445,10 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
             backgroundColor: AppColorScheme.backgroundLight,
             content: Text(
               translation.of("cart.promo_applied"),
-              style: TextStyle(color: AppColorScheme.accentColorLight),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyText1
+                  ?.copyWith(color: AppColorScheme.accentColorLight),
             ),
           ));
         }
@@ -1439,11 +1456,11 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
       child: TextFormField(
         controller: _promocode,
         decoration: InputDecoration(
-          hintText: 'Promo code',
+          hintText: translation.of('checkout.promo_code'),
           contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 10),
           isDense: true,
           filled: true,
-          fillColor: Color(0xFFF7F2FA),
+          fillColor: AppColorScheme.backgroundLight,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(4),
@@ -1472,24 +1489,23 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                   child: _isPromoCodeLoading
                       ? CupertinoActivityIndicator()
                       : Text(
-                          'Apply',
+                          translation.of('checkout.apply'),
                           textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: AppColorScheme.onPrimaryLight,
-                            fontSize: 12,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w600,
-                          ),
+                          style:
+                              Theme.of(context).textTheme.bodyText1?.copyWith(
+                                    color: AppColorScheme.onPrimaryLight,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                         )),
             ),
           ),
         ),
-        style: TextStyle(
-          fontSize: 14,
-          fontFamily: 'Poppins',
-          fontWeight: FontWeight.w400,
-          color: Color(0xFF1D1B1E),
-        ),
+        style: Theme.of(context).textTheme.bodyText1?.copyWith(
+              fontSize: 14,
+              fontWeight: FontWeight.w400,
+              color: AppColorScheme.onSurfaceLight,
+            ),
       ),
     );
   }
@@ -1501,13 +1517,12 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
           Row(
             children: [
               Text(
-                'Payment details',
-                style: TextStyle(
-                  color: Color(0xFF1D1A20),
-                  fontSize: 16,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w500,
-                ),
+                translation.of('checkout.payment_details'),
+                style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                      color: AppColorScheme.onBlack,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
               ),
               IconButton(
                   onPressed: _checkOutInfoBottomSheet,
@@ -1527,13 +1542,12 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Grand total',
-                      style: TextStyle(
-                        color: Color(0xFF1D1A20).withOpacity(0.50),
-                        fontSize: 14,
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w400,
-                      ),
+                      translation.of('checkout.grand_total'),
+                      style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                            color: AppColorScheme.onBlack.withOpacity(0.50),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                          ),
                     ),
                     SizedBox(
                       // width: 57.17,
@@ -1542,30 +1556,36 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                           children: [
                             TextSpan(
                               text: 'MAD',
-                              style: TextStyle(
-                                color: Color(0xFF1D1A20),
-                                fontSize: 9,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w400,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1
+                                  ?.copyWith(
+                                    color: AppColorScheme.onBlack,
+                                    fontSize: 9,
+                                    fontWeight: FontWeight.w400,
+                                  ),
                             ),
                             TextSpan(
                               text: ' ',
-                              style: TextStyle(
-                                color: Color(0xFF1D1A20),
-                                fontSize: 12,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w400,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1
+                                  ?.copyWith(
+                                    color: AppColorScheme.onBlack,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
+                                  ),
                             ),
                             TextSpan(
                               text: '${_totalAmount}',
-                              style: TextStyle(
-                                color: Color(0xFF1D1A20),
-                                fontSize: 14,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w400,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1
+                                  ?.copyWith(
+                                    color: AppColorScheme.onBlack,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                  ),
                             ),
                           ],
                         ),
@@ -1578,13 +1598,12 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Discount',
-                      style: TextStyle(
-                        color: Color(0xFF1D1A20).withOpacity(0.50),
-                        fontSize: 14,
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w400,
-                      ),
+                      translation.of('checkout.discount'),
+                      style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                            color: AppColorScheme.onBlack.withOpacity(0.50),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                          ),
                     ),
                     SizedBox(
                       // width: 57.17,
@@ -1593,30 +1612,36 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                           children: [
                             TextSpan(
                               text: 'MAD',
-                              style: TextStyle(
-                                color: Color(0xFFEB5757),
-                                fontSize: 9,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w400,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1
+                                  ?.copyWith(
+                                    color: AppColorScheme.accentColorDark,
+                                    fontSize: 9,
+                                    fontWeight: FontWeight.w400,
+                                  ),
                             ),
                             TextSpan(
                               text: ' ',
-                              style: TextStyle(
-                                color: Color(0xFFEB5757),
-                                fontSize: 12,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w400,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1
+                                  ?.copyWith(
+                                    color: AppColorScheme.accentColorDark,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
+                                  ),
                             ),
                             TextSpan(
                               text: '${reductionPrice}',
-                              style: TextStyle(
-                                color: Color(0xFFEB5757),
-                                fontSize: 14,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w400,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1
+                                  ?.copyWith(
+                                    color: AppColorScheme.accentColorDark,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                  ),
                             ),
                           ],
                         ),
@@ -1629,13 +1654,12 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Delivery charge',
-                      style: TextStyle(
-                        color: Color(0xFF1D1A20).withOpacity(0.50),
-                        fontSize: 14,
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w400,
-                      ),
+                      translation.of('checkout.delivery_charge'),
+                      style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                            color: AppColorScheme.onBlack.withOpacity(0.50),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                          ),
                     ),
                     SizedBox(
                       // width: 57.17,
@@ -1644,30 +1668,36 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                           children: [
                             TextSpan(
                               text: 'MAD',
-                              style: TextStyle(
-                                color: Color(0xFF1D1A20),
-                                fontSize: 9,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w400,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1
+                                  ?.copyWith(
+                                    color: AppColorScheme.onBlack,
+                                    fontSize: 9,
+                                    fontWeight: FontWeight.w400,
+                                  ),
                             ),
                             TextSpan(
                               text: ' ',
-                              style: TextStyle(
-                                color: Color(0xFF1D1A20),
-                                fontSize: 12,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w400,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1
+                                  ?.copyWith(
+                                    color: AppColorScheme.onBlack,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
+                                  ),
                             ),
                             TextSpan(
                               text: '${_deliveryCharge}',
-                              style: TextStyle(
-                                color: Color(0xFF1D1A20),
-                                fontSize: 14,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w400,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1
+                                  ?.copyWith(
+                                    color: AppColorScheme.onBlack,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                  ),
                             ),
                           ],
                         ),
@@ -1680,13 +1710,12 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'VAT',
-                      style: TextStyle(
-                        color: Color(0xFF1D1A20).withOpacity(0.50),
-                        fontSize: 14,
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w400,
-                      ),
+                      translation.of('checkout.vat'),
+                      style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                            color: AppColorScheme.onBlack.withOpacity(0.50),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                          ),
                     ),
                     SizedBox(
                       // width: 57.17,
@@ -1695,30 +1724,36 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                           children: [
                             TextSpan(
                               text: 'MAD',
-                              style: TextStyle(
-                                color: Color(0xFF1D1A20),
-                                fontSize: 9,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w400,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1
+                                  ?.copyWith(
+                                    color: AppColorScheme.onBlack,
+                                    fontSize: 9,
+                                    fontWeight: FontWeight.w400,
+                                  ),
                             ),
                             TextSpan(
                               text: ' ',
-                              style: TextStyle(
-                                color: Color(0xFF1D1A20),
-                                fontSize: 12,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w400,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1
+                                  ?.copyWith(
+                                    color: AppColorScheme.onBlack,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
+                                  ),
                             ),
                             TextSpan(
                               text: '${_taxAmount.toStringAsFixed(2)}',
-                              style: TextStyle(
-                                color: Color(0xFF1D1A20),
-                                fontSize: 14,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w400,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1
+                                  ?.copyWith(
+                                    color: AppColorScheme.onBlack,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                  ),
                             ),
                           ],
                         ),
@@ -1727,20 +1762,17 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                     )
                   ],
                 ),
-                Divider(
-                  height: 0.50,
-                ),
+                Divider(height: AppConstants.defaultPadding * 0.025),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Payable amount',
-                      style: TextStyle(
-                        color: Color(0xFF1D1A20).withOpacity(0.50),
-                        fontSize: 14,
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w500,
-                      ),
+                      translation.of('checkout.payable_amount'),
+                      style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                            color: AppColorScheme.onBlack.withOpacity(0.50),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                          ),
                     ),
                     SizedBox(
                       // width: 57.17,
@@ -1749,30 +1781,36 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                           children: [
                             TextSpan(
                               text: 'MAD',
-                              style: TextStyle(
-                                color: Color(0xFF1D1A20),
-                                fontSize: 9,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w500,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1
+                                  ?.copyWith(
+                                    color: AppColorScheme.onBlack,
+                                    fontSize: 9,
+                                    fontWeight: FontWeight.w500,
+                                  ),
                             ),
                             TextSpan(
                               text: ' ',
-                              style: TextStyle(
-                                color: Color(0xFF1D1A20),
-                                fontSize: 12,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w500,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1
+                                  ?.copyWith(
+                                    color: AppColorScheme.onBlack,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w500,
+                                  ),
                             ),
                             TextSpan(
                               text: '${_getGrandTotal().toStringAsFixed(2)}',
-                              style: TextStyle(
-                                color: Color(0xFF1D1A20),
-                                fontSize: 14,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w500,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1
+                                  ?.copyWith(
+                                    color: AppColorScheme.onBlack,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                  ),
                             ),
                           ],
                         ),
@@ -1796,13 +1834,12 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Choose payment method',
-            style: TextStyle(
-              color: Color(0xFF1D1A20),
-              fontSize: 16,
-              fontFamily: 'Poppins',
-              fontWeight: FontWeight.w500,
-            ),
+            translation.of('checkout.choose_payment_method'),
+            style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                  color: AppColorScheme.onBlack,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
           ),
           buildPaymentOption(PaymentType.COD, "Cash On Delivery"),
           // buildPaymentOption("credit_card", "Credit card"),
@@ -1827,12 +1864,11 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
         ),
         Text(
           label,
-          style: TextStyle(
-            color: Color(0xFF1D1B1E),
-            fontSize: 14,
-            fontFamily: 'Poppins',
-            fontWeight: FontWeight.w400,
-          ),
+          style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                color: AppColorScheme.onSurfaceLight,
+                fontSize: 14,
+                fontWeight: FontWeight.w400,
+              ),
         ),
       ],
     );
@@ -1887,16 +1923,18 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                                   ),
                                 ),
                                 SizedBox(
-                                  width: 8,
+                                  width: AppConstants.defaultPadding * 0.4,
                                 ),
                                 Text(
-                                  'Schedule delivery',
-                                  style: TextStyle(
-                                    color: AppColorScheme.onBlack,
-                                    fontSize: 16,
-                                    fontFamily: 'Poppins',
-                                    fontWeight: FontWeight.w600,
-                                  ),
+                                  translation.of('checkout.schedule_delivery'),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyText1
+                                      ?.copyWith(
+                                        color: AppColorScheme.onBlack,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600,
+                                      ),
                                 )
                               ],
                             ),
@@ -1918,16 +1956,19 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Select date',
-                                        style: TextStyle(
-                                          color: AppColorScheme.inActive
-                                              .withOpacity(0.75),
-                                          fontSize: 11,
-                                          fontFamily: 'Poppins',
-                                          fontWeight: FontWeight.w500,
-                                          height: 0.13,
-                                          letterSpacing: 0.50,
-                                        ),
+                                        translation
+                                            .of('checkout.selected_date'),
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText1
+                                            ?.copyWith(
+                                              color: AppColorScheme.inActive
+                                                  .withOpacity(0.75),
+                                              fontSize: 11,
+                                              fontWeight: FontWeight.w500,
+                                              height: 0.13,
+                                              letterSpacing: 0.50,
+                                            ),
                                       ),
                                       // SizedBox(
                                       //   height: 4,
@@ -1937,9 +1978,10 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                                           _showDatePicker(context);
                                         },
                                         child: TextFormField(
-                                          validator: FormBuilderValidators.compose(
-                                            [FormBuilderValidators.required()]
-                                          ),
+                                          validator:
+                                              FormBuilderValidators.compose([
+                                            FormBuilderValidators.required()
+                                          ]),
                                           controller: dateController,
                                           enabled: false,
                                           decoration: InputDecoration(
@@ -1960,13 +2002,15 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                                               borderSide: BorderSide.none,
                                             ),
                                           ),
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            fontFamily: 'Poppins',
-                                            fontWeight: FontWeight.w400,
-                                            color: AppColorScheme.inActive
-                                                .withOpacity(0.75),
-                                          ),
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyText1
+                                              ?.copyWith(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w400,
+                                                color: AppColorScheme.inActive
+                                                    .withOpacity(0.75),
+                                              ),
                                         ),
                                       ),
                                     ],
@@ -1978,135 +2022,151 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                                 Align(
                                   alignment: Alignment.topLeft,
                                   child: Text(
-                                    'Select shift',
-                                    style: TextStyle(
-                                      color: AppColorScheme.inActive
-                                          .withOpacity(0.75),
-                                      fontSize: 11,
-                                      fontFamily: 'Poppins',
-                                      fontWeight: FontWeight.w500,
-                                    ),
+                                    translation.of('checkout.select_shift'),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyText1
+                                        ?.copyWith(
+                                          color: AppColorScheme.inActive
+                                              .withOpacity(0.75),
+                                          fontSize: 11,
+                                          fontWeight: FontWeight.w500,
+                                        ),
                                   ),
                                 ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                              deliveredZone.isNotEmpty?
-                                    SizedBox(
-                                      height: 58,
-                                      child: ListView.builder(
-                                        shrinkWrap: true,
-                                        scrollDirection: Axis.horizontal,
-                                        itemCount: deliveredZone.length,
-                                        itemBuilder: (context, index) {
-                                          final shift = deliveredZone[index];
+                                    deliveredZone.isNotEmpty
+                                        ? SizedBox(
+                                            height: 58,
+                                            child: ListView.builder(
+                                              shrinkWrap: true,
+                                              scrollDirection: Axis.horizontal,
+                                              itemCount: deliveredZone.length,
+                                              itemBuilder: (context, index) {
+                                                final shift =
+                                                    deliveredZone[index];
 
-                                          return GestureDetector(
-                                            onTap: () {
-                                              setState(() {
-                                                if (shift
-                                                        .isAvailableforBooking !=
-                                                    null) {
-                                                  selectedShift = shift;
-                                                  print("Selected Date :${dateController2.text}");
-                                                  print(
-                                                      selectedShift?.startTime);
-                                                  print(selectedShift?.endTime);
-                                                  print("selected shift ID : ${selectedShift?.id}");
-                                                } else {
-                                                  print("Booking is null");
-                                                }
-                                              });
-                                            },
-                                            child: Container(
-                                              width: 105,
-                                              height: 58,
-                                              margin: EdgeInsets.only(right: 8),
-                                              decoration: BoxDecoration(
-                                                color: selectedShift == shift
-                                                    ? shift.isAvailableforBooking ==
-                                                            true
-                                                        ? AppColorScheme
-                                                            .primaryColor
-                                                        : AppColorScheme
-                                                            .backgroundLight
-                                                    : AppColorScheme
-                                                        .backgroundLight,
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                              ),
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Text(
-                                                    "${shift.startTime}",
-                                                    style: TextStyle(
+                                                return GestureDetector(
+                                                  onTap: () {
+                                                    setState(() {
+                                                      if (shift
+                                                              .isAvailableforBooking !=
+                                                          null) {
+                                                        selectedShift = shift;
+                                                        print(
+                                                            "Selected Date :${dateController2.text}");
+                                                        print(selectedShift
+                                                            ?.startTime);
+                                                        print(selectedShift
+                                                            ?.endTime);
+                                                        print(
+                                                            "selected shift ID : ${selectedShift?.id}");
+                                                      } else {
+                                                        print(
+                                                            "Booking is null");
+                                                      }
+                                                    });
+                                                  },
+                                                  child: Container(
+                                                    width: 105,
+                                                    height: 58,
+                                                    margin: EdgeInsets.only(
+                                                        right: 8),
+                                                    decoration: BoxDecoration(
                                                       color: selectedShift ==
                                                               shift
                                                           ? shift.isAvailableforBooking ==
                                                                   true
                                                               ? AppColorScheme
-                                                                  .onPrimaryLight
+                                                                  .primaryColor
                                                               : AppColorScheme
-                                                                  .inActive
-                                                                  .withOpacity(
-                                                                      0.75)
-                                                          : null,
-                                                      fontSize: 10,
-                                                      fontFamily: 'Poppins',
-                                                      fontWeight:
-                                                          FontWeight.w500,
+                                                                  .backgroundLight
+                                                          : AppColorScheme
+                                                              .backgroundLight,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8),
+                                                    ),
+                                                    child: Column(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Text(
+                                                          "${shift.startTime}",
+                                                          style:
+                                                              Theme.of(context)
+                                                                  .textTheme
+                                                                  .bodyText1
+                                                                  ?.copyWith(
+                                                                    color: selectedShift ==
+                                                                            shift
+                                                                        ? shift.isAvailableforBooking ==
+                                                                                true
+                                                                            ? AppColorScheme.onPrimaryLight
+                                                                            : AppColorScheme.inActive.withOpacity(0.75)
+                                                                        : null,
+                                                                    fontSize:
+                                                                        10,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                  ),
+                                                        ),
+                                                        Text(
+                                                          '-',
+                                                          style:
+                                                              Theme.of(context)
+                                                                  .textTheme
+                                                                  .bodyText1
+                                                                  ?.copyWith(
+                                                                    color: selectedShift ==
+                                                                            shift
+                                                                        ? shift.isAvailableforBooking ==
+                                                                                true
+                                                                            ? AppColorScheme.onPrimaryLight
+                                                                            : AppColorScheme.inActive.withOpacity(0.75)
+                                                                        : null,
+                                                                    fontSize:
+                                                                        10,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                  ),
+                                                        ),
+                                                        Text(
+                                                          "${shift.endTime}",
+                                                          style:
+                                                              Theme.of(context)
+                                                                  .textTheme
+                                                                  .bodyText1
+                                                                  ?.copyWith(
+                                                                    color: selectedShift ==
+                                                                            shift
+                                                                        ? shift.isAvailableforBooking ==
+                                                                                true
+                                                                            ? AppColorScheme.onPrimaryLight
+                                                                            : AppColorScheme.inActive.withOpacity(0.75)
+                                                                        : null,
+                                                                    fontSize:
+                                                                        10,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                  ),
+                                                        ),
+                                                      ],
                                                     ),
                                                   ),
-                                                  Text(
-                                                    '-',
-                                                    style: TextStyle(
-                                                      color: selectedShift ==
-                                                              shift
-                                                          ? shift.isAvailableforBooking ==
-                                                                  true
-                                                              ? AppColorScheme
-                                                                  .onPrimaryLight
-                                                              : AppColorScheme
-                                                                  .inActive
-                                                                  .withOpacity(
-                                                                      0.75)
-                                                          : null,
-                                                      fontSize: 10,
-                                                      fontFamily: 'Poppins',
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                    ),
-                                                  ),
-                                                  Text(
-                                                    "${shift.endTime}",
-                                                    style: TextStyle(
-                                                      color: selectedShift ==
-                                                              shift
-                                                          ? shift.isAvailableforBooking ==
-                                                                  true
-                                                              ? AppColorScheme
-                                                                  .onPrimaryLight
-                                                              : AppColorScheme
-                                                                  .inActive
-                                                                  .withOpacity(
-                                                                      0.75)
-                                                          : null,
-                                                      fontSize: 10,
-                                                      fontFamily: 'Poppins',
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
+                                                );
+                                              },
                                             ),
-                                          );
-                                        },
-                                      ),
-                                    ):Center(
-                                            child: Text("Shift Not Available"),
+                                          )
+                                        : Center(
+                                            child: Text(translation.of(
+                                                'checkout.shift_not_available')),
                                           )
                                   ],
                                 ),
@@ -2131,15 +2191,18 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          'Confirm Schedule',
+                                          translation
+                                              .of('checkout.confirm_schedule'),
                                           textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            color:
-                                                AppColorScheme.onPrimaryLight,
-                                            fontSize: 16,
-                                            fontFamily: 'Poppins',
-                                            fontWeight: FontWeight.w500,
-                                          ),
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyText1
+                                              ?.copyWith(
+                                                color: AppColorScheme
+                                                    .onPrimaryLight,
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w500,
+                                              ),
                                         ),
                                       )),
                                 ),
@@ -2215,16 +2278,18 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                               ),
                             ),
                             SizedBox(
-                              width: 8,
+                              width: AppConstants.defaultPadding * 0.4,
                             ),
                             Text(
-                              'Cart items',
-                              style: TextStyle(
-                                color: Color(0xFF1D1A20),
-                                fontSize: 16,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w600,
-                              ),
+                              translation.of('checkout.cart_items'),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1
+                                  ?.copyWith(
+                                    color: AppColorScheme.onBlack,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                             )
                           ],
                         ),
@@ -2252,17 +2317,19 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                                 size: 14,
                               ),
                               SizedBox(
-                                width: 5,
+                                width: AppConstants.defaultPadding * 0.25,
                               ),
                               Text(
-                                'Add',
+                                translation.of('checkout.add'),
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: AppColorScheme.primaryColor,
-                                  fontSize: 12.61,
-                                  fontFamily: 'Poppins',
-                                  fontWeight: FontWeight.w500,
-                                ),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText1
+                                    ?.copyWith(
+                                      color: AppColorScheme.primaryColor,
+                                      fontSize: 12.61,
+                                      fontWeight: FontWeight.w500,
+                                    ),
                               )
                             ],
                           ),
@@ -2271,7 +2338,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                     ],
                   ),
                   SizedBox(
-                    height: 15,
+                    height: AppConstants.defaultPadding * 0.75,
                   ),
                   Divider(),
                   Expanded(

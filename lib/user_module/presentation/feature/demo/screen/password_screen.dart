@@ -40,19 +40,21 @@ class _PasswordScreenState extends State<PasswordScreen> {
   void initState() {
     super.initState();
   }
+
   @override
   void dispose() {
-       _passwordController.dispose();
+    _passwordController.dispose();
     _confirmPasswordController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
           child: SingleChildScrollView(
-            padding: EdgeInsets.symmetric(horizontal: AppConstants.defaultPadding),
+        padding: EdgeInsets.symmetric(horizontal: AppConstants.defaultPadding),
         child: Form(
           key: _formKey,
           child: Column(
@@ -75,19 +77,18 @@ class _PasswordScreenState extends State<PasswordScreen> {
                       style: Theme.of(context).textTheme.subtitle1?.copyWith(
                             color: AppColorScheme.onBlack,
                             fontSize: 22,
-                            fontFamily: AppConstants.defaultFont,
                             fontWeight: FontWeight.w500,
                           ),
                     ),
                     Text(
                       translation.of('user.enter_strong_password'),
                       style: Theme.of(context).textTheme.subtitle2?.copyWith(
-                          fontWeight: FontWeight.w400,
-                          color: Theme.of(context)
-                              .colorScheme
-                              .onBackground
-                              .withOpacity(0.5),
-                          fontFamily: AppConstants.defaultFont),
+                            fontWeight: FontWeight.w400,
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onBackground
+                                .withOpacity(0.5),
+                          ),
                     )
                   ],
                 ),
@@ -97,14 +98,14 @@ class _PasswordScreenState extends State<PasswordScreen> {
                 controller: _passwordController,
                 hintText: translation.of('user.enter_password'),
                 hintStyle: Theme.of(context).textTheme.subtitle2?.copyWith(
-                    fontSize: 14.0,
-                    fontWeight: FontWeight.w400,
-                    color: AppColorScheme.textFieldHintColor,
-                    fontFamily: AppConstants.defaultFont),
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.w400,
+                      color: AppColorScheme.textFieldHintColor,
+                    ),
                 fillColor: AppColorScheme.backgroundLight,
                 // enabled: !_loading,
                 // obscureText: !_isCurrentPasswordVisible,
-              
+
                 filled: true,
                 // suffix: IconButton(
                 //         onPressed: () {
@@ -115,11 +116,11 @@ class _PasswordScreenState extends State<PasswordScreen> {
                 //         icon: Icon(_isCurrentPasswordVisible
                 //             ? Iconsax.eye_slash
                 //             : Iconsax.eye)),
-              
+
                 validator: FormBuilderValidators.compose([
                   FormBuilderValidators.minLength(8,
-                      errorText: translation.of(
-                          'user.password_must_be_least_8_characters_long')),
+                      errorText: translation
+                          .of('user.password_must_be_least_8_characters_long')),
                   FormBuilderValidators.required(
                       errorText: translation.of("user.required")),
                 ]),
@@ -131,10 +132,10 @@ class _PasswordScreenState extends State<PasswordScreen> {
                 controller: _confirmPasswordController,
                 hintText: translation.of('user.confirm_password'),
                 hintStyle: Theme.of(context).textTheme.subtitle2?.copyWith(
-                    fontSize: 14.0,
-                    fontWeight: FontWeight.w400,
-                    color: AppColorScheme.textFieldHintColor,
-                    fontFamily: AppConstants.defaultFont),
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.w400,
+                      color: AppColorScheme.textFieldHintColor,
+                    ),
                 fillColor: AppColorScheme.backgroundLight,
                 // enabled: !_loading,
                 // obscureText: !_isCurrentPasswordVisible,
@@ -156,8 +157,8 @@ class _PasswordScreenState extends State<PasswordScreen> {
                     return null;
                   },
                   FormBuilderValidators.minLength(8,
-                      errorText: translation.of(
-                          'user.password_must_be_least_8_characters_long')),
+                      errorText: translation
+                          .of('user.password_must_be_least_8_characters_long')),
                   FormBuilderValidators.required(
                     errorText: translation.of("user.required"),
                   ),
@@ -173,7 +174,8 @@ class _PasswordScreenState extends State<PasswordScreen> {
                   decoration: ShapeDecoration(
                     color: AppColorScheme.primaryColor,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(AppConstants.cornerRadiusMin),
+                      borderRadius:
+                          BorderRadius.circular(AppConstants.cornerRadiusMin),
                     ),
                   ),
                   child: Center(
@@ -183,7 +185,6 @@ class _PasswordScreenState extends State<PasswordScreen> {
                       style: Theme.of(context).textTheme.subtitle1?.copyWith(
                             color: AppColorScheme.onPrimaryLight,
                             fontSize: 14,
-                            fontFamily: AppConstants.defaultFont,
                             fontWeight: FontWeight.w500,
                           ),
                     ),
@@ -203,11 +204,10 @@ class _PasswordScreenState extends State<PasswordScreen> {
                               .textTheme
                               .subtitle1
                               ?.copyWith(
-                                  fontWeight: FontWeight.w400,
-                                  color:
-                                      AppColorScheme.onBlack.withOpacity(0.5),
-                                  fontSize: 12,
-                                  fontFamily: AppConstants.defaultFont),
+                                fontWeight: FontWeight.w400,
+                                color: AppColorScheme.onBlack.withOpacity(0.5),
+                                fontSize: 12,
+                              ),
                         ),
                         TextSpan(
                           text: ' ',
@@ -215,22 +215,19 @@ class _PasswordScreenState extends State<PasswordScreen> {
                               .textTheme
                               .subtitle1
                               ?.copyWith(
-                                  fontWeight: FontWeight.w400,
-                                  color:
-                                      AppColorScheme.onBlack.withOpacity(0.5),
-                                  fontSize: 12,
-                                  fontFamily: AppConstants.defaultFont),
+                                fontWeight: FontWeight.w400,
+                                color: AppColorScheme.onBlack.withOpacity(0.5),
+                                fontSize: 12,
+                              ),
                         ),
                         TextSpan(
                             text: translation.of("user.sign_in"),
-                            style: Theme.of(context)
-                                .textTheme
-                                .subtitle1
-                                ?.copyWith(
-                                    fontWeight: FontWeight.w400,
-                                    color: AppColorScheme.primaryColor,
-                                    fontSize: 12,
-                                    fontFamily: AppConstants.defaultFont),
+                            style:
+                                Theme.of(context).textTheme.subtitle1?.copyWith(
+                                      fontWeight: FontWeight.w400,
+                                      color: AppColorScheme.primaryColor,
+                                      fontSize: 12,
+                                    ),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
                                 Navigator.push(

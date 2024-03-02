@@ -74,7 +74,7 @@ class _ProductDetailsState extends State<ProductDetails> {
 
   void _totalPrice() {
     final variant = widget.productData?.variants?[selectedVarient];
-    print("!!!!!!!!!!!!!${variant}");
+    print("${variant}");
 
     if (variant != null) {
       final variantPrice = variant.price ?? 0.0;
@@ -146,7 +146,8 @@ class _ProductDetailsState extends State<ProductDetails> {
         }
       },
       child: Scaffold(
-        backgroundColor: AppColorScheme.backgroundColorLight,
+        backgroundColor: Theme.of(context).canvasColor,
+        //  AppColorScheme.backgroundColorLight,
         appBar: AppBar(
           backgroundColor: AppColorScheme.scaffoldBackgroundColorLight,
           leading: IconButton(
@@ -154,9 +155,10 @@ class _ProductDetailsState extends State<ProductDetails> {
               width: 36,
               height: 36,
               decoration: ShapeDecoration(
-                color: Color(0xFFECDCFF),
+                color: AppColorScheme.secondaryColorLight,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius:
+                      BorderRadius.circular(AppConstants.cornerRadiusMin),
                 ),
               ),
               child: Icon(Iconsax.arrow_left, color: AppColorScheme.onBlack),
@@ -396,19 +398,25 @@ class _ProductDetailsState extends State<ProductDetails> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                translation.isArabic?widget.productData?.nameAr ?? widget.productData?.nameEn??"":
-                                translation.isFrench?widget.productData?.nameFr ??widget.productData?.nameEn ??"":
-                                widget.productData?.nameEn ?? "",
+                                translation.isArabic
+                                    ? widget.productData?.nameAr ??
+                                        widget.productData?.nameEn ??
+                                        ""
+                                    : translation.isFrench
+                                        ? widget.productData?.nameFr ??
+                                            widget.productData?.nameEn ??
+                                            ""
+                                        : widget.productData?.nameEn ?? "",
                                 style: Theme.of(context)
                                     .textTheme
                                     .subtitle2
                                     ?.copyWith(
-                                        fontWeight: FontWeight.w600,
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .onBackground,
-                                        fontSize: 20,
-                                        fontFamily: 'Poppins'),
+                                      fontWeight: FontWeight.w600,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onBackground,
+                                      fontSize: 20,
+                                    ),
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 2,
                               ),
@@ -424,7 +432,6 @@ class _ProductDetailsState extends State<ProductDetails> {
                                               .subtitle1
                                               ?.copyWith(
                                                   fontSize: 16,
-                                                  fontFamily: 'Poppins',
                                                   fontWeight: FontWeight.w400,
                                                   color: Theme.of(context)
                                                       .colorScheme
@@ -439,7 +446,6 @@ class _ProductDetailsState extends State<ProductDetails> {
                                               .subtitle1
                                               ?.copyWith(
                                                   fontSize: 22,
-                                                  fontFamily: 'Poppins',
                                                   fontWeight: FontWeight.w400,
                                                   color: Theme.of(context)
                                                       .colorScheme
@@ -461,10 +467,10 @@ class _ProductDetailsState extends State<ProductDetails> {
                                                   .subtitle1
                                                   ?.copyWith(
                                                       fontSize: 9.79,
-                                                      fontFamily: 'Poppins',
                                                       fontWeight:
                                                           FontWeight.w400,
-                                                      color: Color(0xFFCBC4CF)),
+                                                      color: AppColorScheme
+                                                          .primaryColorDark),
                                             ),
                                             TextSpan(
                                               text:
@@ -476,10 +482,10 @@ class _ProductDetailsState extends State<ProductDetails> {
                                                   .subtitle1
                                                   ?.copyWith(
                                                       fontSize: 13.47,
-                                                      fontFamily: 'Poppins',
                                                       fontWeight:
                                                           FontWeight.w400,
-                                                      color: Color(0xFFCBC4CF)),
+                                                      color: AppColorScheme
+                                                          .primaryColorDark),
                                             ),
                                           ],
                                         ),
@@ -492,7 +498,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                                           width: 50,
                                           height: 1,
                                           decoration: BoxDecoration(
-                                              color: Color(0xFFCBC4CF)),
+                                              color: AppColorScheme
+                                                  .primaryColorDark),
                                         ),
                                       )
                                     ],
@@ -564,7 +571,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                                               color: selectedVarient != index
                                                   ? AppColorScheme.grey
                                                   : AppColorScheme.primaryColor
-                                              // Color(0xFFCBC4CF)
+                                              // AppColorScheme.primaryColorDark
                                               ),
                                           borderRadius:
                                               BorderRadius.circular(6),
@@ -579,7 +586,6 @@ class _ProductDetailsState extends State<ProductDetails> {
                                               .caption
                                               ?.copyWith(
                                                 fontSize: 12,
-                                                fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
                                                 color: Theme.of(context)
                                                     .colorScheme
@@ -603,39 +609,47 @@ class _ProductDetailsState extends State<ProductDetails> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                translation.of('product_page.about_this_product'),
+                                translation
+                                    .of('product_page.about_this_product'),
                                 //"About this product",
                                 style: Theme.of(context)
                                     .textTheme
                                     .caption
                                     ?.copyWith(
                                       fontSize: 14,
-                                      fontFamily: 'Poppins',
                                       fontWeight: FontWeight.w500,
                                       color: Theme.of(context)
                                           .colorScheme
                                           .onBackground,
                                     ),
                               ),
-                              SizedBox(height: 2),
+                              SizedBox(
+                                  height: AppConstants.defaultPadding * 0.1),
                               Text(
-                                translation.isArabic? widget.productData?.descriptionAr ?? widget.productData?.descriptionEn ??"":
-                                translation.isFrench? widget.productData?.descriptionFr ?? widget.productData?.descriptionEn ??"":
-                                widget.productData?.descriptionEn ?? "_",
+                                translation.isArabic
+                                    ? widget.productData?.descriptionAr ??
+                                        widget.productData?.descriptionEn ??
+                                        ""
+                                    : translation.isFrench
+                                        ? widget.productData?.descriptionFr ??
+                                            widget.productData?.descriptionEn ??
+                                            ""
+                                        : widget.productData?.descriptionEn ??
+                                            "_",
                                 // widget.productData?.descriptionEn ?? "_",
                                 style: Theme.of(context)
                                     .textTheme
                                     .caption
                                     ?.copyWith(
                                       fontSize: 10,
-                                      fontFamily: 'Poppins',
                                       fontWeight: FontWeight.w400,
                                       color: Theme.of(context)
                                           .colorScheme
                                           .onBackground,
                                     ),
                               ),
-                              SizedBox(height: 2),
+                              SizedBox(
+                                  height: AppConstants.defaultPadding * 0.1),
                               Text(
                                 translation.of('product_page.highlights'),
                                 //"Highlights",
@@ -644,7 +658,6 @@ class _ProductDetailsState extends State<ProductDetails> {
                                     .caption
                                     ?.copyWith(
                                       fontSize: 14,
-                                      fontFamily: 'Poppins',
                                       fontWeight: FontWeight.w500,
                                       color: Theme.of(context)
                                           .colorScheme
@@ -693,7 +706,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   //        //               .colorScheme
                   //        //               .onBackground,
                   //        //           fontSize: 14,
-                  //        //           fontFamily: 'Poppins'),
+                  //        //           fontFamily: AppConstants.defaultFont),
                   //        //   overflow: TextOverflow.ellipsis,
                   //        //   maxLines: 2,
                   //        // ),
@@ -825,7 +838,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               //               .colorScheme
               //               .onBackground,
               //           fontSize: 14,
-              //           fontFamily: 'Poppins'),
+              //           fontFamily: AppConstants.defaultFont),
               //   overflow: TextOverflow.ellipsis,
               //   maxLines: 2,
               // ),
@@ -921,13 +934,12 @@ class _ProductDetailsState extends State<ProductDetails> {
                             children: [
                               Text(
                                 translation.of('product_page.total_price'),
-                               // 'Total price',
+                                // 'Total price',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   color:
                                       AppColorScheme.onBlack.withOpacity(0.50),
                                   fontSize: 14,
-                                  fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
@@ -939,7 +951,6 @@ class _ProductDetailsState extends State<ProductDetails> {
                                       style: TextStyle(
                                         color: AppColorScheme.onBlack,
                                         fontSize: 16,
-                                        fontFamily: 'Poppins',
                                         fontWeight: FontWeight.w400,
                                       ),
                                     ),
@@ -948,7 +959,6 @@ class _ProductDetailsState extends State<ProductDetails> {
                                       style: TextStyle(
                                         color: AppColorScheme.onBlack,
                                         fontSize: 22,
-                                        fontFamily: 'Poppins',
                                         fontWeight: FontWeight.w400,
                                       ),
                                     ),
@@ -958,7 +968,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                             ],
                           ),
                           SizedBox(
-                            width: 63,
+                            width: AppConstants.defaultPadding * 3.15,
                           ),
                           IncrementDecrementButton(
                             // height: 42,
@@ -978,7 +988,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                             pincode: userData.pinCode,
                           ),
                           SizedBox(
-                            width: 11,
+                            width: AppConstants.defaultPadding * 0.55,
                           ),
                           InkWell(
                             onTap: () {
@@ -1013,7 +1023,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                                     height: 0.1,
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
-                                      color: Colors.red,
+                                      color: AppColorScheme.accentColorLight,
                                     ),
                                   ),
                                   child: Center(
@@ -1028,12 +1038,11 @@ class _ProductDetailsState extends State<ProductDetails> {
                     : AddToCartButtonNew(
                         height: 42,
                         width: 320,
-                        borderRadius: 8,
+                        borderRadius: AppConstants.cornerRadiuscircleMin,
                         choiceId:
                             // widget.productData?.variants?[selectedVarient].id ?? "",
                             widget.productData?.variants?.first.id ?? "",
                         deviceId: App().deviceId!,
-
                         pincode: userData.pinCode,
                         productId:
                             //  widget.productData?.variants?[selectedVarient].id ??"",
@@ -1048,12 +1057,12 @@ class _ProductDetailsState extends State<ProductDetails> {
                         // widget.productData?.variants?.first.id ?? "",
                         text: translation.of('product_page.add_to_cart')
                         //"Add to cart",
-                      )
+                        )
               else
                 OutOfStockButton(
                   height: 42,
                   width: 320,
-                  borderRadius: 8,
+                  borderRadius: AppConstants.cornerRadiuscircleMin,
                 ),
             ],
           ),

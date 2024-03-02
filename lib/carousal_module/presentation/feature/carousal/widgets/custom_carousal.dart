@@ -21,7 +21,7 @@ class CustomCarousal extends StatelessWidget {
       if (state is CarousalLoading) {
         return Container(
           height: 150,
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(AppConstants.cornerRadius)),
           padding: EdgeInsets.symmetric(horizontal: 12),
           child:Shimmer.fromColors(
             baseColor: Colors.grey.shade300,
@@ -31,7 +31,7 @@ class CustomCarousal extends StatelessWidget {
             child: Container(
               height: 150,
               width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(AppConstants.cornerRadius),
               color:  AppColorScheme.onPrimaryLight,
               ),
 

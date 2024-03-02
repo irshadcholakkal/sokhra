@@ -91,7 +91,9 @@ class _SignUpScreenState extends State<SignUpScreenPersonalDetials> {
               _authenticationBloc.add(SignedIn());
               _navigateToNext();
             } else if (state is SignUpFailed) {
-              showErrorFlash(context: context, message: "Sign up failed");
+              showErrorFlash(
+                  context: context,
+                  message: translation.of('user.sign_up_failed'));
 
               setState(() {
                 _isLoading = false;
@@ -126,24 +128,22 @@ class _SignUpScreenState extends State<SignUpScreenPersonalDetials> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Let’s introduce yourself',
+                          translation.of('user.let_introduce_yourself'),
                           style:
                               Theme.of(context).textTheme.subtitle1?.copyWith(
                                     color: AppColorScheme.onBlack,
                                     fontSize: 22,
-                                    fontFamily: AppConstants.defaultFont,
                                     fontWeight: FontWeight.w500,
                                   ),
                         ),
                         Text(
-                          'Enter your personal details',
+                          translation.of('user.enter_your_personal_details'),
                           style: Theme.of(context)
                               .textTheme
                               .subtitle1
                               ?.copyWith(
                                 color: AppColorScheme.onBlack.withOpacity(0.50),
                                 fontSize: 12,
-                                fontFamily: AppConstants.defaultFont,
                                 fontWeight: FontWeight.w400,
                               ),
                         )
@@ -232,7 +232,8 @@ class _SignUpScreenState extends State<SignUpScreenPersonalDetials> {
                       child: Center(
                         child: _isLoading
                             ? CupertinoActivityIndicator(
-                                color: AppColorScheme.backgroundColorLight,
+                                color: Theme.of(context).canvasColor,
+                                //AppColorScheme.backgroundColorLight,
                               )
                             : Text(
                                 'Continue',
@@ -452,7 +453,6 @@ class _SignUpScreenState extends State<SignUpScreenPersonalDetials> {
               style: Theme.of(context).textTheme.subtitle1?.copyWith(
                     color: AppColorScheme.inActive.withOpacity(0.75),
                     fontSize: 11,
-                    fontFamily: AppConstants.defaultFont,
                     fontWeight: FontWeight.w500,
                   ),
             ),
@@ -488,7 +488,6 @@ class _SignUpScreenState extends State<SignUpScreenPersonalDetials> {
               style: Theme.of(context).textTheme.subtitle1?.copyWith(
                     color: AppColorScheme.inActive.withOpacity(0.75),
                     fontSize: 11,
-                    fontFamily: AppConstants.defaultFont,
                     fontWeight: FontWeight.w500,
                   ),
             ),
@@ -593,7 +592,6 @@ class _SignUpScreenState extends State<SignUpScreenPersonalDetials> {
               style: Theme.of(context).textTheme.subtitle1?.copyWith(
                     color: AppColorScheme.inActive.withOpacity(0.75),
                     fontSize: 11,
-                    fontFamily: AppConstants.defaultFont,
                     fontWeight: FontWeight.w500,
                   ),
             ),
@@ -706,7 +704,6 @@ class _SignUpScreenState extends State<SignUpScreenPersonalDetials> {
   //         otpType: OtpType.PHONE,
   //       ),
   //     ));
-
   //     setState(() {
   //       _loading = true;
   //     });

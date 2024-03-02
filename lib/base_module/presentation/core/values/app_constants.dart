@@ -5,12 +5,12 @@ class AppConstants {
   static const cornerRadius = 20.0;
   static const cornerRadiusMin = 10.0;
   static const smallCornerRadius = 6.0;
+  static const cornerRadiuscircleMin = 8.0;
   static const cornerRadiuscircle = 50.0;
   static const cornerRadiusLarge = 16.0;
   static const defaultPadding = 20.0;
   static const elevation = 0.0;
   static const appVersion = "1.0.0";
-  static const defaultFont = 'Poppins';
 
   //breakpoints
   static const breakPointMobile = 500;
@@ -28,7 +28,7 @@ class AppConstants {
       // "https://blockat-dev-files.s3.me-south-1.amazonaws.com/";
       // "https://armino-ecomm.s3.ap-south-1.amazonaws.com/";
       // "https://lumiere-staging-uploads.s3.ap-south-1.amazonaws.com/";//// old lumiere url
-         "https://d6ta5s1oamqul.cloudfront.net/"; ////// lumiere live file url
+      "https://d6ta5s1oamqul.cloudfront.net/"; ////// lumiere live file url
 
   static const dummyImage = "https://i.imgur.com/9pXdDf7.png";
 
